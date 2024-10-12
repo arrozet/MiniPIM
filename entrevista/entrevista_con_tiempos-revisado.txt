@@ -1,0 +1,1738 @@
+1
+00:00:01,134 --> 00:00:10,134
+R: Y bueno, esto es un poco off topic, pero bueno, tú las preguntas ya las has leído.
+F: Ah, sí. 
+R: Literalmente lo que vamos a hacer va a ser...
+
+2
+00:00:12,134 --> 00:00:25,302
+R: Ir la pregunta 1 a 1, desde la 1 hasta la 28 en orden. No tiene mucha ciencia.
+F: Vale, vale, a ver, si queréis preguntar cualquier cosa mientras está entre medio no hay problema, eh.
+
+3
+00:00:25,302 --> 00:00:33,822
+R: Ya, ya, si por eso... 
+F: Se va a hacer más a menos, si no vamos a parecer robots, tío.
+R: Ya, es por eso, que es que tiene que ser un poco más normal, no tan... Guiado
+
+4
+00:00:33,822 --> 00:00:39,502
+E: Por eso estamos aquí, aparte de Rubén, los dos.
+R: Por eso han venido, porque si no... 
+F: Bien, bien, bien.
+
+5
+00:00:40,622 --> 00:00:52,446
+R: Y... Y nada, cuando quieras empezamos... No sé ni qué coño voy a decir al principio, pero bueno, algo diré. ¿Empezamos ya o que?
+F: Si, total, al final lo vas a transcribir a papel, da igual
+
+6
+00:00:52,446 --> 00:00:58,766
+R: Si, es que después... Esto se lo vamos a meter a una IA, ya te lo dije
+R: Y con eso vamos a responder a las preguntas y a poner la transcripción al final
+
+7
+00:00:58,766 --> 00:01:10,870
+R: Esta parte del principio la quitaremos de la transcripción y ya está
+R: Bueno, si quieres empezamos ya. Eh... Hola Fran, te vamos a hacer una entrevista de ingeniería de requisitos
+
+8
+00:01:10,870 --> 00:01:17,270
+R: sobre tu rol como ingeniero de software y tu relación con...
+R: con ingeniería de requisitos, valga la redundancia.
+
+9
+00:01:18,170 --> 00:01:22,270
+R: Y nada, comenzamos con la primera pregunta.
+R: ¿Podrías presentarte y describir tu rol dentro de TUI?
+
+10
+00:01:22,270 --> 00:01:30,390
+R: ¿Qué responsabilidades tienes dentro de los proyectos de desarrollo de software?
+F: Bueno, pues en mi nombre es Fran, llevo trabajando como desarrollador de software unos 7 años
+
+11
+00:01:30,390 --> 00:01:39,390
+F: y dentro en TUI llevo trabajando unos 5 aproximadamente.
+F: Y responsabilidades dentro de la empresa actualmente,
+
+12
+00:01:39,390 --> 00:01:52,914
+F: tengo la responsabilidad de varias aplicaciones y tengo que mantenerlas funcionando.
+F: O sea, desarrollar nuevas funcionalidades y si hay cualquier problema que tiene dependencia con otros equipos.
+
+13
+00:01:53,102 --> 00:02:05,422
+F: contactar con ellos, hacer un poco ahí de stakeholder y eso, mantener la aplicación viva, básicamente.
+R: ¿Tu rol es developer en general o haces algo en concreto?
+
+14
+00:02:05,422 --> 00:02:21,970
+F: Mi rol es backend, aunque toco un poco de todo, sistema, backend, frontend, pero es backend.
+F: 90% del tiempo trabajo de backend. 
+R: Vale. ¿Y qué importancia tiene la ingeniería de requisitos en vuestra metodología de desarrollo?
+
+15
+00:02:22,158 --> 00:02:36,718
+R: ¿Y cuál es esta metodología? ¿Cómo encaja dentro del ciclo de vida de desarrollo de software de la empresa?
+F: La ingeniería de requisitos es clave. Si los requisitos no están claros a la hora de desarrollar una nueva funcionalidad, un nuevo producto,
+
+16
+00:02:36,718 --> 00:02:49,138
+F: al final eso va a traer problemas de que las dos partes, los stakeholders y los desarrolladores, no estén alineados.
+F: Y durante el desarrollo de la aplicación aparezcan nuevos requisitos.
+
+17
+00:02:49,486 --> 00:02:57,406
+F: que provoquen cambios grandes dentro de la aplicación
+F: y eso al final es pérdida de tiempo y dinero dentro de la empresa.
+
+18
+00:02:58,246 --> 00:03:07,566
+F: O sea que es muy importante. 
+R: Sí, bueno, tiene sentido, la verdad.
+R: Y bueno, lo que te he preguntado antes, no te he hecho la pregunta directa,
+
+19
+00:03:07,566 --> 00:03:13,926
+R: pero ¿qué metodología de desarrollo usáis? Y bueno, ¿cómo gestionáis el ciclo de vida?
+R: ¿Es si usáis Ágil y iterativa, depende del proyecto?
+
+20
+00:03:14,366 --> 00:03:23,582
+F: Nosotros utilizamos, bueno, dentro de la empresa
+F: utiliza una metodología diferente. Nosotros utilizamos Kanban.
+
+21
+00:03:23,582 --> 00:03:35,822
+R: ¿Kanban? 
+F: Usamos Agile, Kanban. O sea, tiene Scrum o Kanban. Nosotros utilizamos Kanban principalmente
+porque las prioridades dentro del equipo. Como llevamos tantas aplicaciones dentro del
+
+22
+00:03:35,822 --> 00:03:46,622
+F: equipo, las prioridades cambian casi un día para otro. Entonces, meternos con Scrum, que
+te obliga a trabajar en sprint de 15 días, pues no es lo más óptimo en nuestro caso.
+
+23
+00:03:46,622 --> 00:03:53,470
+F: Porque a lo mejor un día estás trabajando en un ticket,
+cambian las prioridades y te tienes que mover a otra cosa. Y Kanban es más flexible.
+
+24
+00:03:53,470 --> 00:04:03,790
+R: ¿Qué entendemos por ticket? 
+F: Ticket es funcionalidad.
+R: Vale, es como un trozo de un requisito. 
+F: El ticket es lo que vendría siendo todos
+
+25
+00:04:03,790 --> 00:04:14,930
+F: los requisitos. 
+F: Descripción del problema, todo. Normalmente eso lo crean los
+stakeholder o el product owner, en nuestro caso el product owner que es la persona
+
+26
+00:04:14,930 --> 00:04:28,054
+F: que se encarga de comunicarse con los stakeholders.
+R: Vale, y lo mejor de Kanban es que simplemente os aporta la flexibilidad y no tenéis que fijaros a estar X días haciendo lo mismo.
+
+27
+00:04:28,054 --> 00:04:47,054
+F: Claro, exactamente, mucho más flexible. 
+E: Lo de los equipos, son independientes entre ellos. ¿Cómo funciona eso?
+F: ¿A qué te refieres? 
+E: Que no me he imaginado que dentro de la empresa pudiera funcionar lo de los equipos que cada equipo tiene, por ejemplo.
+
+28
+00:04:48,142 --> 00:04:56,342
+E: un proyecto distinto con diferentes clientes, imagino.
+F: Sí, nosotros trabajamos, o sea, cada equipo, por ejemplo,
+
+29
+00:04:56,862 --> 00:05:05,302
+F: nosotros nos encargamos de la parte de cliente de Bélgica.
+F: Pero luego hay otro equipo que se encarga de temas de booking
+
+30
+00:05:05,302 --> 00:05:11,542
+F: y tenemos aplicaciones conectadas entre nosotros.
+F: Y a lo mejor ese equipo trabaja solo en ese proyecto
+
+31
+00:05:11,542 --> 00:05:21,366
+F: y se puede permitir trabajar en un Scrum con bloques de 15 días donde...
+F: los stakeholders y los desarrolladores llegan como una especie de trato y dicen
+
+32
+00:05:21,366 --> 00:05:31,046
+F: este es el trabajo que vamos a sacar en estos 15 días y esto es lo que vamos a
+desplegar en producción, producción es cliente, lo que va a utilizar el cliente.
+
+33
+00:05:31,046 --> 00:05:39,286
+E: ¿Y cómo lleváis la coordinación entre esos equipos?
+F: Los Product Owner se comunican entre ellos y hay que hacer funcionalidades en una
+
+34
+00:05:39,286 --> 00:05:46,646
+F: parte o en otra, ellos se encargan de crear lo que vendrían siendo los tickets,
+que serían los requisitos en su parte y en la otra,
+
+35
+00:05:46,646 --> 00:05:52,926
+F: y entre los desarrolladores nos vamos comunicando para decir,
+vale, por ejemplo, una API, necesito que tú me...
+
+36
+00:05:52,926 --> 00:06:05,566
+F: una conexión con una API, necesito que me mandes este evento con esta estructura.
+Nosotros la vamos a procesar y te vamos a revolver este evento con esta estructura.
+
+37
+00:06:06,246 --> 00:06:17,414
+F: O sea, tiene que haber una comunicación entre los desarrolladores,
+también dentro de los... entre equipos. 
+R: Sí, vale, que lo que hay entre equipos es como una jerarquía en la que el Product Owner es como quien conecta a los distintos equipos.
+
+38
+00:06:17,414 --> 00:06:34,494
+F: Exactamente. El Product Owner es una figura, para que lo entendáis, que tiene conocimiento tanto de negocio como de desarrollo.
+Entonces, puede escribir la función, puede tomar los requisitos en cierta forma, pero desde un punto de vista más de negocio.
+
+39
+00:06:34,494 --> 00:06:51,178
+F: Normalmente lo que nosotros hacemos es, una vez cada dos semanas nos reunimos y vamos refinando tickets.
+funcionalidades. Por ejemplo, crear una nueva API que cree la ficha de un cliente.
+
+40
+00:06:51,178 --> 00:07:04,738
+F: Entonces nosotros nos reunimos con el Product Owner y hablamos con él. Los stakeholders quieren
+esta nueva funcionalidad y ya nosotros debatimos dentro del equipo cuál sería el mejor approach
+
+41
+00:07:04,738 --> 00:07:12,406
+F: para realizar esa aplicación o esa nueva funcionalidad.
+Entonces, cuando refinamos y vemos que hay cualquier duda,
+
+42
+00:07:14,046 --> 00:07:20,526
+F: hay algo que no queda claro dentro del ticket o lo que sea,
+ya directamente nos reunimos con los stakeholders,
+
+43
+00:07:20,526 --> 00:07:29,046
+F: los desarrolladores y el Product Owner, y ya refinamos el ticket antes de empezar a desarrollar.
+Para que no haya problemas durante el desarrollo.
+
+44
+00:07:29,606 --> 00:07:37,326
+R: Vale. 
+E: Perfecto. 
+R: Y desde que empezaste la empresa, ¿cómo evolucionó el proceso de ingeniería de requisitos?
+
+45
+00:07:37,486 --> 00:07:54,246
+R: ¿Qué mejoras y problemas habéis experimentado y si lo habéis solucionado, cómo lo habéis solucionado?
+F: Pues... Evolucionar en sí... En los cinco años que llevo trabajando en la empresa siempre hemos seguido la misma metodología, no hemos cambiado nada y...
+
+46
+00:07:54,606 --> 00:08:07,286
+Problemas que puede haber, que eso ya depende un poco...
+De... Cada stakeholder, que a lo mejor hay stakeholders que escriben las funcionalidades y no dan detalles suficientes.
+
+47
+00:08:08,654 --> 00:08:20,854
+Entonces al final es llegamos a la refinement, tomamos ese ticket, vemos que no está clara la funcionalidad,
+por lo tanto ese ticket ahora tiene que volver al State Holder, nos tenemos que reunir con ellos
+
+48
+00:08:20,854 --> 00:08:34,454
+y refinar el ticket y dejarlo claro antes de desarrollarlo.
+O sea, sería el único problema pero ya depende un poco de la persona que haya creado, que esté pidiendo la nueva funcionalidad.
+
+49
+00:08:35,182 --> 00:08:45,182
+En pocas palabras, evolución como tal desde que empezaste no ha cambiado nada sustancialmente
+y el único problema es el que habéis tenido siempre, que yo creo que es un problema prácticamente irresoluble
+
+50
+00:08:45,182 --> 00:08:56,182
+que es que los requisitos no sean claros y hay que refinarlos para que queden claros y se pueden implementar bien.
+Eso depende un poco de la persona que cree el nuevo requerimiento.
+
+51
+00:08:57,182 --> 00:09:05,910
+Y eso no es fácil de solucionar. Por eso que en verdad ese problema...
+¡Posible! Por eso que no se puede solucionar, que es un problema inherente al ingenier de requisitos, que...
+
+52
+00:09:06,450 --> 00:09:14,830
+Que algo no esté todo claro cuando se toma y se tenga que refinar.
+Claro. Vale. Ahora vamos a pasar con la parte... bueno, la parte de...
+
+53
+00:09:14,830 --> 00:09:23,990
+La primera parte del ingenier de requisitos, que es la licitación.
+Que es la forma bonita y formal de decir recopilar requisitos, tomar requisitos, el primer acercamiento.
+
+54
+00:09:24,750 --> 00:09:33,102
+Y la primera pregunta es, ¿cómo se capturan los requisitos en los proyectos de software en vuestra empresa?
+¿Utilizáis entrevistas, reuniones, prototipos, cuestionarios, alguna combinación de estas?
+
+55
+00:09:33,102 --> 00:09:45,942
+¿Y cuál técnica piensas que es la mejor? Lo que utilizamos principalmente son entrevistas.
+Depende un poco de cada proyecto. Hay proyectos donde el ProDua Uner está más involucrado
+
+56
+00:09:45,942 --> 00:09:57,422
+y luego hay otros proyectos, otras aplicaciones en las que yo directamente me comunico con los stakeholders.
+Y hay comunicación directa, entrevistas. Nos reunimos con ellos, tomamos los requisitos...
+
+57
+00:09:57,614 --> 00:10:11,014
+Si hay dudas se resuelven al momento. Reuniones en este caso y creo que es la mejor de todas ellas.
+La comunicación es directa y puedes hacer las preguntas directamente a lo de St.Jordy
+
+58
+00:10:11,014 --> 00:10:18,614
+y solucionarla en el momento. Vale, sí, tiene sentido.
+Es la más directa y la que requiere menos...
+
+59
+00:10:18,614 --> 00:10:30,526
+Requiere menos esfuerzo y menos tiempo. Porque si empiezas con prototipo cuestionario...
+es comunicación por email, por ejemplo, es jugar al ping pong.
+
+60
+00:10:30,526 --> 00:10:38,606
+Te mando un email, tú me mandas otro, yo te mando otro y a lo mejor es una cadena de 15
+emails que solucionas con una reunión de 5 minutos.
+
+61
+00:10:38,606 --> 00:10:53,062
+Entonces es la mejor forma. Ahora, la siguiente pregunta está relacionada con la escalabilidad de los requisitos y los
+distintos mercados que manejáis. Con más de 28 millones de clientes a nivel mundial,
+
+62
+00:10:53,062 --> 00:10:58,382
+¿cómo abordáis la necesidad de que los requisitos sean escalables
+y aplicables en diferentes mercados y geografías?
+
+63
+00:10:58,382 --> 00:11:08,542
+¿Tenía algún enfoque específico para gestionar estas variaciones?
+Pues, como la empresa es tan grande y trabaja en tantos países,
+
+64
+00:11:08,542 --> 00:11:20,542
+cada país tiene su propia infraestructura. Es decir, si hay un equipo de clientes en Bélgica,
+hay otro equipo de clientes en Holanda, otro equipo de clientes en Suecia, otro en Alemania y así.
+
+65
+00:11:21,038 --> 00:11:35,038
+Entonces, cada equipo tiene que aplicar la legislación de ese país solo.
+No necesitamos crear una aplicación global para todos los países que tiene que tener,
+
+66
+00:11:35,038 --> 00:11:48,038
+digamos, la lógica de negocio de cada uno de los países.
+Posiblemente que en cada país hay una aplicación distinta y esa cuestión puede estar como...
+
+67
+00:11:49,614 --> 00:11:58,454
+No me sale la palabra ahora, como que hay... está segmentada, hay una aplicación para un sitio,
+otra aplicación para otro y no te tenés que preocupar tú pensando desde arriba a modo global
+
+68
+00:11:58,454 --> 00:12:08,654
+en que hay que aplicar la ejección de aquí y de aquí y de aquí, sino que el developer de cada sitio
+es el que se encarga. Exactamente. Vale. Cada país tiene su propia infraestructura.
+
+69
+00:12:09,654 --> 00:12:18,014
+Vale. Ahora, la siguiente pregunta en relación con la integración de sistemas tradicionales.
+Tú y gestiones una más terrestre de hoteles, cruceros, agencias de viajes, aerolíneas...
+
+70
+00:12:18,350 --> 00:12:25,550
+¿Cómo manejáis los requisitos como se trata de integrar sistemas digitales en estos servicios tradicionales?
+¿Qué particularidades encontráis al trabajar en estos turísticos?
+
+71
+00:12:26,550 --> 00:12:39,350
+Pues voy a empezar con la de particularidades.
+Particularidades en sí... No veo que haya diferencia respecto a cualquier otro sector en la hora de tomas de requisitos y demás.
+
+72
+00:12:39,350 --> 00:12:56,878
+Yo antes de trabajar para tú estaba trabajando para una empresa de telecomunicaciones
+y diferencia a la hora de trabajar... no hay ninguna notable, al final siempre lo mismo. Una funcionalidad la desarrolla y la mueve a la
+
+73
+00:12:56,878 --> 00:13:14,998
+despliega. Y luego sobre integrar sistemas digitales con estos servicios tradicionales,
+pues lo mismo, esa es complicada de responder. Es cierto que es un poco abierta esa pregunta
+
+74
+00:13:14,998 --> 00:13:24,126
+y la respuesta puede tener mucha vertiente.
+Pero yo entiendo que realmente... ¿Qué es lo que quiere con integrar sistemas digitales con servicios tradicionales?
+
+75
+00:13:24,126 --> 00:13:31,126
+Bueno, es que también la pregunta está un poco outdated.
+No sé la palabra en español, pero está como desfasada.
+
+76
+00:13:31,126 --> 00:13:41,126
+Porque hoy en día el turismo es prácticamente 100% digital.
+La pregunté y va relacionada con que antes había la típica agencia de turismo que hay en un barrio
+
+77
+00:13:41,126 --> 00:13:48,310
+que lo hacía todo con menos intervención digital y ahora...
+eso prácticamente ya no existe porque hay plataformas de booking.
+
+78
+00:13:48,310 --> 00:13:59,710
+Pues, curioso porque TUI en específico trabaja con agencias de viajes.
+Nosotros, en nuestro equipo en particular, las herramientas que
+
+79
+00:13:59,710 --> 00:14:08,190
+que llevamos son principalmente herramientas internas de la empresa
+y son las aplicaciones que utilizan las agencias de viajes en Bélgica.
+
+80
+00:14:09,350 --> 00:14:20,526
+Todo el tema de modificación de datos de clientes.
+básicamente tú vas a una agencia de viaje de Bélgica y el software que ellos están utilizando
+
+81
+00:14:20,526 --> 00:14:31,886
+es el que desarrollamos nosotros, que contienen todos los datos de booking, reservas,
+no sé, alquiler de coches, seguros, todo eso va dentro de esa aplicación.
+
+82
+00:14:31,886 --> 00:14:49,134
+Sí, vale. O sea que estamos sincronizados, por así decirlo, con los servicios tradicionales.
+Vale, sí. En otras palabras, no... y no reinventa la rueda, de quitar a gente de sus puestos de trabajo en sitios tradicionales,
+
+83
+00:14:49,134 --> 00:14:59,614
+sino que simplemente os dedicáis a la infraestructura interna que tienen las cosas que este team.
+Tienen también su web donde puedes hacer booking, o sea que realmente tienen ambas partes,
+
+84
+00:14:59,614 --> 00:15:08,414
+tanto la parte tradicional de las agencias de viaje como la parte moderna de hacer,
+de hacer un vuelo desde la web, desde una web.
+
+85
+00:15:10,318 --> 00:15:17,958
+Pero en nuestro caso, nosotros nos enfocamos en la parte de agencias de viaje.
+Vale. Y ahora respecto a las normativas locales.
+
+86
+00:15:18,478 --> 00:15:25,078
+Eh... Bueno, realmente, esto tiene mucho que ver con la pregunta de antes.
+Dado que operé en múltiples países, ¿cómo aseguráis que los requisitos
+
+87
+00:15:25,078 --> 00:15:32,078
+de los software se ajusten a las diferentes normativas y regulaciones locales
+de cada región? Básicamente, lo que me has respondido antes y que esta pregunta casi que la podemos omitir.
+
+88
+00:15:32,358 --> 00:15:38,678
+Sí, voy a añadir algo, que es que normalmente...
+O sea, cuando hay empresas tan grandes, normalmente hay un equipo de legal...
+
+89
+00:15:39,086 --> 00:15:49,086
+que son los que se encargan de asegurarse de que se cumplen las normativas y las regulaciones
+y si hay algún cambio en la regulación que provoque cambios dentro del software,
+
+90
+00:15:49,086 --> 00:15:58,326
+normalmente se crea una nueva fun... se requiere una nueva funcionalidad,
+ellos crean un nuevo ticket donde explican cuáles son los cambios
+
+91
+00:15:58,326 --> 00:16:12,222
+y nosotros lo aplicamos en el software. Como hace poco tuvimos, por ejemplo, la nueva ley de protección de datos de Europa.
+que provocó que tuviésemos que hacer cambios bastante gordos dentro de la aplicación
+
+92
+00:16:12,222 --> 00:16:19,982
+por el tema de los datos de clientes. Vale, entonces aparte de la individualidad que hay en cada país,
+de que el developer de cada país se encarga la normativa de cada país,
+
+93
+00:16:19,982 --> 00:16:28,942
+además hay un equipo en general que se dedica a temas regulaciones,
+a decirle a cada equipo de developer, oye, esto no es una nueva regulación,
+
+94
+00:16:28,942 --> 00:16:49,654
+tenéis que aplicarla. Y eso hablamos de temas legales, pero de temas de seguridad, nosotros por ejemplo tenemos auditorías cada seis meses de código donde se encargan de
+confirmar que las aplicaciones son seguras, de que no pueden venir a hacer un ataque de, no sé, inyectar SQL o cualquier tipo de cosa de ese estilo.
+
+95
+00:16:49,654 --> 00:16:59,954
+Vale. Y ahora en relación a la implicación de las partes interesadas, ¿cómo se involucra a los stakeholders?
+A la hora de recopilar requisitos para el proyecto para asegurar que los requisitos...
+
+96
+00:17:00,078 --> 00:17:05,278
+que los requisitos se ajustan a su expectativa.
+¿Hay diferencia entre la implicación de los clientes internos y externos?
+
+97
+00:17:05,278 --> 00:17:13,238
+Vaya, lo que me he dicho... También estaba medio respondido antes porque te has extendido bastante.
+Los tejoros se involucran por lo que no has dicho con las entrevistas.
+
+98
+00:17:13,238 --> 00:17:20,918
+Lo hacéis como de tú a tú, no hay interferencia en vuestra comunicación
+porque estáis literalmente en persona o en llamada o en lo que corresponde.
+
+99
+00:17:20,918 --> 00:17:30,374
+Ahora bien, lo de diferencia entre implicación de clientes interno y externo.
+La gente puede hablar de cliente interno, nosotros no trabajamos con aplicaciones externas,
+
+100
+00:17:30,374 --> 00:17:38,674
+son todas aplicaciones internas dentro de la empresa.
+O sea, no tenemos una aplicación que vaya a utilizar directamente el cliente, por así
+
+101
+00:17:38,674 --> 00:17:52,014
+decirlo. Son herramientas que utilizan agencias de viaje o conexiones con la web.
+Si alguien hace un booking, compra un vuelo desde la web directamente, se conecta con
+
+102
+00:17:52,014 --> 00:17:59,966
+nosotros. Y los stakeholders, aparte de la toma de requisitos,
+una vez que el software se ha desarrollado,
+
+103
+00:17:59,966 --> 00:18:08,366
+suelen hacer un testing, suelen probar la funcionalidad
+antes de desplegarla a clientes. Y vosotros también haremos testing, ¿no?
+
+104
+00:18:08,366 --> 00:18:16,846
+Claro, nosotros hacemos, realmente, o sea, el proceso es el siguiente.
+Se toman los requisitos, se inicia el desarrollo.
+
+105
+00:18:16,846 --> 00:18:27,222
+Una vez que el desarrollo esté terminado, nosotros hacemos un testing, se hace un code review.
+que lo hace siempre otro compañero que no haya estado involucrado en el desarrollo
+
+106
+00:18:27,222 --> 00:18:39,062
+para ver que a nivel la calidad del código sea buena, que se cubran todos los casos y demás
+y una vez que ya se ha hecho un Code Review y se ha comprobado de que todo funciona
+
+107
+00:18:39,062 --> 00:18:49,330
+respecto a lo que han pedido los clientes, los stakeholders,
+los stakeholders luego hacen otro testing y comprueban que la funcionalidad funciona.
+
+108
+00:18:50,670 --> 00:18:59,790
+cómo debe ir, o sea, su expectativa. Y después de eso, pues se despliega a producción
+para que lo utilice la agencia de viaje o el cliente que lo vaya a utilizar.
+
+109
+00:19:00,110 --> 00:19:08,990
+Vale, en fin, aparte de tomar requisitos, los stakeholders también hacen testing por sus partes.
+Sí, se involucran en casi todo el proceso.
+
+110
+00:19:10,350 --> 00:19:18,510
+Vale. Ahora vamos a pasar a la parte de análisis,
+y a la siguiente parte de requisitos, comenzando por conflictos, conflictos entre requisitos.
+
+111
+00:19:18,670 --> 00:19:25,190
+¿Qué método utilizáis para gestionar los conflictos entre diferentes partes interesadas
+cuando existen diferencias en lo que consideran, bueno, en un requisito,
+
+112
+00:19:25,190 --> 00:19:34,990
+sea más importante o menos importante, especialmente en lo más importante?
+Intentamos llegar, o sea, nos reunimos con ellos e intentamos llegar a un punto intermedio.
+
+113
+00:19:35,470 --> 00:19:45,310
+Puede ser que haya un, que te pidan un requisito o una nueva funcionalidad
+que requiera mucho tiempo o que no sea viable directamente, entonces intentamos aportar...
+
+114
+00:19:45,902 --> 00:19:56,302
+otras posibles soluciones hasta llegar a un punto intermedio por ambas partes.
+Hay una negociación. Lo que había dicho antes de que nada es que tenéis cliente interno.
+
+115
+00:19:56,302 --> 00:20:12,062
+Entendemos como cliente interno a que tú trabajas para tuy y tuy ellos como que determinan
+cuáles son las necesidades que tienen los clientes y por ejemplo yo o Edu o Arthur o
+
+116
+00:20:12,062 --> 00:20:28,334
+quien sea que vaya a... contratar algo que de tuy o ellos trabajan también con otra empresa?
+Vale es que hago la pregunta porque entonces no hay diferentes partes interesadas ni siquiera, la única parte interesada es tuy o hay más?
+
+117
+00:20:28,334 --> 00:20:40,694
+La única parte interesada es tuy Los Stakeholders son compañeros de la empresa
+Vale y cuando cuando pueden surgir diferencias si solamente hay una parte interesada?
+
+118
+00:20:42,094 --> 00:21:01,174
+Pues pueden surgir diferencias que la parte interesada venga con unos cambios dentro de una aplicación que sean inviables.
+Ah, vale. Que sean inviables, ya sean a nivel de seguridad o a nivel de funcionalidad.
+
+119
+00:21:01,174 --> 00:21:11,406
+Por ponerte un caso, nosotros trabajamos principalmente con PHP, ¿vale?
+y puede venir alguien de seguridad y decir
+
+120
+00:21:11,406 --> 00:21:23,046
+estáis utilizando una versión de PHP muy antigua
+que tiene problemas de seguridad. A lo mejor hacer un upgrade de la versión de PHP
+
+121
+00:21:23,046 --> 00:21:31,766
+conlleva unos cambios de código que son muy grandes
+entonces intentamos llegar a un punto intermedio del estilo.
+
+122
+00:21:31,766 --> 00:21:38,246
+Vale, ¿qué parte del código es la que te está preocupando
+que puede tener brechas de seguridad? Por ejemplo, una API.
+
+123
+00:21:39,598 --> 00:21:49,838
+que sea un entripón de una API que hayan visto que haya una vulnerabilidad.
+Pues en vez de cambiar la versión de toda la aplicación,
+
+124
+00:21:49,838 --> 00:21:56,358
+lo que hacemos es esa parte de código que es una API
+que a lo mejor lo que hace es conectarse a la base de datos
+
+125
+00:21:56,358 --> 00:22:05,798
+y no haiga nada más, lo que hacemos es la sacamos fuera,
+la reescribimos en una nueva versión de PHP y la desplegamos.
+
+126
+00:22:05,798 --> 00:22:16,814
+Vale. llegar a un punto intermedio. Vale, sí.
+Es lo que tiene más sentido, la verdad. Intuitivamente, a mí eso es lo que se me ocurre ir y hacer.
+
+127
+00:22:16,814 --> 00:22:22,814
+Ahora, análisis de impacto y gestión de riesgos.
+¿Realizar algún tipo de análisis de impacto antes de implementar cambios de requisitos?
+
+128
+00:22:22,814 --> 00:22:36,910
+¿Cómo se valúan los riesgos asociados a los requisitos en general, especialmente a los críticos?
+Vale, análisis de impacto te refiere a... entiendo que te refiere a cómo impactaría la nueva funcionalidad, por ejemplo.
+
+129
+00:22:36,910 --> 00:22:51,150
+Sí, cómo... qué impacto tendría en el producto o en los cambios posterior al producto que se implementara el requisito este nuevo X.
+Pues eso normalmente lo hacemos durante la toma de requisito, es decir, cuando tenemos la refinement,
+
+130
+00:22:51,150 --> 00:23:04,342
+durante la refinement nos encargamos de analizar todo ese tipo de cosas, de cómo ese cambio va a afectar a la aplicación.
+y qué problemas podemos tener en el futuro y cómo para solucionar esos posibles problemas.
+
+131
+00:23:05,742 --> 00:23:12,782
+Vale, entonces, cuando hacen la entrevista, aparte de hacer la entrevista,
+también estáis como en paralelo pensando en los posibles riesgos que puede tener,
+
+132
+00:23:12,782 --> 00:23:21,462
+que el requisito este simplemente en este sitio de esta forma, además con estos requisitos.
+Normalmente, antes de la entrevista, nos reunimos los desarrolladores
+
+133
+00:23:21,462 --> 00:23:27,218
+para analizar ese tipo de cosas, ver los cuales son los riesgos,
+cómo solucionarlos y si vemos riesgos. ¿Qué?
+
+134
+00:23:27,374 --> 00:23:34,854
+no se pueden solucionar, intentamos llegar, negociar con el cliente
+para buscar un punto intermedio para implementar la solución que ellos quieren
+
+135
+00:23:34,854 --> 00:23:43,854
+pero sin afectar a largo plazo la aplicación
+o que pueda aparecer esos problemas. Vale.
+
+136
+00:23:43,854 --> 00:23:55,854
+Pues perfecto, por salvarte. Ahora vamos con la especificación, es decir, documentar los requisitos de manera clara.
+Con respecto a la ambigüedad y la comprensibilidad por ambas partes.
+
+137
+00:23:56,174 --> 00:24:02,454
+¿Cómo gestionar los requisitos ambiguos o que pueden interpretarse de múltiples formas?
+¿Qué método utilizáis para asegurar que los requisitos son comprensibles
+
+138
+00:24:02,454 --> 00:24:11,214
+tanto para vosotros, los desarrolladores, como para los clientes?
+Si vemos que hay requisitos que pueden ser ambigües,
+
+139
+00:24:11,214 --> 00:24:18,694
+por lo tanto, no es tan claro, lo que hacemos es reunirnos con los stakeholders.
+Para clarificar qué es lo que quieren exactamente,
+
+140
+00:24:18,694 --> 00:24:30,062
+para que no haya ambigüedades antes del desarrollo de la funcionalidad.
+Ok, tiene mucho sentido también la forma en la que yo lo haría.
+
+141
+00:24:30,062 --> 00:24:38,582
+En lo que le he sentido como me dice a Zed.
+Al final, la comunicación directa con los stakeholders creo que es la mejor forma de solucionar los problemas.
+
+142
+00:24:38,582 --> 00:24:46,942
+Hombre, es la más rápida y la que probablemente lleve a menos malentendidos.
+Porque es lo que te he dicho antes del ping pong con el email.
+
+143
+00:24:46,942 --> 00:24:58,134
+Si me comunico con ellos a través de email, a lo mejor cuando ellos me contesten, ellos...
+Me han dicho algo que hace que me surja otro problema
+
+144
+00:24:58,134 --> 00:25:04,454
+y eso significa que yo envío otro email para esperar dos respuestas
+y al final estás haciendo ping pong con email un día entero, dos días, tres días,
+
+145
+00:25:04,454 --> 00:25:14,054
+en lugar de reunirlo cinco minutos y terminar eso rápido.
+Además es que cuando hay tantas aplicaciones y tanta gente involucrada,
+
+146
+00:25:14,974 --> 00:25:26,958
+el lenguaje de negocio, de cierta forma cambia dependiendo
+del equipo con el que estés trabajando. Me refiero a que, por ejemplo, una ficha de cliente, un equipo lo llama.
+
+147
+00:25:26,958 --> 00:25:41,678
+Ficha de cliente, otra persona lo llama dossier, o a un booking lo llama ficha de no sé qué, y tal.
+Entonces, ese tipo de lenguaje tiene que estar claro para ambas partes.
+
+148
+00:25:41,678 --> 00:25:50,902
+¿A qué te refieres con ficha de cliente? ¿A qué te refieres con dossier?
+Para evitar ese tipo de problema. Sí, y lo que te he dicho antes también, lo que te acabo de decir...
+
+149
+00:25:50,902 --> 00:25:57,382
+No hay un lenguaje de negocio estándar para toda la empresa.
+El hecho de que no haya un lenguaje de negocio estándar
+
+150
+00:25:57,382 --> 00:26:07,142
+hace que la comunicación por email sea algo más difícil, porque
+ese tipo de cuestión es como dosier para ti significa lo mismo que para mí significa ficha de lo que sea,
+
+151
+00:26:07,142 --> 00:26:15,902
+eso por email, hacerlo implica mandar otro email y seguir esperando.
+En una reunión esa pregunta se hace en dos segundos.
+
+152
+00:26:15,902 --> 00:26:29,646
+Claro, por ejemplo dentro de... En un caso específico que me viene ahora a la mente es que lo que viene siendo un booking,
+un equipo lo llama record, otro equipo lo llama dossier y otro lo llama booking.
+
+153
+00:26:29,646 --> 00:26:38,646
+Dependiendo de con quién está hablando va a utilizar un lenguaje de negocio diferente
+y a la hora de escribir los requisitos de esa funcionalidad
+
+154
+00:26:38,646 --> 00:26:45,646
+cada equipo va a utilizar un lenguaje de negocio diferente.
+Entonces, cuando hay ese tipo de ambigüedades de que no está claro a qué se refiere
+
+155
+00:26:45,934 --> 00:26:58,454
+Lo más rápido y lógico es reunirte con el cliente, con el stakeholder,
+clarificarlo todo, reflejarlo en los requisitos,
+
+156
+00:26:58,454 --> 00:27:07,774
+y ya una vez que esté todo listo, empezamos en el desarrollo de la funcionalidad,
+o la aplicación, producto, lo que sea. Vale, y antes de empezar este desarrollo,
+
+157
+00:27:07,774 --> 00:27:26,534
+¿cómo os asegura que los requisitos son... completo y tienen la calidad que espera este holder, cómo
+comunicáis con este holder oye, esto es exactamente lo que quieres, estás 100% seguro de que esto es lo que quieres, sí, a partir de reuniones, pero hay un
+
+158
+00:27:26,674 --> 00:27:41,494
+habrá un gap entre vuestro lenguaje como soledadero y vuestro entendimiento de lo que tenéis que hacer
+con lo que le tenéis que decir al cliente cómo gestionáis esa traducción, por así decir, para asegurar que la calidad es la que espera en ambas partes
+
+159
+00:27:42,574 --> 00:27:54,674
+El primer filtro es el Product Owner, que es el que normalmente se suele reunir directamente con los Stateholders
+e intenta que el lenguaje de negocio... O sea, que todo esté claro.
+
+160
+00:27:54,674 --> 00:28:07,274
+Pero si aún así hay duda... Reunión. Vaya, que el proceso que usáis para refinar y que deja algo grano es...
+Reunión, reunión, reunión, entrevista, reunión, entrevista, reunión.
+
+161
+00:28:07,274 --> 00:28:16,222
+Si hay duda, reunión o comunicar... comunicarte directamente con el stakeholder.
+Vale. Es lo más rápido, lo más sencillo y...
+
+162
+00:28:16,222 --> 00:28:22,222
+A mí me parece también muy intuitivo, sentido común,
+lo más directo, lo más rápido, lo más sencillo
+
+163
+00:28:22,222 --> 00:28:28,222
+y la verdad que es que la mitad de lo que estamos haciendo
+se están respondiendo con reunión barra entrevista, pero es que
+
+164
+00:28:28,222 --> 00:28:34,222
+es verdad que es lo que dice, es la forma más rápida.
+No tendría sentido en este caso usar otro método
+
+165
+00:28:34,222 --> 00:28:42,382
+y siempre considerando también que el stakeholder está a mano.
+que no es... porque yo supongo que si el Steam Holder no estuviese tan implicado en el desarrollo
+
+166
+00:28:42,382 --> 00:28:54,582
+pues no se podría... no podría haber reunión, reunión, reunión cada vez que tuviese un problema
+Sí, sí Es que incluso comunicación directa vía chat suele siempre...
+
+167
+00:28:55,782 --> 00:29:11,374
+O sea, la gente suele estar ocupada, a lo mejor te tardan en responder el mensaje un día, tres horas, dependiendo
+Entonces lo más directo es... reunión en el calendario, te reúnes 15 minutos con ellos, solucionas las dudas y continúas con el trabajo.
+
+168
+00:29:13,550 --> 00:29:20,550
+Sí, la verdad que... El no más rap, pero más sencillo.
+Es lo que yo he visto todo este rato, lo que él se me ha dicho que haces.
+
+169
+00:29:21,550 --> 00:29:30,550
+En algún momento habrá pasado que no haya sido tan fácil lo de concertar una reunión.
+¿Ha bajado la calidad del producto por culpa de eso?
+
+170
+00:29:31,550 --> 00:29:42,550
+Sí, incluso yo he tenido caso de estar desarrollando una aplicación
+y que los cambios de requerimiento llegasen a cambiar cada tres horas.
+
+171
+00:29:44,398 --> 00:29:51,518
+porque la persona que estaba tomando los requisitos,
+o sea, el stakeholder de la aplicación, no estaba haciendo su trabajo correctamente.
+
+172
+00:29:52,638 --> 00:30:04,478
+Yo he llegado a tener casos de... Vale, en ese caso fue una aplicación de temas de seguro de viaje.
+De crear export de todos los seguros de viaje
+
+173
+00:30:04,478 --> 00:30:08,278
+que estaban dentro de la aplicación y demás,
+entonces eso requiere unos datos muy específicos
+
+174
+00:30:08,278 --> 00:30:19,790
+que iban a ser mandados a otra aplicación para que los procesase.
+¿Qué pasa? Yo escribía una estructura en base a lo que me daba el stakeholder y me decía,
+
+175
+00:30:19,790 --> 00:30:29,150
+uy, pero en realidad, en vez de este dato, quiero que sea esta estructura.
+Hago el cambio, lo pongo a la estructura que él me pide,
+
+176
+00:30:29,150 --> 00:30:40,830
+le mando el fichero de nuevo, 20 minutos más tarde.
+Mira que mejor la estructura de antes y así durante día y día y día.
+
+177
+00:30:42,830 --> 00:30:46,550
+porque no se ha hecho una toma de requisitos correcta durante el desarrollo.
+
+178
+00:30:49,678 --> 00:30:59,678
+Y al final eso es pérdida de tiempo. Y de dinero de la empresa.
+Porque al final imagino que el presupuesto está al principio, ¿no?
+
+179
+00:30:59,678 --> 00:31:09,678
+No, nosotros no trabajamos... Como trabajamos directamente con Tuna en un presupuesto en sí
+para la aplicación, normalmente trabajamos con tiempo.
+
+180
+00:31:09,678 --> 00:31:20,750
+Vale. Normalmente no tenemos Relay. Pero... ¿Perdón?
+Habías hablado de que habías trabajado en otra empresa, ¿no te ha pasado algo parecido en la otra empresa?
+
+181
+00:31:22,550 --> 00:31:37,310
+Realmente que yo recuerdo dentro de la anterior empresa, trabajábamos con Scrum
+y se hacían mucho, trabajaban muy bien los requisitos antes de empezar en el desarrollo
+
+182
+00:31:37,750 --> 00:31:46,830
+y aún así, obviamente, ha habido problemas también.
+de que se han tomado los requisitos, se ha hecho la funcionalidad, hemos llegado a la demo
+
+183
+00:31:47,190 --> 00:32:03,782
+y el Stakeholder ha dicho ah, pero eso no lo queríamos así.
+por lo tanto, nuevos cambios dentro de la funcionalidad porque los requisitos no se han tomado bien
+
+184
+00:32:03,782 --> 00:32:17,758
+o el Stjordel ha cambiado de opinión en el último momento.
+Ahora vamos a pasar a la siguiente parte de TNR, aunque estoy leyendo las preguntas y en función de las respuestas que has dado ya están prácticamente respondidas.
+
+185
+00:32:17,758 --> 00:32:27,258
+La primera de validación y verificación es sobre validación y prototipado.
+¿Qué técnicas usáis para validar y verificar los requisitos con la parte interesada?
+
+186
+00:32:27,258 --> 00:32:34,058
+Ya me la respondí antes. Entrevista, esto es lo que queréis.
+¿Utilizáis técnicas de prototipado u otro tipo de técnica más específica?
+
+187
+00:32:34,446 --> 00:32:47,406
+Esto me ha respondido y no me ha respondido a mi porque has dicho que no solo hay usado el producto de DIPADO,
+pero yo intuyo que vosotros cuando hacéis el desarrollo no partís desde cero y ya entregáis un producto final.
+
+188
+00:32:47,406 --> 00:32:59,086
+¿Hacéis eso o hay como versiones v.0, v.1 que se van enseñando para que los estejores me den diciendo
+vale esto es lo que quiero o no cambia?
+
+189
+00:33:04,686 --> 00:33:07,166
+de cosas, lo que normalmente hacemos es...
+
+190
+00:33:11,126 --> 00:33:17,126
+O sea, tenemos la lista de las funcionalidades mínimas
+que a lo mejor necesita... Vamos trabajando con iteraciones.
+
+191
+00:33:17,686 --> 00:33:27,086
+Entonces, a lo mejor decimos... ¿Qué es lo que necesitamos?
+¿Qué es lo mínimo que necesitamos para... O sea, lo que vendría siendo el producto mínimo viable.
+
+192
+00:33:27,206 --> 00:33:32,566
+¿Qué es lo mínimo que necesitamos ahora mismo?
+Una vez que tenemos eso desarrollado, se lo enseñamos al cliente.
+
+193
+00:33:32,646 --> 00:33:42,694
+Quedan el OK. Pues lo desplegamos, eso sería a lo mejor la beta.
+O una alfa. Seguimos desarrollando y una vez que ya tenemos el producto completo,
+
+194
+00:33:42,694 --> 00:33:50,574
+lo desplegamos o vamos desplegándolo por parte?
+No sé si eso responde a tu pregunta. Sí, responde a mi pregunta.
+
+195
+00:33:50,694 --> 00:33:57,854
+Básicamente usáis de cierto modo técnicas de prototipado.
+Cada vez que termina una integración, lo que he dicho, el producto mínimo viable.
+
+196
+00:33:57,854 --> 00:34:11,086
+Sí, vamos iterando, sí. Vale, sí. Era lo que esperaba, lo que esperaba.
+En cuanto a la determinación del éxito, ¿cómo determináis que lo que habéis hecho o el proyecto ha sido exitoso?
+
+197
+00:34:11,086 --> 00:34:23,326
+También me has respondido delante, aparte de que parte de la respuesta es reunión, está bien, está mal.
+También nos has dicho que los stakeholders hacen testing, así que sumo que si pasa el testing de los stakeholders, significa que...
+
+198
+00:34:23,758 --> 00:34:34,118
+El proyecto ha sido exitoso cuando se despliega en producción y lo están usando los clientes y no hay problemas.
+Vaya que los clientes son testers de alguna forma también.
+
+199
+00:34:34,118 --> 00:34:49,718
+No, a ver, normalmente no se llega a ese punto, pero siempre cuando trabajas con diferentes servidores y demás,
+siempre puede haber algún problema con un servidor en producción y que haga que la aplicación crache o que la aplicación no funcione,
+
+200
+00:34:49,718 --> 00:34:56,262
+entonces hasta que el producto no está en producción.
+y vemos que, normalmente cuando se hace un despliegue a producción,
+
+201
+00:34:56,262 --> 00:35:04,062
+los stakeholders, aparte de haberlo testado en el entorno de testing,
+lo testen también en el entorno de producción.
+
+202
+00:35:04,782 --> 00:35:09,502
+Y una vez que ha pasado ese testing en producción,
+ya podemos decir que el proyecto ha sido exitoso.
+
+203
+00:35:10,102 --> 00:35:18,182
+Vale, entonces, posiblemente, si pasa todas las barreras de testing,
+el software es lo que se esperaba, y se asume que los exitos han cumplido.
+
+204
+00:35:18,182 --> 00:35:32,126
+Si funciona, está bien. Jajaja, también bastante intuitivo la verdad
+Vale, y ahora con la última parte de los procesos de ingeniería y de requisitos, la gestión de cambio.
+
+205
+00:35:33,326 --> 00:35:43,006
+Empezando por el cumplimiento de los requisitos no funcionales.
+Cómo se asegura que los requisitos no funcionales se han cumplido a lo largo de ese rollo.
+
+206
+00:35:43,006 --> 00:35:51,886
+Es decir, que cuando habéis terminado, todo lo que no funcionan, rollo escalabilidad, rendimiento, idioma...
+Obviamente yo sumo que tú sabes que los requisitos no funcionan.
+
+207
+00:35:51,886 --> 00:35:59,966
+Pero bueno. ¿Cómo decís? Está bien, está mal.
+Porque eso no es tan directo como testear a un funcionamiento por clientes.
+
+208
+00:36:00,046 --> 00:36:08,046
+Es más... Tema de performance y, por ejemplo,
+esperamos que esa aplicación vaya a estar recibiendo
+
+209
+00:36:08,126 --> 00:36:19,366
+un montón de requests, una API. Normalmente hacemos test de carga antes de desplegarlo.
+Entonces comprobamos que esa aplicación va a aguantar cierto volumen.
+
+210
+00:36:20,430 --> 00:36:28,630
+Escalabilidad no tenemos en sí porque trabajamos con servidores físicos,
+entonces no tenemos la posibilidad de escalarlo, no es como trabajar en la nube.
+
+211
+00:36:29,790 --> 00:36:39,870
+Tenemos también alguna aplicación en AWS desplegada y ahí la escalabilidad se comprueba de que
+cuando hay cierto volumen de carga se despliega otra instancia
+
+212
+00:36:40,670 --> 00:36:48,946
+aparte de la que hay principal para que procese los datos.
+Voy a ponerte un caso. Luego, el tema de calidad del código y demás.
+
+213
+00:36:49,038 --> 00:37:01,414
+Para eso tenemos las Code Review para asegurar que el código que se está desplegando tiene
+buena calidad. Test-in dependiendo de la aplicación que sea, tenemos test unitario y test funcionales,
+
+214
+00:37:02,214 --> 00:37:08,854
+que eso también añade, o sea, es parte de los requerimientos no funcionales
+de que el código tenga su... esté cubierto por test.
+
+215
+00:37:09,654 --> 00:37:24,998
+Sí. Al final, eso está directamente relacionado con rendimiento y seguridad, cierto, modo.
+Vale. Pues la siguiente pregunta está en relación a la priorización de los requisitos.
+
+216
+00:37:24,998 --> 00:37:42,758
+Cuando tenéis que priorizar, es decir, poner uno encima de otro, ¿cómo afectan estas priorizaciones en vuestra empresa?
+¿Cómo determináis qué es más importante que otra cosa y qué hacéis con esa cosa que dejáis de lado?
+
+217
+00:37:43,694 --> 00:37:51,934
+En el tema de priorización de requisitos, esa es una decisión que suele tomar el Product Owner,
+que se encarga de priorizar, que es lo más importante de la aplicación.
+
+218
+00:37:53,774 --> 00:38:03,134
+O sea que eso parte, por así decirlo, de negocios, no es algo que esté en nuestro poder,
+por así decirlo, como desarrolladores, en nuestra empresa.
+
+219
+00:38:05,054 --> 00:38:12,654
+Vale. O sea, a la hora de priorizar qué funcionalidad es más importante que la otra,
+eso es algo que suele hacer Delegamos en el Product Owner.
+
+220
+00:38:13,838 --> 00:38:23,078
+Ok, tiene sentido para algo que tiene que existir el Protobunner
+Ahora, en relación a los cambios en los requisitos y la área de negocio
+
+221
+00:38:23,318 --> 00:38:30,078
+¿Cómo gestionáis los cambios en los requisitos?
+En los proyectos en los que requieren la coordinación de múltiples áreas
+
+222
+00:38:30,078 --> 00:38:35,026
+que en este caso es prácticamente del todo como hoteles, cruceo de oro, línea
+
+223
+00:38:39,022 --> 00:38:50,122
+crecionamos los cambios de requisitos. Normalmente si hay un cambio de
+requisitos durante el desarrollo, analizamos qué es lo que
+
+224
+00:38:50,122 --> 00:39:01,802
+necesitamos cambiar dentro de la aplicación y aplicamos los cambios.
+No hay mucha... Vale, y en relación a lo de coordinación de múltiples áreas, como vosotros,
+
+225
+00:39:01,802 --> 00:39:11,190
+como he dicho antes, trabajáis en segmentados por países.
+la coordinación múltipla y área casi como si nos hicieran
+
+226
+00:39:11,190 --> 00:39:22,542
+no Vale, pues ahora con la herramienta de gestión de requisitos.
+¿Qué herramientas usáis para la gestión de requisitos?
+
+227
+00:39:22,542 --> 00:39:29,902
+Es decir, para organizarlo, adaptarlo, priorizarlo...
+¿Tenéis algo en especial que os ha podido hacer sobresalir sobre lo demás?
+
+228
+00:39:31,262 --> 00:39:39,262
+Especial que haga sobresalir de otras empresas, no.
+Nosotros herramientas que utilizamos para el tema de requisitos de software utilizamos Jira,
+
+229
+00:39:40,542 --> 00:39:48,910
+que es básicamente el estándar del sector. O sea que no hay mucha diferencia con otra empresa.
+¿Qué es Jira o cómo funciona? Porque yo no tengo ni idea.
+
+230
+00:39:48,910 --> 00:39:58,910
+Jira es una aplicación para eso, para organizar el desarrollo de software.
+Va funcionando con... funciona con ticket.
+
+231
+00:39:58,910 --> 00:40:10,910
+O sea, cada proyecto tiene su board con diferentes partes, en plan, to do, en desarrollo, en code review, tiene columnas.
+No sé si había utilizado Trello, por ejemplo.
+
+232
+00:40:10,910 --> 00:40:18,878
+Sí, eso te iba a decir ahora que sí se parece a Trello.
+Es como el Trello pero con superpoderes. Un poco más complejo, pero básicamente es lo mismo.
+
+233
+00:40:19,358 --> 00:40:24,558
+Vale, sí, es que nosotros hemos usado Trello y, literalmente,
+lo único que no sabemos es para gestionar requisitos.
+
+234
+00:40:24,558 --> 00:40:30,438
+Es que cuando empezás a decir, columnas, board,
+todo masonado Trello. Exactamente lo mismo, un board con las columnas, con los tickets,
+
+235
+00:40:30,438 --> 00:40:38,798
+que tienen los requerimientos de desarrollo y dependiendo de en qué fase esté,
+pues se va moviendo. Vale, sí, entonces es prácticamente lo mismo que el Trello.
+
+236
+00:40:38,798 --> 00:40:50,414
+Lo que pasa es que, como tú has dicho, tendrá Colosina para que esté machetado.
+golosinas, temas de linkar tiquetes o funcionalidades entre diferentes
+
+237
+00:40:50,414 --> 00:41:02,814
+boards, por ejemplo, si hay múltiples equipos trabajando en la misma funcionalidad,
+pues si tú entras dentro del ticket de tu equipo, tienes un link directo al ticket del otro equipo,
+
+238
+00:41:02,814 --> 00:41:12,134
+por lo tanto puedes ver en qué punto del desarrollo está el otro equipo sin tener que
+meterte en el otro board, buscar el ticket, que eso tiene sus códigos y demás.
+
+239
+00:41:12,750 --> 00:41:24,070
+esto es un poco más cómodo que Trello. O incluso, quizás lo mejor Trello tiene la misma funcionalidad, no lo sé.
+La verdad yo tampoco lo sé. Si lo supieras te lo diría, pero no tengo ni idea de si el Trello tiene eso.
+
+240
+00:41:25,270 --> 00:41:31,750
+Bueno, trazabilidad de requisito. ¿Cómo gestionar la trazabilidad?
+Hablo del ciclo de vida del proyecto. Vaya, mmm...
+
+241
+00:41:31,750 --> 00:41:33,910
+Sí, ¿qué cómo hacer la trazabilidad? No hay ninguna pregunta más.
+
+242
+00:41:40,110 --> 00:41:40,498
+fue.
+
+243
+00:41:43,726 --> 00:41:59,426
+Pues... no sé... No sé... ¿El qué? ¿No tienes muy claro lo que tienes que responder? ¿No tienes muy clara la pregunta?
+No, no tengo muy claro, o sea... Los requisitos se toman a lo largo del ciclo de vida del proyecto.
+
+244
+00:41:59,426 --> 00:42:11,226
+Pues... Creo que un poco lo mismo de siempre. Se toman los requisitos...
+Si hay cualquier tema, entrevista. Vale. No, pero a ver, lo que hacemos es...
+
+245
+00:42:11,226 --> 00:42:24,998
+Una vez que se toman los requisitos... se clarifica todo lo de la nueva funcionalidad, se inicia el desarrollo.
+Si hay cambios dentro de los requisitos, se aplican, si son fachibles, si no, pues...
+
+246
+00:42:24,998 --> 00:42:33,878
+Si son cosas que son necesarias para la primera iteración,
+pues se aplican si vemos que es un requisito que no es obligatorio,
+
+247
+00:42:33,878 --> 00:42:39,698
+lo que hacemos es desplegamos el código en producción y en la siguiente
+iteración aplicamos los nuevos requisitos.
+
+248
+00:42:41,358 --> 00:42:55,918
+Dependiendo de la prioridad que tenga. Si es algo muy necesario, se aplica en el momento, durante la primera iteración.
+Si vemos que es un cambio estético, algo que realmente no va a influir en la funcionalidad, lo posponemos.
+
+249
+00:42:57,158 --> 00:43:10,958
+Vaya, que la adaptabilidad está directamente relacionada con reuniones, que es con lo que está relacionado todo lo que hemos dicho hasta ahora, y con la priorización.
+Sí. Y la última pregunta de gestión de cambios.
+
+250
+00:43:11,054 --> 00:43:19,014
+A medida que los proyectos avanzan, ¿cómo se adapta el equipo de desarrollo a la evolución de los requisitos?
+¿Tenéis algún mecanismo formal? No voy a tener mecanismo formal, no creo, vaya.
+
+251
+00:43:19,014 --> 00:43:26,654
+Para ajustar el alcance del proyecto sin comprometer la fecha de entrega.
+Nosotros realmente no tenemos casi fechas de entrega.
+
+252
+00:43:26,654 --> 00:43:38,046
+Es muy raro que en un proyecto tengamos una fecha límite de entrega.
+Y si vemos que hay, a lo mejor, no sé, durante el desarrollo,
+
+253
+00:43:39,206 --> 00:43:49,086
+que hay algún cambio o un nuevo requisito que pueda comprometer la fecha de entrega,
+pues a lo mejor lo que hacemos es, dentro de la lista de requisitos,
+
+254
+00:43:49,166 --> 00:43:55,766
+vemos cuál es el que a lo mejor es algo estético
+o algo que no tiene prioridad y lo eliminamos para llegar a la fecha de entrega.
+
+255
+00:43:56,206 --> 00:44:03,554
+Bueno, y esa eliminación supongo que la hablaré antes con...
+Claro, hablamos con los stakeholders y decimos, ¿cuáles son los que se encargan de priorizar?
+
+256
+00:44:03,554 --> 00:44:12,274
+Y decimos, vale, si queréis este nuevo desarrollo, este nuevo requisito,
+tenemos que sacrificar uno de la lista. ¿Cuál es el que podéis sacrificar?
+
+257
+00:44:12,994 --> 00:44:23,474
+Para hacerlo en la próxima iteración. O sea, que al final, otra vez, reunión.
+Sí, es que... Segará un consenso y seguir con el desarrollo.
+
+258
+00:44:24,194 --> 00:44:52,254
+Llevamos 21 preguntas. Y ahora que lo estamos haciendo, me estoy dando cuenta que aparte de que la respuesta para el 90% es reunión, hay muchas que prácticamente sobrarían porque su respuesta es reunión y porque tienen relación mucho con algunas de las que hemos hecho anteriormente.
+Pero bueno, en pocas palabras, la evolución se negocia, se hace una reunión...
+
+259
+00:44:52,398 --> 00:45:04,038
+Y ya está, y se ajusta... Obviamente si metes más trabajo tienes que quitar otro lado.
+Claro. Pues... pues ya está. Y la última parte que no entra en ninguna categoría de ingenieros y requisitos,
+
+260
+00:45:04,038 --> 00:45:13,638
+pero son preguntas así un poco... genéricas sobre cosas relacionadas con ingenieros y requisitos,
+pero que no caen dentro de ninguna parte de la misma.
+
+261
+00:45:14,718 --> 00:45:20,198
+Empezamos con herramientas usadas en el día a día.
+¿Qué herramienta usas en tu día a día como desarrollador?
+
+262
+00:45:20,398 --> 00:45:31,438
+en general no relacionado con Ingenier Requisitos, sino en general, obviamente también relacionado con Ingenier Requisitos, pero...
+Pues herramienta, el IDE, en nuestro caso utilizamos, bueno...
+
+263
+00:45:32,038 --> 00:45:46,158
+PHP Storm o... No sé si conocéis IntelliJ IntelliJ sí, pero IntelliJ tiene también por PHP
+Tiene para PHP, tiene para todo, para PHP, Golang, Java, Python, Ruby...
+
+264
+00:45:46,678 --> 00:45:53,078
+Es que como en cada... Por ejemplo en Python se llama Python
+El de Java, como no me acuerdo que se llamaba.
+
+265
+00:45:53,078 --> 00:46:03,678
+IntelliJ. Ah, claro, que todo es de JetBrains.
+JetBrains, el de GoLand es GoLand y el de PHP es PHPStorm.
+
+266
+00:46:03,678 --> 00:46:13,678
+Yo utilizo el de PHPStorm, IntelliJ, el de Java y el de GoLand.
+Principalmente, son los tres que utilizo. Bueno, y el Datagrip que es el de base de datos.
+
+267
+00:46:13,678 --> 00:46:17,998
+Son las tres herramientas que suelo utilizar más diariamente.
+Y el de la ingeniería, si tú lo que me has dicho antes,
+
+268
+00:46:17,998 --> 00:46:29,286
+es que su preferes traerlo con eso, Gira, que no me salía ahora mismo.
+Ok. Gira y luego temas de pipeline. Utilizamos GitLab para el tema de control de versiones de software.
+
+269
+00:46:29,806 --> 00:46:41,566
+Que eso es como GitHub pero interno en la empresa.
+Exactamente. Y temas de pipeline de despliegue y ese tipo de cosas utilizamos Jenkins y GitLab Pipelines.
+
+270
+00:46:42,046 --> 00:46:50,126
+Que es básicamente otra funcionalidad que trae GitLab internamente.
+O sea que eso es principalmente las herramientas que utilizamos.
+
+271
+00:46:51,150 --> 00:46:59,510
+Perfecto. En relación a la seguridad de los datos.
+Teniendo en cuenta que tenéis fecha de datos, muchísimos datos, tenéis muchísimos usuarios,
+
+272
+00:46:59,510 --> 00:47:08,910
+porque supongo que manejaréis muchísimos datos.
+¿Cómo aseguráis que los datos son seguros para la redundancia durante el desarrollo?
+
+273
+00:47:08,910 --> 00:47:17,390
+¿Y cómo protegéis los datos de los clientes?
+Yo intuyo que la respuesta ya ha sido... casi todas antes con lo de la auditoría para ver que hay vuestro código seguro.
+
+274
+00:47:17,390 --> 00:47:27,990
+La auditoría y un equipo de seguridad dentro de la empresa que se encarga internamente,
+aparte de la auditoría externa, de comprobar las brechas de seguridad de las aplicaciones.
+
+275
+00:47:27,990 --> 00:47:38,470
+Hay otro equipo de IT que se encarga de que los servidores sean seguros y luego nosotros
+tenemos ciertas medidas, temas de anonimización de datos y demás en las bases de datos.
+
+276
+00:47:38,470 --> 00:47:47,774
+¿Use algún tipo de cifrado en especial? Aparte de los que incorporan los protocolos SSL y tal.
+Básicamente eso es lo que utilizamos.
+
+277
+00:47:51,310 --> 00:47:59,990
+Respecto a la sostenibilidad, esta pregunta no estoy yo muy convencido de la respuesta que me va a dar
+porque no sé yo, por fuera la empresa pintará como que sostenible
+
+278
+00:47:59,990 --> 00:48:06,510
+pero yo no sé si esto se traducirá en algo dentro de la empresa, pero bueno para eso están estas preguntas
+La sostenibilidad es la clave en la cultura de TUI
+
+279
+00:48:06,510 --> 00:48:13,990
+¿Cómo se traducen estos valores de los revisitos no funcionar dentro de desarrollo?
+¿Consideráis aspectos como eficiencia energética o reducción de la huella de carbón en el desarrollo de vuestro sistema?
+
+280
+00:48:14,550 --> 00:48:26,734
+Eh... sinceramente no lo tenemos en cuenta Es que la verdad que esta pregunta me parece un poco en plan...
+¿Optimizáis el código para que el servidor tarde 0.0 5 segundos menos para emitir 0.0?
+
+281
+00:48:26,734 --> 00:48:36,134
+Me pregunto si sube. Sí, un poquito se sube.
+Vamos a re-escribir el código de PHP a AC porque tiene mejor eficiencia energética.
+
+282
+00:48:37,834 --> 00:48:47,234
+Y imagínate que... Es sarcasma, es broma. Ya sé que es sarcasma, pero imagínate que te lo ponen de verdad.
+Que viene el protobueno y te dice, oye, ¿no han pedido que...
+
+283
+00:48:47,234 --> 00:48:52,382
+Que paséis todo el código a AC, a ensamblado?
+por una cuestión de definiciones que digas.
+
+284
+00:48:52,382 --> 00:49:00,382
+Si me pagan... Si te pagan tú lo haces, tú eres mercenario.
+Si me pagan como desarrollador de C yo lo hago.
+
+285
+00:49:02,382 --> 00:49:09,382
+Vale. Pues la última, bueno no la última no, no es la última,
+es la antepenúltima de consideraciones adicionales,
+
+286
+00:49:09,382 --> 00:49:18,382
+IA generativa. Sabes que la IA está muy de modo últimamente.
+Usáis IAs en vuestro día a día como ingenieros que existo,
+
+287
+00:49:20,142 --> 00:49:30,102
+es decir, HGPT, Copilot, Bing, Cloud, cualquiera de esas
+Sí, la empresa nos provee cuenta de Copilot de empresa
+
+288
+00:49:30,502 --> 00:49:40,742
+o sea que es privado y sí, yo estoy empezando a utilizarla ahora para el tema de desarrollo de software
+Copilot privado, ¿a qué te refieres? ¿a que corren un servidor puestos o qué?
+
+289
+00:49:41,302 --> 00:49:52,822
+Que se supone que los datos no los pueden utilizar dentro de Microsoft
+para entrenar la IA por así decirlo. Supongo que será un plan distinto para empresas de almacenero.
+
+290
+00:49:52,822 --> 00:50:08,382
+Un plan distinto de pago de Copilot. Al final están trabajando con datos que son confidenciales, entonces no puede Microsoft
+tener acceso a ellos. Supongo que correrán servidores diferentes,
+
+291
+00:50:08,382 --> 00:50:19,198
+no sé cómo lo hacen, pero es cuenta privada y se supone que los datos están seguros ahí.
+y yo lo he estado utilizando para desarrollo de software y la verdad que es bastante cómodo para... no sé...
+
+292
+00:50:20,518 --> 00:50:31,118
+Hace la semana pasada lo estoy utilizando para mapear un XML en código
+y me ahorró a lo mejor tres o cuatro horas de trabajo en cinco minutos.
+
+293
+00:50:33,742 --> 00:50:42,262
+o sea que es bastante cómodo en relación a ingeniería de requisitos no hay nada u...
+no dentro de ingeniería de requisitos no utilizamos chat gpt
+
+294
+00:50:42,262 --> 00:50:50,302
+vale supongo que eso es bueno de cierto modo
+el chat gpt no puede hacer meeting todavía
+
+295
+00:50:50,302 --> 00:51:01,742
+todavía ya puede hablar por teléfono contigo ya está un pasito más cerca
+casi no vamos a quedar sin trabajo ya mismo en vez de ir vosotros a hacer la reunión mandáis a chat gpt
+
+296
+00:51:04,078 --> 00:51:14,418
+O sea, es potente pero tampoco está de todo fino a la hora de desarrollar código.
+Comete errores. Parece una I. Comete abachantes errores.
+
+297
+00:51:16,590 --> 00:51:21,310
+Bueno, integración de sistemas de terceros.
+¿Cómo gestionáis la integración de sistemas de terceros?
+
+298
+00:51:21,310 --> 00:51:31,790
+Como sistema de reserva aérea o plataforma de pago dentro de vuestro ecosistema digital.
+Vale, integraros con terceros, no sé exactamente con qué terceros trabaja tú y o si siguiera trabaja con terceros,
+
+299
+00:51:31,790 --> 00:51:43,430
+pero si vuestra plataforma está en algún medio, ¿cómo implementáis...?
+Comunicación con sistemas de terceros normalmente son API.
+
+300
+00:51:43,430 --> 00:51:59,414
+¿Y podés poner algún ejemplo? o exponerte... a ver, dentro de mi equipo son todas comunicaciones internas, por lo tanto no trabajamos con así...
+por así decirlo, con terceros, pero por ejemplo, te puedo poner caso de una conexión que tenemos...
+
+301
+00:51:59,414 --> 00:52:09,414
+que sí tenemos con un sistema de terceros, que es la aerolínea de Lufthansa, y ahí lo que utilizamos es API.
+Vale, y con plataformas de pago, yo que lo mismo, ¿no?
+
+302
+00:52:09,414 --> 00:52:23,998
+Con plataformas de pago, creo que... es un sistema legacy, no sé exactamente cómo funciona,
+pero creo que no era con APIs, que utilizaban servidores FTP
+
+303
+00:52:23,998 --> 00:52:34,158
+donde envían un export al día con todos los datos y ellos se encargan de procesarlo.
+Plán, forma antigua antes de que se hicieran las APIs,
+
+304
+00:52:34,158 --> 00:52:41,118
+de que se empezaran a utilizar las APIs como estándar en la industria.
+Pero creo que estaban ahora viendo cómo cambiarlo y empezar a utilizar...
+
+305
+00:52:42,318 --> 00:52:52,718
+sistemas modernos. A mí lo del Legacy eso me pilla... no sé yo...
+Sistemas Legacy son aplicaciones muy antiguas que quizás tengan a lo mejor 15, 20 años,
+
+306
+00:52:52,718 --> 00:53:01,318
+30 años. Por eso me pillan muy lejos, tienen años que yo.
+Sí, a ver, cuando empecéis a trabajar en una empresa de software, si entráis en una
+
+307
+00:53:01,318 --> 00:53:14,350
+empresa relativamente con años de bagaje, lo más seguro es que a lo mejor os toca una
+aplicación Legacy. Pues sí. No, supongo que eso será un problema de los derechos de futuro.
+
+308
+00:53:14,350 --> 00:53:21,350
+Dependiendo del buecho de futuro, que no tiene nada de malo.
+Simplemente es distinto, y tuyo. Sí, es distinto.
+
+309
+00:53:21,350 --> 00:53:29,470
+Al final estás trabajando con código que a lo mejor han estado trabajando 15 personas,
+20 personas, y tienes que entender cómo esa gente programa.
+
+310
+00:53:29,470 --> 00:53:39,470
+Que eso también son otros temas. Pero que...
+En su historia. Son otros temas que caen fuera de la ingeniería de requisitos, así que no lo vamos a hablar
+
+311
+00:53:39,470 --> 00:53:52,350
+ahora. Y la última de consideraciones adicionales sobre la gestión del feedback y el mantenimiento.
+¿Cómo gestionáis el feedback de los clientes después de haber entregado el producto y
+
+312
+00:53:52,350 --> 00:54:03,950
+hacéis mantenimiento? Mantenimiento siempre.
+¿Siempre cómo? Aunque el producto esté ya en producción, siempre suelen venir nuevos cambios, nuevas
+
+313
+00:54:03,950 --> 00:54:13,462
+funcionalidades que hay que mantenerlas. O sea, que te refieres con mantenimiento.
+No es mantenimiento como tal, sino que simplemente os llegan
+
+314
+00:54:13,462 --> 00:54:21,462
+como un nuevo requisito que tenéis que implementar, pero
+lo que hacéis no... A ver, que en principio es software, ¿no? Generalmente como tú haces un programa, ese programa
+
+315
+00:54:21,462 --> 00:54:28,562
+no requiere tu participación activa para que funcione.
+Entonces, más que mantenimiento, lo que hacéis es
+
+316
+00:54:28,562 --> 00:54:33,962
+escalarlo en función de lo que os llegue, ¿no?
+Sí, básicamente. ¿Y la gestión del feedback?
+
+317
+00:54:35,214 --> 00:54:47,274
+supongo que eso también tiene mucha relación con el testing y lo que te he dicho antes de que el último
+testeo es del cliente ya tocando el producto final. Si el feedback positivo después del último paso
+
+318
+00:54:47,274 --> 00:54:59,094
+podemos concluir de que el producto ha sido exitoso, si el feedback bueno, si el feedback malo
+pues a lo mejor tenemos que generar nuevos tickets y nuevas funcionalidades para el producto para
+
+319
+00:54:59,094 --> 00:55:05,590
+solucionar el problema que ha encontrado el...
+o sea el feedback, el más feedback del cliente, por así decirlo.
+
+320
+00:55:06,110 --> 00:55:13,830
+En resumen, si hay buen feedback, Sans se acabó.
+Todo bien. Y si hay más feedback, pues volvemos a gestionar cambios, meter requisitos,
+
+321
+00:55:13,870 --> 00:55:19,190
+a volver paso a atrás. Dentro del mantenimiento,
+una vez que la aplicación ha sido desplegada en producción,
+
+322
+00:55:19,230 --> 00:55:23,990
+es decir, que la está utilizando el cliente,
+nosotros somos los dueños de la aplicación
+
+323
+00:55:24,030 --> 00:55:31,310
+y tenemos que estar seguros de que la aplicación sigue funcionando,
+que no es un despliego inolvidos de la aplicación.
+
+324
+00:55:31,822 --> 00:55:47,150
+para siempre. Sí, sí, ya. Y esa aplicación es nuestra responsabilidad de que esté funcionando siempre.
+Ok, pues ya hemos abordado todas las preguntas que teníamos apuntadas, considerando que hemos terminado,
+
+325
+00:55:47,150 --> 00:55:54,910
+¿crees que falta algún aspecto práctico que no hayamos abordado y debemos mencionar?
+o ¿crees que está todo más o menos cubierto?
+
+326
+00:55:54,910 --> 00:56:02,558
+Yo creo que está claro todo. Pues entonces, poco más.
+Ya se acabó creo yo. Te voy a hacer una pregunta.
+
+327
+00:56:02,558 --> 00:56:11,478
+Tú has dicho que la mayoría de cosas con problemas se resuelven con reuniones, ¿no?
+Un segundo que te suba el volumen porque te escucho super bajo.
+
+328
+00:56:12,358 --> 00:56:23,318
+Ahora. Eso, que tú has dicho que la mayoría de problemas se solucionan con reuniones, ¿no?
+Sí. Si una reunión no se puede llevar a cabo a corto plazo, si el stickholder te dice
+
+329
+00:56:23,318 --> 00:56:29,278
+pues hasta dentro de tres días no puedo reunirme.
+En ese tiempo, ¿tenéis que dejar todo parado o podéis hacer algo?
+
+330
+00:56:29,558 --> 00:56:42,182
+Tenemos si... el problema bloquea el resto del desarrollo de la aplicación,
+esa funcionalidad se bloquea hasta que el stakeholder solucione el problema,
+
+331
+00:56:42,182 --> 00:56:50,462
+o sea, no solucione la duda, por así decirlo.
+O sea, si el stakeholder es la persona interesada
+
+332
+00:56:51,462 --> 00:57:00,902
+en solucionar esa, o sea, es la persona más interesada
+en desplegar esa nueva funcionalidad, si esa persona te dice...
+
+333
+00:57:01,838 --> 00:57:13,718
+te espera seis días, no está tan interesado en solucionar el problema, o no tiene tanta
+prioridad, por lo tanto, se bloquea. Cuando realmente el stakeholder, o sea, tú le vas
+
+334
+00:57:13,718 --> 00:57:25,778
+a un stakeholder y le dices, tenemos este problema, necesitamos reunirnos. Si esa persona, si
+ese ticket o esa funcionalidad es prioritaria, esa persona va a encontrar tiempo para reunirse
+
+335
+00:57:25,778 --> 00:57:32,286
+contigo cinco minutos y solucionar el problema.
+Y el problema es bloqueante, se bloquea el ticket hasta que ellos lo solucionan.
+
+336
+00:57:32,286 --> 00:57:46,086
+Si podemos continuar con el desarrollo, se continúa y cuando se pueda resolver la duda se resuelve y listo.
+Depende del tipo de problema. ¿Te ha pasado alguna vez que venga a quedar un problema bloqueante, no os podéis reunir y tengáis que estar parados?
+
+337
+00:57:46,886 --> 00:57:57,046
+Muchísimas veces. ¿Y en ese tiempo qué hacéis? ¿Dedicar el tiempo a otro proyecto?
+O otra funcionalidad dentro de la misma aplicación.
+
+338
+00:57:58,670 --> 00:58:09,950
+o sea, tú al final tienes tu board con todos los tickets ordenados por prioridades
+y si tú estás trabajando en un ticket, que por lo que sea, no puedes continuar trabajando
+
+339
+00:58:09,950 --> 00:58:19,310
+porque tienes un bloqueante o por ejemplo, tienes ya el código desarrollado pero tienes
+un bloqueo de servidor y está esperando que la gente de Sistema haga un cambio en el servidor
+
+340
+00:58:19,310 --> 00:58:30,574
+que necesita. Ahí ya la responsabilidad no está, o sea, digamos que la bola no está
+entutejada. porque tienes que esperar que la otra persona termine su ticket o su funcionalidad o te resuelva el problema.
+
+341
+00:58:30,574 --> 00:58:41,494
+Lo que suele hacer es escribir un comentario mencionando al stakeholder, a tu product owner,
+explicando cuál es el problema, que ahora mismo está el ticket bloqueado, bloqueas el ticket, le pones un flag
+
+342
+00:58:41,494 --> 00:58:54,854
+y coges el siguiente ticket de la lista de prioridades y empieza a trabajar en el otro ticket
+hasta que se solucione lo que te está bloqueando, ya sea temas de sistema, de base de datos...
+
+343
+00:58:55,054 --> 00:59:02,734
+de cosas que no están claras con el stakeholder y estás esperando a que te comunique con él,
+lo que sea, bloquea y es al siguiente ticket.
+
+344
+00:59:02,734 --> 00:59:11,134
+Y, dudo que te haya pasado alguna vez, pero ¿te ha pasado alguna vez que
+eh... ha bloqueado un ticket porque no podías seguir, porque necesitabais reunirlo
+
+345
+00:59:11,134 --> 00:59:26,398
+y no había un siguiente ticket que coges? No, siempre... tenemos muchísimo trabajo, nunca hemos tenido ese... ese caso nos ha dado.
+Ok. Pues, por mi parte, nada más. ¿Tenían una pregunta, Eduardo?
+
+346
+00:59:26,398 --> 00:59:34,398
+No, por mi parte también. Pues canela. Pues entonces, Mocemino.
+Voy a detener la grabación, porque ya...
+
