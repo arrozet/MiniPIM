@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="grupo07DBModel.Store" Provider="Devart.Data.MySql" ProviderManifestToken="MySQL, 8.0.39" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AtributoPersonalizado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="espacioOcupado" Type="int" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="sku" />
+          </Key>
+          <Property Name="sku" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gtin" Type="varchar" MaxLength="50" />
+          <Property Name="label" Type="varchar" MaxLength="100" />
+          <Property Name="fechaCreacion" Type="date" Nullable="false" />
+          <Property Name="ultimaModificacion" Type="date" />
+          <Property Name="descripcionCorta" Type="varchar" MaxLength="255" />
+          <Property Name="descripcionLarga" Type="text" />
+          <Property Name="espacioOcupado" Type="int" />
+          <Property Name="thumbnail" Type="blob" />
+        </EntityType>
+        <EntityType Name="ProductoAtributo">
+          <Key>
+            <PropertyRef Name="producto_sku" />
+            <PropertyRef Name="atributo_id" />
+          </Key>
+          <Property Name="producto_sku" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="atributo_id" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductoCategoria">
+          <Key>
+            <PropertyRef Name="producto_sku" />
+            <PropertyRef Name="categoria_id" />
+          </Key>
+          <Property Name="producto_sku" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="categoria_id" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductoAtributo_ibfk_1">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoAtributo" Type="Self.ProductoAtributo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="sku" />
+            </Principal>
+            <Dependent Role="ProductoAtributo">
+              <PropertyRef Name="producto_sku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductoAtributo_ibfk_2">
+          <End Role="AtributoPersonalizado" Type="Self.AtributoPersonalizado" Multiplicity="1" />
+          <End Role="ProductoAtributo" Type="Self.ProductoAtributo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AtributoPersonalizado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductoAtributo">
+              <PropertyRef Name="atributo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductoCategoria_ibfk_1">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoCategoria" Type="Self.ProductoCategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="sku" />
+            </Principal>
+            <Dependent Role="ProductoCategoria">
+              <PropertyRef Name="producto_sku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductoCategoria_ibfk_2">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="ProductoCategoria" Type="Self.ProductoCategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductoCategoria">
+              <PropertyRef Name="categoria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="grupo07DBModelStoreContainer">
+          <EntitySet Name="AtributoPersonalizado" EntityType="Self.AtributoPersonalizado" Schema="grupo07DB" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="grupo07DB" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="grupo07DB" store:Type="Tables" />
+          <EntitySet Name="ProductoAtributo" EntityType="Self.ProductoAtributo" Schema="grupo07DB" store:Type="Tables" />
+          <EntitySet Name="ProductoCategoria" EntityType="Self.ProductoCategoria" Schema="grupo07DB" store:Type="Tables" />
+          <AssociationSet Name="ProductoAtributo_ibfk_1" Association="Self.ProductoAtributo_ibfk_1">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoAtributo" EntitySet="ProductoAtributo" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoAtributo_ibfk_2" Association="Self.ProductoAtributo_ibfk_2">
+            <End Role="AtributoPersonalizado" EntitySet="AtributoPersonalizado" />
+            <End Role="ProductoAtributo" EntitySet="ProductoAtributo" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoCategoria_ibfk_1" Association="Self.ProductoCategoria_ibfk_1">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoCategoria" EntitySet="ProductoCategoria" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoCategoria_ibfk_2" Association="Self.ProductoCategoria_ibfk_2">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="ProductoCategoria" EntitySet="ProductoCategoria" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="grupo07DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="grupo07DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AtributoPersonalizado" EntityType="grupo07DBModel.AtributoPersonalizado" />
+          <EntitySet Name="Categoria" EntityType="grupo07DBModel.Categoria" />
+          <EntitySet Name="Producto" EntityType="grupo07DBModel.Producto" />
+          <AssociationSet Name="ProductoAtributo" Association="grupo07DBModel.ProductoAtributo">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="AtributoPersonalizado" EntitySet="AtributoPersonalizado" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoCategoria" Association="grupo07DBModel.ProductoCategoria">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Categoria" EntitySet="Categoria" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AtributoPersonalizado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="espacioOcupado" Type="Int32" />
+          <NavigationProperty Name="Producto" Relationship="grupo07DBModel.ProductoAtributo" FromRole="AtributoPersonalizado" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Producto" Relationship="grupo07DBModel.ProductoCategoria" FromRole="Categoria" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="sku" />
+          </Key>
+          <Property Name="sku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gtin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="label" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fechaCreacion" Type="DateTime" Nullable="false" />
+          <Property Name="ultimaModificacion" Type="DateTime" />
+          <Property Name="descripcionCorta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="descripcionLarga" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="espacioOcupado" Type="Int32" />
+          <Property Name="thumbnail" Type="Binary" MaxLength="65535" FixedLength="false" />
+          <NavigationProperty Name="AtributoPersonalizado" Relationship="grupo07DBModel.ProductoAtributo" FromRole="Producto" ToRole="AtributoPersonalizado" />
+          <NavigationProperty Name="Categoria" Relationship="grupo07DBModel.ProductoCategoria" FromRole="Producto" ToRole="Categoria" />
+        </EntityType>
+        <Association Name="ProductoAtributo">
+          <End Type="grupo07DBModel.Producto" Role="Producto" Multiplicity="*" />
+          <End Type="grupo07DBModel.AtributoPersonalizado" Role="AtributoPersonalizado" Multiplicity="*" />
+        </Association>
+        <Association Name="ProductoCategoria">
+          <End Type="grupo07DBModel.Producto" Role="Producto" Multiplicity="*" />
+          <End Type="grupo07DBModel.Categoria" Role="Categoria" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="grupo07DBModelStoreContainer" CdmEntityContainer="grupo07DBEntities">
+          <EntitySetMapping Name="AtributoPersonalizado">
+            <EntityTypeMapping TypeName="grupo07DBModel.AtributoPersonalizado">
+              <MappingFragment StoreEntitySet="AtributoPersonalizado">
+                <ScalarProperty Name="espacioOcupado" ColumnName="espacioOcupado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="grupo07DBModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="grupo07DBModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="thumbnail" ColumnName="thumbnail" />
+                <ScalarProperty Name="espacioOcupado" ColumnName="espacioOcupado" />
+                <ScalarProperty Name="descripcionLarga" ColumnName="descripcionLarga" />
+                <ScalarProperty Name="descripcionCorta" ColumnName="descripcionCorta" />
+                <ScalarProperty Name="ultimaModificacion" ColumnName="ultimaModificacion" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="gtin" ColumnName="gtin" />
+                <ScalarProperty Name="sku" ColumnName="sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ProductoAtributo" TypeName="grupo07DBModel.ProductoAtributo" StoreEntitySet="ProductoAtributo">
+            <EndProperty Name="AtributoPersonalizado">
+              <ScalarProperty Name="id" ColumnName="atributo_id" />
+            </EndProperty>
+            <EndProperty Name="Producto">
+              <ScalarProperty Name="sku" ColumnName="producto_sku" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ProductoCategoria" TypeName="grupo07DBModel.ProductoCategoria" StoreEntitySet="ProductoCategoria">
+            <EndProperty Name="Categoria">
+              <ScalarProperty Name="id" ColumnName="categoria_id" />
+            </EndProperty>
+            <EndProperty Name="Producto">
+              <ScalarProperty Name="sku" ColumnName="producto_sku" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
