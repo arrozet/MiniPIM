@@ -33,17 +33,17 @@
             this.categoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Vista_Tabla_Button = new System.Windows.Forms.Button();
-            this.Vista_Resumen_Button = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.All_Products_label = new System.Windows.Forms.Label();
-            this.New_Product_Button = new System.Windows.Forms.Button();
             this.SKU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pencil = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ProductTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShortDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Thumbnail = new System.Windows.Forms.DataGridViewImageColumn();
             this.Categories = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vista_Tabla_Button = new System.Windows.Forms.Button();
+            this.Vista_Resumen_Button = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.All_Products_label = new System.Windows.Forms.Label();
+            this.New_Product_Button = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -115,73 +115,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(988, 378);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // Vista_Tabla_Button
-            // 
-            this.Vista_Tabla_Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Vista_Tabla_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Vista_Tabla_Button.Location = new System.Drawing.Point(615, 3);
-            this.Vista_Tabla_Button.Name = "Vista_Tabla_Button";
-            this.Vista_Tabla_Button.Size = new System.Drawing.Size(200, 57);
-            this.Vista_Tabla_Button.TabIndex = 2;
-            this.Vista_Tabla_Button.Text = "📊";
-            this.Vista_Tabla_Button.UseVisualStyleBackColor = true;
-            // 
-            // Vista_Resumen_Button
-            // 
-            this.Vista_Resumen_Button.AutoSize = true;
-            this.Vista_Resumen_Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Vista_Resumen_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Vista_Resumen_Button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Vista_Resumen_Button.Location = new System.Drawing.Point(411, 3);
-            this.Vista_Resumen_Button.Name = "Vista_Resumen_Button";
-            this.Vista_Resumen_Button.Size = new System.Drawing.Size(198, 57);
-            this.Vista_Resumen_Button.TabIndex = 1;
-            this.Vista_Resumen_Button.Text = "📋";
-            this.Vista_Resumen_Button.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.Vista_Resumen_Button, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.Vista_Tabla_Button, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.All_Products_label, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.New_Product_Button, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 31);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(993, 62);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // All_Products_label
-            // 
-            this.All_Products_label.AutoSize = true;
-            this.All_Products_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.All_Products_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.All_Products_label.Location = new System.Drawing.Point(3, 0);
-            this.All_Products_label.Name = "All_Products_label";
-            this.All_Products_label.Size = new System.Drawing.Size(198, 63);
-            this.All_Products_label.TabIndex = 3;
-            this.All_Products_label.Text = "All Products";
-            this.All_Products_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // New_Product_Button
-            // 
-            this.New_Product_Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.New_Product_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.New_Product_Button.Location = new System.Drawing.Point(207, 3);
-            this.New_Product_Button.Name = "New_Product_Button";
-            this.New_Product_Button.Size = new System.Drawing.Size(198, 57);
-            this.New_Product_Button.TabIndex = 4;
-            this.New_Product_Button.Text = "+ New Product";
-            this.New_Product_Button.UseVisualStyleBackColor = true;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // SKU
             // 
@@ -223,6 +157,73 @@
             this.Categories.HeaderText = "Categories";
             this.Categories.Name = "Categories";
             this.Categories.ReadOnly = true;
+            // 
+            // Vista_Tabla_Button
+            // 
+            this.Vista_Tabla_Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Vista_Tabla_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Vista_Tabla_Button.Location = new System.Drawing.Point(747, 3);
+            this.Vista_Tabla_Button.Name = "Vista_Tabla_Button";
+            this.Vista_Tabla_Button.Size = new System.Drawing.Size(243, 57);
+            this.Vista_Tabla_Button.TabIndex = 2;
+            this.Vista_Tabla_Button.Text = "📊";
+            this.Vista_Tabla_Button.UseVisualStyleBackColor = true;
+            // 
+            // Vista_Resumen_Button
+            // 
+            this.Vista_Resumen_Button.AutoSize = true;
+            this.Vista_Resumen_Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Vista_Resumen_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Vista_Resumen_Button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Vista_Resumen_Button.Location = new System.Drawing.Point(499, 3);
+            this.Vista_Resumen_Button.Name = "Vista_Resumen_Button";
+            this.Vista_Resumen_Button.Size = new System.Drawing.Size(242, 57);
+            this.Vista_Resumen_Button.TabIndex = 1;
+            this.Vista_Resumen_Button.Text = "📋";
+            this.Vista_Resumen_Button.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.Vista_Resumen_Button, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Vista_Tabla_Button, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.All_Products_label, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.New_Product_Button, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 31);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(993, 62);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // All_Products_label
+            // 
+            this.All_Products_label.AutoSize = true;
+            this.All_Products_label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.All_Products_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.All_Products_label.Location = new System.Drawing.Point(3, 0);
+            this.All_Products_label.Name = "All_Products_label";
+            this.All_Products_label.Size = new System.Drawing.Size(242, 63);
+            this.All_Products_label.TabIndex = 3;
+            this.All_Products_label.Text = "All Products";
+            this.All_Products_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // New_Product_Button
+            // 
+            this.New_Product_Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.New_Product_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.New_Product_Button.Location = new System.Drawing.Point(251, 3);
+            this.New_Product_Button.Name = "New_Product_Button";
+            this.New_Product_Button.Size = new System.Drawing.Size(242, 57);
+            this.New_Product_Button.TabIndex = 4;
+            this.New_Product_Button.Text = "+ New Product";
+            this.New_Product_Button.UseVisualStyleBackColor = true;
             // 
             // ProductosResumen
             // 

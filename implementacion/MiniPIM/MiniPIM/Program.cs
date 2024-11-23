@@ -13,7 +13,7 @@ namespace MiniPIM
 
             // Iniciar el formulario de productos
 
-            Application.Run(new TestForm());
+            //Application.Run(new TestForm());
 
             Application.Run(new Product.ProductosResumen());
 

@@ -31,37 +31,42 @@ namespace MiniPIM.Product
             dataGridView1.ClearSelection(); // para que no aparezca selecionada la priemera columna
         }
 
-      
-
         private void cargarProductos()
         {
-
             try
             {
                 // Crear una instancia del contexto de Entity Framework
                 using (var context = new grupo07DBEntities())
                 {
-                    // Cargar los datos de la tabla Producto
+                    // Cargar los productos en memoria, incluyendo las categorías
                     var productos = context.Producto
+                        .Include("Categoria") // Cargar las categorías relacionadas
+                        .ToList();
+
+                    // Procesar los datos para el DataGridView
+                    var productosParaMostrar = productos
                         .Select(p => new
                         {
                             p.sku,
                             p.label,
                             p.descripcionCorta,
                             p.thumbnail,
-                            p.gtin
-                            //Categorias = p.Categoria.Select(c => c.nombre) // Solo selecciona los nombres de las categorías
+                            // Concatenar los nombres de las categorías
+                            Categories = p.Categoria != null && p.Categoria.Any()
+                                ? string.Join(", ", p.Categoria.Select(c => c.nombre))
+                                : ""
                         })
-                        .ToList(); // Trae los datos a la memoria
-                    
+                        .ToList();
+
+                    // Configurar las columnas del DataGridView
                     dataGridView1.Columns["SKU"].DataPropertyName = "sku";
                     dataGridView1.Columns["ProductTitle"].DataPropertyName = "label";
                     dataGridView1.Columns["ShortDescription"].DataPropertyName = "descripcionCorta";
-                    dataGridView1.Columns["Thumbnail"].DataPropertyName = "thumbnail"; // byte[] o null
-                    dataGridView1.Columns["Categories"].DataPropertyName = "gtin";
-                    // Asignar los datos al DataGridView
-                    dataGridView1.DataSource = productos;
-                   
+                    dataGridView1.Columns["Thumbnail"].DataPropertyName = "thumbnail";
+                    dataGridView1.Columns["Categories"].DataPropertyName = "Categories";
+
+                    // Asignar los datos procesados al DataGridView
+                    dataGridView1.DataSource = productosParaMostrar;
                 }
             }
             catch (Exception ex)
@@ -70,6 +75,7 @@ namespace MiniPIM.Product
                 MessageBox.Show($"Error al cargar los datos: {ex.Message}");
             }
         }
+
 
         private void productsToolStripMenuItem_Click(object sender, EventArgs e) //PRODUCTS
         {
@@ -107,6 +113,11 @@ namespace MiniPIM.Product
         }
 
         private void button1_Click(object sender, EventArgs e) // + NEW PRODUCT
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
