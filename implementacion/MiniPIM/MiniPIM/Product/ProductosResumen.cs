@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MiniPIM.Product
 {
-    public partial class Form1 : Form
+    public partial class ProductosResumen : Form
     {
-        public Form1()
+        public ProductosResumen()
         {
             InitializeComponent();
         }

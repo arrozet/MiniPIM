@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MiniPIM.Category
 {
-    public partial class Form1 : Form
+    public partial class CategoriaSeccion : Form
     {
-        public Form1()
+        public CategoriaSeccion()
         {
             InitializeComponent();
         }

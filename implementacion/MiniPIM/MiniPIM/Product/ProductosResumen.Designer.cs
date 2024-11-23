@@ -1,6 +1,6 @@
 ﻿namespace MiniPIM.Product
 {
-    partial class Form1
+    partial class ProductosResumen
     {
         /// <summary>
         /// Required designer variable.

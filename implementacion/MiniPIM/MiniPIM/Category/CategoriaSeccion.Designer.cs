@@ -1,6 +1,6 @@
 ﻿namespace MiniPIM.Category
 {
-    partial class Form1
+    partial class CategoriaSeccion
     {
         /// <summary>
         /// Required designer variable.
