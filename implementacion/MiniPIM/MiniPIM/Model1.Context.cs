@@ -28,5 +28,6 @@ namespace MiniPIM
         public DbSet<AtributoPersonalizado> AtributoPersonalizado { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Producto> Producto { get; set; }
+        public DbSet<ProductoAtributo> ProductoAtributo { get; set; }
     }
 }

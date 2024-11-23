@@ -12,6 +12,7 @@
           <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="espacioOcupado" Type="int" />
+          <Property Name="tipo" Type="enum" Nullable="false" />
         </EntityType>
         <EntityType Name="Categoria">
           <Key>
@@ -41,6 +42,7 @@
           </Key>
           <Property Name="producto_sku" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="atributo_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="valor" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductoCategoria">
           <Key>
@@ -129,9 +131,14 @@
           <EntitySet Name="AtributoPersonalizado" EntityType="grupo07DBModel.AtributoPersonalizado" />
           <EntitySet Name="Categoria" EntityType="grupo07DBModel.Categoria" />
           <EntitySet Name="Producto" EntityType="grupo07DBModel.Producto" />
-          <AssociationSet Name="ProductoAtributo" Association="grupo07DBModel.ProductoAtributo">
-            <End Role="Producto" EntitySet="Producto" />
+          <EntitySet Name="ProductoAtributo" EntityType="grupo07DBModel.ProductoAtributo" />
+          <AssociationSet Name="ProductoAtributo_ibfk_2" Association="grupo07DBModel.ProductoAtributo_ibfk_2">
             <End Role="AtributoPersonalizado" EntitySet="AtributoPersonalizado" />
+            <End Role="ProductoAtributo" EntitySet="ProductoAtributo" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoAtributo_ibfk_1" Association="grupo07DBModel.ProductoAtributo_ibfk_1">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoAtributo" EntitySet="ProductoAtributo" />
           </AssociationSet>
           <AssociationSet Name="ProductoCategoria" Association="grupo07DBModel.ProductoCategoria">
             <End Role="Producto" EntitySet="Producto" />
@@ -145,7 +152,8 @@
           <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="espacioOcupado" Type="Int32" />
-          <NavigationProperty Name="Producto" Relationship="grupo07DBModel.ProductoAtributo" FromRole="AtributoPersonalizado" ToRole="Producto" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductoAtributo" Relationship="grupo07DBModel.ProductoAtributo_ibfk_2" FromRole="AtributoPersonalizado" ToRole="ProductoAtributo" />
         </EntityType>
         <EntityType Name="Categoria">
           <Key>
@@ -168,12 +176,43 @@
           <Property Name="descripcionLarga" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="espacioOcupado" Type="Int32" />
           <Property Name="thumbnail" Type="Binary" MaxLength="65535" FixedLength="false" />
-          <NavigationProperty Name="AtributoPersonalizado" Relationship="grupo07DBModel.ProductoAtributo" FromRole="Producto" ToRole="AtributoPersonalizado" />
+          <NavigationProperty Name="ProductoAtributo" Relationship="grupo07DBModel.ProductoAtributo_ibfk_1" FromRole="Producto" ToRole="ProductoAtributo" />
           <NavigationProperty Name="Categoria" Relationship="grupo07DBModel.ProductoCategoria" FromRole="Producto" ToRole="Categoria" />
         </EntityType>
-        <Association Name="ProductoAtributo">
-          <End Type="grupo07DBModel.Producto" Role="Producto" Multiplicity="*" />
-          <End Type="grupo07DBModel.AtributoPersonalizado" Role="AtributoPersonalizado" Multiplicity="*" />
+        <EntityType Name="ProductoAtributo">
+          <Key>
+            <PropertyRef Name="producto_sku" />
+            <PropertyRef Name="atributo_id" />
+          </Key>
+          <Property Name="producto_sku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="atributo_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="valor" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AtributoPersonalizado" Relationship="grupo07DBModel.ProductoAtributo_ibfk_2" FromRole="ProductoAtributo" ToRole="AtributoPersonalizado" />
+          <NavigationProperty Name="Producto" Relationship="grupo07DBModel.ProductoAtributo_ibfk_1" FromRole="ProductoAtributo" ToRole="Producto" />
+        </EntityType>
+        <Association Name="ProductoAtributo_ibfk_2">
+          <End Type="grupo07DBModel.AtributoPersonalizado" Role="AtributoPersonalizado" Multiplicity="1" />
+          <End Type="grupo07DBModel.ProductoAtributo" Role="ProductoAtributo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AtributoPersonalizado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductoAtributo">
+              <PropertyRef Name="atributo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductoAtributo_ibfk_1">
+          <End Type="grupo07DBModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="grupo07DBModel.ProductoAtributo" Role="ProductoAtributo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="sku" />
+            </Principal>
+            <Dependent Role="ProductoAtributo">
+              <PropertyRef Name="producto_sku" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="ProductoCategoria">
           <End Type="grupo07DBModel.Producto" Role="Producto" Multiplicity="*" />
@@ -188,6 +227,7 @@
           <EntitySetMapping Name="AtributoPersonalizado">
             <EntityTypeMapping TypeName="grupo07DBModel.AtributoPersonalizado">
               <MappingFragment StoreEntitySet="AtributoPersonalizado">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="espacioOcupado" ColumnName="espacioOcupado" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -217,14 +257,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ProductoAtributo" TypeName="grupo07DBModel.ProductoAtributo" StoreEntitySet="ProductoAtributo">
-            <EndProperty Name="AtributoPersonalizado">
-              <ScalarProperty Name="id" ColumnName="atributo_id" />
-            </EndProperty>
-            <EndProperty Name="Producto">
-              <ScalarProperty Name="sku" ColumnName="producto_sku" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="ProductoAtributo">
+            <EntityTypeMapping TypeName="grupo07DBModel.ProductoAtributo">
+              <MappingFragment StoreEntitySet="ProductoAtributo">
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="atributo_id" ColumnName="atributo_id" />
+                <ScalarProperty Name="producto_sku" ColumnName="producto_sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="ProductoCategoria" TypeName="grupo07DBModel.ProductoCategoria" StoreEntitySet="ProductoCategoria">
             <EndProperty Name="Categoria">
               <ScalarProperty Name="id" ColumnName="categoria_id" />

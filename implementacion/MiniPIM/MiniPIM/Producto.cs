@@ -16,7 +16,7 @@ namespace MiniPIM
     {
         public Producto()
         {
-            this.AtributoPersonalizado = new HashSet<AtributoPersonalizado>();
+            this.ProductoAtributo = new HashSet<ProductoAtributo>();
             this.Categoria = new HashSet<Categoria>();
         }
     
@@ -30,7 +30,7 @@ namespace MiniPIM
         public Nullable<int> espacioOcupado { get; set; }
         public byte[] thumbnail { get; set; }
     
-        public virtual ICollection<AtributoPersonalizado> AtributoPersonalizado { get; set; }
+        public virtual ICollection<ProductoAtributo> ProductoAtributo { get; set; }
         public virtual ICollection<Categoria> Categoria { get; set; }
     }
 }

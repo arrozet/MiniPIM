@@ -106,6 +106,9 @@
     <Compile Include="Producto.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductoAtributo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product\ProductosResumen.cs">
       <SubType>Form</SubType>
     </Compile>
