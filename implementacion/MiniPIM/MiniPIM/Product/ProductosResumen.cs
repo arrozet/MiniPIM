@@ -38,9 +38,10 @@ namespace MiniPIM.Product
                 // Crear una instancia del contexto de Entity Framework
                 using (var context = new grupo07DBEntities())
                 {
-                    // Cargar los productos en memoria, incluyendo las categorías
+                    // Sin usar Include, Entity Framework no cargará las categorías relacionadas al ejecutar la consulta inicial
+                    // Esto es como hacer un JOIN, ahora sí tendré la tabla categorías a mi disposición
                     var productos = context.Producto
-                        .Include("Categoria") // Cargar las categorías relacionadas
+                        .Include("Categoria") // Cargar las categorías relacionadas (además de los productos)
                         .ToList();
 
                     // Procesar los datos para el DataGridView
