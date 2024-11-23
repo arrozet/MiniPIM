@@ -12,7 +12,11 @@ namespace MiniPIM
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Iniciar el formulario de productos
+
             Application.Run(new TestForm());
+
+            Application.Run(new Product.ProductosResumen());
+
         }
     }
 }
