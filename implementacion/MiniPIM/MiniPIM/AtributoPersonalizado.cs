@@ -19,10 +19,10 @@ namespace MiniPIM
             this.ProductoAtributo = new HashSet<ProductoAtributo>();
         }
     
-        public string id { get; set; }
+        public int id { get; set; }
         public string nombre { get; set; }
-        public Nullable<int> espacioOcupado { get; set; }
         public string tipo { get; set; }
+        public Nullable<int> espacioOcupado { get; set; }
     
         public virtual ICollection<ProductoAtributo> ProductoAtributo { get; set; }
     }

@@ -19,7 +19,7 @@ namespace MiniPIM
             this.Producto = new HashSet<Producto>();
         }
     
-        public string id { get; set; }
+        public int id { get; set; }
         public string nombre { get; set; }
     
         public virtual ICollection<Producto> Producto { get; set; }

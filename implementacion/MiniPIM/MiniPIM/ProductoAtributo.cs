@@ -15,7 +15,7 @@ namespace MiniPIM
     public partial class ProductoAtributo
     {
         public string producto_sku { get; set; }
-        public string atributo_id { get; set; }
+        public int atributo_id { get; set; }
         public string valor { get; set; }
     
         public virtual AtributoPersonalizado AtributoPersonalizado { get; set; }

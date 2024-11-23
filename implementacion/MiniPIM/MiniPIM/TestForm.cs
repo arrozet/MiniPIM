@@ -20,7 +20,6 @@ namespace MiniPIM
 
         private void TestForm_Load(object sender, EventArgs e)
         {
-
             try
             {
                 // Crear una instancia del contexto de Entity Framework
@@ -41,12 +40,26 @@ namespace MiniPIM
                             p.thumbnail
                         })
                         .ToList();
+
                     Console.WriteLine($"Se han recuperado {productos.Count} productos.");
 
                     // Asignar los datos al DataGridView
                     dataGridViewProductos.AutoGenerateColumns = true;
                     dataGridViewProductos.DataSource = productos;
 
+                    // Configurar la columna de la imagen para que se ajuste automáticamente tanto en ancho como en altura
+                    foreach (DataGridViewColumn column in dataGridViewProductos.Columns)
+                    {
+                        if (column.HeaderText == "thumbnail")  // Verifica si la columna es "thumbnail"
+                        {
+                            // Cambia el tipo de la celda a ImageCell para mostrar imágenes
+                            column.CellTemplate = new DataGridViewImageCell();
+                            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;  // Ajusta el ancho automáticamente
+
+                            // Establecer la altura de la fila de la imagen para ajustarse a la imagen
+                            dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -54,6 +67,13 @@ namespace MiniPIM
                 // Mostrar cualquier error que ocurra
                 MessageBox.Show($"Error al cargar los datos: {ex.Message}");
             }
+        }
+
+
+
+        private void dataGridViewProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
