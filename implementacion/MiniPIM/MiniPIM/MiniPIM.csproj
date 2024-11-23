@@ -79,6 +79,12 @@
     <Compile Include="Attribute\AtributosSeccion.Designer.cs">
       <DependentUpon>AtributosSeccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Attribute\NewAttributeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\NewAttributeForm.Designer.cs">
+      <DependentUpon>NewAttributeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Categoria.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -151,8 +157,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Product\ProductosResumen.resx">
-      <DependentUpon>ProductosResumen.cs</DependentUpon>
+	  <EmbeddedResource Include="Product\ProductosResumen.resx">
+		  <DependentUpon>ProductosResumen.cs</DependentUpon>
+	  </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\AtributosSeccion.resx">
+      <DependentUpon>AtributosSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\NewAttributeForm.resx">
+      <DependentUpon>NewAttributeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
