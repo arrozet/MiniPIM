@@ -1,6 +1,6 @@
-﻿namespace MiniPIM.Attribute
+﻿namespace MiniPIM.Category
 {
-    partial class NewAttributeForm
+    partial class NewCategoryForm
     {
         /// <summary>
         /// Required designer variable.

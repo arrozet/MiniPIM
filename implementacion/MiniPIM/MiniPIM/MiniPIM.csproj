@@ -94,6 +94,12 @@
     <Compile Include="Category\CategoriaSeccion.Designer.cs">
       <DependentUpon>CategoriaSeccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Category\NewCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\NewCategoryForm.Designer.cs">
+      <DependentUpon>NewCategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Product\UpdateProduct.resx">
       <DependentUpon>UpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\NewCategoryForm.resx">
+      <DependentUpon>NewCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product\ProductosResumen.resx">
       <DependentUpon>ProductosResumen.cs</DependentUpon>

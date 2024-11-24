@@ -97,8 +97,9 @@ namespace MiniPIM.Product
             atributosForm.Size = this.Size; // Mismo tamaño que el formulario actual
 
             // Mostrar el nuevo formulario y ocultar el actual
+            this.Hide();
             atributosForm.Show();
-            this.Close();
+            
         }
 
         private void categoriesToolStripMenuItem_Click(object sender, EventArgs e) // CATEGORIES
