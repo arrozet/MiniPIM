@@ -14,6 +14,8 @@ namespace MiniPIM.Attribute
 {
     public partial class UserControl1 : UserControl
     {
+        private int id;
+        private AtributosSeccion seccionAtributos;
         public enum AttributeType
         {
             text,
@@ -45,35 +47,28 @@ namespace MiniPIM.Attribute
             set => typeText.Text = value; // Establecer el valor seleccionado en el ComboBox
         }
 
-        public UserControl1()
+        public UserControl1(int attributeId, AtributosSeccion seccionAtributos)
         {
+            id = attributeId;
             InitializeComponent();
+            this.seccionAtributos = seccionAtributos;
+            
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-
-
             try
             {
                 // Crear una instancia del contexto de Entity Framework
                 using (var context = new grupo07DBEntities())
                 {
-                    //int idInt = int.Parse(id);
-
-                    //Producto productoSeleccionado = context.Producto.SingleOrDefault(p => p.ID == idInt);
-
                     if (TypeMapping.TryGetValue(typeText.Text, out AttributeType attributeType))
                     {
-                        //Creamos el nuevo atributo
-                        AtributoPersonalizado nuevoAtributo = new AtributoPersonalizado
-                        {
-                            nombre = nameText.Text,
-                            tipo = attributeType.ToString()
-                        };
+                        var atributo = context.AtributoPersonalizado.SingleOrDefault(a => a.id == id);
 
-                        //Lo insertamos en la base de datos
-                        context.AtributoPersonalizado.AddOrUpdate(nuevoAtributo);
+                        //Lo actualizamos en la base de datos
+                        atributo.nombre = nameText.Text;
+                        atributo.tipo = typeText.Text;
                         context.SaveChanges();
 
                         //Borramos las textbox
@@ -81,7 +76,9 @@ namespace MiniPIM.Attribute
                         typeText.Text = "";
 
                         //Cerramos el form
-                        this.Hide();
+                        this.ParentForm.Hide();
+
+                        seccionAtributos.RecargarAtributos();
                     }
                     else
                     {
@@ -99,7 +96,7 @@ namespace MiniPIM.Attribute
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.ParentForm.Hide();
         }
     }
 }

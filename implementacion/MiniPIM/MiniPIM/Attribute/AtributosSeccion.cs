@@ -63,6 +63,37 @@ namespace MiniPIM.Attribute
             }
         }
 
+        public void RecargarAtributos()
+        {
+            try
+            {
+                using (var context = new grupo07DBEntities())
+                {
+                    // Consulta los datos actualizados
+                    var atributos = context.AtributoPersonalizado
+                        .Select(a => new
+                        {
+                            a.id,
+                            a.nombre,
+                            a.tipo,
+                            CantidadRelacionados = context.ProductoAtributo
+                            .Where(pa => pa.atributo_id == a.id)  // Relaciona con ProductoAtributo usando atributo_id
+                            .Count()  // Cuenta las relaciones
+                        })
+                        .ToList();
+
+                    // Asignar los datos actualizados al DataGridView
+                    listAttributes.DataSource = null; // Limpia los datos anteriores
+                    listAttributes.DataSource = atributos;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al recargar los datos: {ex.Message}");
+            }
+        }
+
+
         private void Products_Click(object sender, EventArgs e)
         {
             ProductosResumen productosForm = new ProductosResumen();
@@ -84,6 +115,9 @@ namespace MiniPIM.Attribute
         private void Categories_Click(object sender, EventArgs e)
         {
             CategoriaSeccion categoriaForm = new CategoriaSeccion();
+            categoriaForm.StartPosition = FormStartPosition.Manual; // Para permitir personalizar la posición
+            categoriaForm.Location = this.Location; // Misma posición que el formulario actual
+            categoriaForm.Size = this.Size; // Mismo tamaño que el formulario actual
             categoriaForm.Show();
             this.Close(); // Ocultar este formulario
         }
@@ -121,7 +155,7 @@ namespace MiniPIM.Attribute
                 };
 
                 // Crear la instancia del UserControl
-                UserControl1 attributeControl = new UserControl1
+                UserControl1 attributeControl = new UserControl1(attributeId, this)
                 {
                     Dock = DockStyle.Fill,
                 };
@@ -135,6 +169,8 @@ namespace MiniPIM.Attribute
 
                 // Mostrar el formulario como modal
                 attributeForm.ShowDialog(); // Mostrar el formulario de manera modal
+
+                attributeForm.FormClosed += (s, args) => AtributosSeccion_Load(this, EventArgs.Empty);
 
             }
 
