@@ -54,7 +54,7 @@
             this.productsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
-            this.productsToolStripMenuItem.Size = new System.Drawing.Size(83, 25);
+            this.productsToolStripMenuItem.Size = new System.Drawing.Size(103, 32);
             this.productsToolStripMenuItem.Text = "Products";
             this.productsToolStripMenuItem.Click += new System.EventHandler(this.productsToolStripMenuItem_Click);
             // 
@@ -63,7 +63,7 @@
             this.attributesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.attributesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.attributesToolStripMenuItem.Name = "attributesToolStripMenuItem";
-            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(90, 25);
+            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(113, 32);
             this.attributesToolStripMenuItem.Text = "Attributes";
             this.attributesToolStripMenuItem.Click += new System.EventHandler(this.attributesToolStripMenuItem_Click);
             // 
@@ -72,13 +72,14 @@
             this.categoriesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoriesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
-            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(96, 25);
+            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(119, 32);
             this.categoriesToolStripMenuItem.Text = "Categories";
             this.categoriesToolStripMenuItem.Click += new System.EventHandler(this.categoriesToolStripMenuItem_Click);
             // 
             // menuStrip
             // 
             this.menuStrip.BackColor = System.Drawing.Color.Indigo;
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productsToolStripMenuItem,
             this.attributesToolStripMenuItem,
@@ -86,7 +87,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip.Size = new System.Drawing.Size(993, 31);
+            this.menuStrip.Size = new System.Drawing.Size(993, 38);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip2";
             // 
@@ -113,6 +114,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(5, 97);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(988, 378);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -121,12 +123,14 @@
             // 
             this.SKU.DataPropertyName = "text";
             this.SKU.HeaderText = "SKU";
+            this.SKU.MinimumWidth = 6;
             this.SKU.Name = "SKU";
             this.SKU.ReadOnly = true;
             // 
             // Pencil
             // 
             this.Pencil.HeaderText = "⬇";
+            this.Pencil.MinimumWidth = 6;
             this.Pencil.Name = "Pencil";
             this.Pencil.ReadOnly = true;
             this.Pencil.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -137,24 +141,28 @@
             // ProductTitle
             // 
             this.ProductTitle.HeaderText = "Product Title";
+            this.ProductTitle.MinimumWidth = 6;
             this.ProductTitle.Name = "ProductTitle";
             this.ProductTitle.ReadOnly = true;
             // 
             // ShortDescription
             // 
             this.ShortDescription.HeaderText = "Short Description";
+            this.ShortDescription.MinimumWidth = 6;
             this.ShortDescription.Name = "ShortDescription";
             this.ShortDescription.ReadOnly = true;
             // 
             // Thumbnail
             // 
             this.Thumbnail.HeaderText = "Thumbnail";
+            this.Thumbnail.MinimumWidth = 6;
             this.Thumbnail.Name = "Thumbnail";
             this.Thumbnail.ReadOnly = true;
             // 
             // Categories
             // 
             this.Categories.HeaderText = "Categories";
+            this.Categories.MinimumWidth = 6;
             this.Categories.Name = "Categories";
             this.Categories.ReadOnly = true;
             // 
@@ -194,7 +202,7 @@
             this.tableLayoutPanel1.Controls.Add(this.All_Products_label, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.New_Product_Button, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 31);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 38);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
@@ -227,7 +235,7 @@
             // 
             // ProductosResumen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(993, 471);

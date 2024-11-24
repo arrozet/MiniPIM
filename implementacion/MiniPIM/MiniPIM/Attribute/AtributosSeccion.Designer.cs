@@ -31,28 +31,22 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button NewAttribute;
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.Products = new System.Windows.Forms.ToolStripMenuItem();
+            this.Attributes = new System.Windows.Forms.ToolStripMenuItem();
+            this.Categories = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.listAttributes = new System.Windows.Forms.DataGridView();
-            this.Categories = new System.Windows.Forms.ToolStripMenuItem();
-            this.Attributes = new System.Windows.Forms.ToolStripMenuItem();
-            this.Products = new System.Windows.Forms.ToolStripMenuItem();
+            this.Label = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pencil = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumberOfProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             NewAttribute = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listAttributes)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // NewAttribute
-            // 
-            NewAttribute.AutoSize = true;
-            NewAttribute.Dock = System.Windows.Forms.DockStyle.Top;
-            NewAttribute.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            NewAttribute.Location = new System.Drawing.Point(0, 36);
-            NewAttribute.Name = "NewAttribute";
-            NewAttribute.Size = new System.Drawing.Size(765, 39);
-            NewAttribute.TabIndex = 2;
-            NewAttribute.Text = "+ New attribute";
-            NewAttribute.UseVisualStyleBackColor = true;
-            NewAttribute.Click += new System.EventHandler(this.NewAttribute_Click);
             // 
             // menuStrip1
             // 
@@ -68,25 +62,26 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // contextMenuStrip1
+            // Products
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.Products.BackColor = System.Drawing.Color.Indigo;
+            this.Products.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.Products.ForeColor = System.Drawing.Color.White;
+            this.Products.Name = "Products";
+            this.Products.Size = new System.Drawing.Size(103, 32);
+            this.Products.Text = "Products";
+            this.Products.Click += new System.EventHandler(this.Products_Click);
             // 
-            // listAttributes
+            // Attributes
             // 
-            this.listAttributes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.listAttributes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.listAttributes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.listAttributes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listAttributes.Location = new System.Drawing.Point(0, 76);
-            this.listAttributes.Name = "listAttributes";
-            this.listAttributes.RowHeadersWidth = 51;
-            this.listAttributes.RowTemplate.Height = 24;
-            this.listAttributes.Size = new System.Drawing.Size(765, 374);
-            this.listAttributes.TabIndex = 3;
-            this.listAttributes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listAttributes_CellClick);
+            this.Attributes.BackColor = System.Drawing.Color.Indigo;
+            this.Attributes.Enabled = false;
+            this.Attributes.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.Attributes.ForeColor = System.Drawing.Color.Gray;
+            this.Attributes.Name = "Attributes";
+            this.Attributes.Size = new System.Drawing.Size(113, 32);
+            this.Attributes.Text = "Attributes";
+            this.Attributes.Click += new System.EventHandler(this.Attributes_Click);
             // 
             // Categories
             // 
@@ -98,33 +93,101 @@
             this.Categories.Text = "Categories";
             this.Categories.Click += new System.EventHandler(this.Categories_Click);
             // 
-            // Attributes
+            // contextMenuStrip1
             // 
-            this.Attributes.BackColor = System.Drawing.Color.Indigo;
-            this.Attributes.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.Attributes.ForeColor = System.Drawing.Color.White;
-            this.Attributes.Name = "Attributes";
-            this.Attributes.Size = new System.Drawing.Size(113, 32);
-            this.Attributes.Text = "Attributes";
-            this.Attributes.Click += new System.EventHandler(this.Attributes_Click);
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // Products
+            // listAttributes
             // 
-            this.Products.BackColor = System.Drawing.Color.Indigo;
-            this.Products.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.Products.ForeColor = System.Drawing.Color.White;
-            this.Products.Name = "Products";
-            this.Products.Size = new System.Drawing.Size(103, 32);
-            this.Products.Text = "Products";
-            this.Products.Click += new System.EventHandler(this.Products_Click);
+            this.listAttributes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listAttributes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listAttributes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.listAttributes.CausesValidation = false;
+            this.listAttributes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listAttributes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Label,
+            this.ID,
+            this.Pencil,
+            this.Type,
+            this.NumberOfProducts});
+            this.listAttributes.Location = new System.Drawing.Point(0, 119);
+            this.listAttributes.Name = "listAttributes";
+            this.listAttributes.RowHeadersWidth = 51;
+            this.listAttributes.RowTemplate.Height = 24;
+            this.listAttributes.Size = new System.Drawing.Size(765, 336);
+            this.listAttributes.TabIndex = 3;
+            this.listAttributes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listAttributes_CellContentClick);
+            // 
+            // Label
+            // 
+            this.Label.HeaderText = "Name";
+            this.Label.MinimumWidth = 6;
+            this.Label.Name = "Label";
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "id";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Pencil
+            // 
+            this.Pencil.HeaderText = "↓";
+            this.Pencil.MinimumWidth = 6;
+            this.Pencil.Name = "Pencil";
+            this.Pencil.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Pencil.Text = "✏️";
+            this.Pencil.UseColumnTextForButtonValue = true;
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.MinimumWidth = 6;
+            this.Type.Name = "Type";
+            // 
+            // NumberOfProducts
+            // 
+            this.NumberOfProducts.HeaderText = "Number of products";
+            this.NumberOfProducts.MinimumWidth = 6;
+            this.NumberOfProducts.Name = "NumberOfProducts";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 379F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(NewAttribute, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 39);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(765, 83);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // NewAttribute
+            // 
+            NewAttribute.Dock = System.Windows.Forms.DockStyle.Fill;
+            NewAttribute.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            NewAttribute.Location = new System.Drawing.Point(3, 3);
+            NewAttribute.Name = "NewAttribute";
+            NewAttribute.Size = new System.Drawing.Size(380, 77);
+            NewAttribute.TabIndex = 3;
+            NewAttribute.Text = "+ New attribute";
+            NewAttribute.UseVisualStyleBackColor = true;
             // 
             // AtributosSeccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(765, 450);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.listAttributes);
-            this.Controls.Add(NewAttribute);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AtributosSeccion";
@@ -132,6 +195,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listAttributes)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +209,11 @@
         private System.Windows.Forms.ToolStripMenuItem Products;
         private System.Windows.Forms.ToolStripMenuItem Attributes;
         private System.Windows.Forms.ToolStripMenuItem Categories;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Label;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewButtonColumn Pencil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfProducts;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

@@ -56,6 +56,9 @@
             // 
             // AttributeNameText
             // 
+            this.AttributeNameText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AttributeNameText.Location = new System.Drawing.Point(112, 163);
             this.AttributeNameText.Name = "AttributeNameText";
             this.AttributeNameText.Size = new System.Drawing.Size(790, 22);
@@ -63,6 +66,9 @@
             // 
             // AttributeTypeText
             // 
+            this.AttributeTypeText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AttributeTypeText.FormattingEnabled = true;
             this.AttributeTypeText.Items.AddRange(new object[] {
             "Text",
@@ -87,6 +93,7 @@
             // 
             // CreateButton
             // 
+            this.CreateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateButton.Location = new System.Drawing.Point(771, 442);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(121, 48);

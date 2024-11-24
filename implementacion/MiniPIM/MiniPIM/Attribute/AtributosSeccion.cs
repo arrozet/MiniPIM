@@ -44,7 +44,14 @@ namespace MiniPIM.Attribute
                     Console.WriteLine($"Se han recuperado {atributos.Count} productos.");
 
                     // Asignar los datos al DataGridView
-                    listAttributes.AutoGenerateColumns = true;
+                    listAttributes.AutoGenerateColumns = false;
+
+                    // Configurar las columnas del DataGridView
+                    listAttributes.Columns["Label"].DataPropertyName = "nombre";
+                    listAttributes.Columns["ID"].DataPropertyName = "id";
+                    listAttributes.Columns["Type"].DataPropertyName = "tipo";
+                    listAttributes.Columns["NumberOfProducts"].DataPropertyName = "CantidadRelacionados";
+
                     listAttributes.DataSource = atributos;
 
                 }
@@ -59,13 +66,18 @@ namespace MiniPIM.Attribute
         private void Products_Click(object sender, EventArgs e)
         {
             ProductosResumen productosForm = new ProductosResumen();
+            // Asignar la posición y el tamaño del formulario actual
+            productosForm.StartPosition = FormStartPosition.Manual; // Para permitir personalizar la posición
+            productosForm.Location = this.Location; // Misma posición que el formulario actual
+            productosForm.Size = this.Size; // Mismo tamaño que el formulario actual
             productosForm.Show();
-            this.Hide(); // Ocultar este formulario
+            this.Close(); // Ocultar este formulario
         }
 
         private void Attributes_Click(object sender, EventArgs e)
         {
             //No hace nada
+            menuStrip1.Enabled = false;
         }
 
 
@@ -73,7 +85,7 @@ namespace MiniPIM.Attribute
         {
             CategoriaSeccion categoriaForm = new CategoriaSeccion();
             categoriaForm.Show();
-            this.Hide(); // Ocultar este formulario
+            this.Close(); // Ocultar este formulario
         }
 
 
@@ -87,7 +99,8 @@ namespace MiniPIM.Attribute
             crearAtributosForm.Show();
         }
 
-        private void listAttributes_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void listAttributes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //Meter el update y delete
 
@@ -97,11 +110,11 @@ namespace MiniPIM.Attribute
                 // Obtener el atributo seleccionado
                 var selectedRow = listAttributes.Rows[e.RowIndex];
                 int attributeId = (int)selectedRow.Cells["id"].Value;
-                string attributeName = selectedRow.Cells["nombre"].Value.ToString();
-                string attributeType = selectedRow.Cells["tipo"].Value.ToString();
+                string attributeName = selectedRow.Cells["label"].Value.ToString();
+                string attributeType = selectedRow.Cells["type"].Value.ToString();
 
                 // Mostrar cuadro de diálogo para elegir acción
-                var result = MessageBox.Show($"'{attributeName}'",
+                var result = MessageBox.Show($"{attributeName}",
                                              "Choose Action",
                                              MessageBoxButtons.YesNoCancel,
                                              MessageBoxIcon.Question,
@@ -111,7 +124,7 @@ namespace MiniPIM.Attribute
                 {
                     // Actualizar: abrir el formulario para editar
                     //Abrir formulario para actualizar
-                    
+
                 }
                 else if (result == DialogResult.No)
                 {
