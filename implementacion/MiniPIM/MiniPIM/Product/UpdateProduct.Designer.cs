@@ -43,7 +43,7 @@
             this.lblHeader.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblHeader.Location = new System.Drawing.Point(10, 10);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(148, 25);
+            this.lblHeader.Size = new System.Drawing.Size(190, 32);
             this.lblHeader.TabIndex = 0;
             this.lblHeader.Text = "Product Details";
             // 
@@ -96,7 +96,7 @@
             this.txtSKU.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSKU.Location = new System.Drawing.Point(153, 3);
             this.txtSKU.Name = "txtSKU";
-            this.txtSKU.Size = new System.Drawing.Size(244, 20);
+            this.txtSKU.Size = new System.Drawing.Size(244, 22);
             this.txtSKU.TabIndex = 1;
             // 
             // lblGTIN
@@ -114,7 +114,7 @@
             this.txtGTIN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGTIN.Location = new System.Drawing.Point(153, 33);
             this.txtGTIN.Name = "txtGTIN";
-            this.txtGTIN.Size = new System.Drawing.Size(244, 20);
+            this.txtGTIN.Size = new System.Drawing.Size(244, 22);
             this.txtGTIN.TabIndex = 3;
             // 
             // lblProductName
@@ -132,7 +132,7 @@
             this.txtProductName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtProductName.Location = new System.Drawing.Point(153, 63);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(244, 20);
+            this.txtProductName.Size = new System.Drawing.Size(244, 22);
             this.txtProductName.TabIndex = 5;
             // 
             // lblShortDescription
@@ -200,7 +200,7 @@
             this.cmbCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategories.Location = new System.Drawing.Point(153, 233);
             this.cmbCategories.Name = "cmbCategories";
-            this.cmbCategories.Size = new System.Drawing.Size(244, 21);
+            this.cmbCategories.Size = new System.Drawing.Size(244, 24);
             this.cmbCategories.TabIndex = 12;
             // 
             // lblAttributes
@@ -219,7 +219,7 @@
             this.cmbAttributes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAttributes.Location = new System.Drawing.Point(153, 263);
             this.cmbAttributes.Name = "cmbAttributes";
-            this.cmbAttributes.Size = new System.Drawing.Size(244, 21);
+            this.cmbAttributes.Size = new System.Drawing.Size(244, 24);
             this.cmbAttributes.TabIndex = 14;
             // 
             // flowLayoutPanelButtons

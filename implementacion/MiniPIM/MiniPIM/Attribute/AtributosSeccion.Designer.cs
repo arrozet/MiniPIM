@@ -38,13 +38,14 @@
             this.Categories = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.listAttributes = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.Label = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pencil = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumberOfProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             NewAttribute = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listAttributes)).BeginInit();
@@ -135,6 +136,7 @@
             this.Label,
             this.ID,
             this.Pencil,
+            this.Delete,
             this.Type,
             this.NumberOfProducts});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -151,7 +153,53 @@
             this.listAttributes.RowTemplate.Height = 24;
             this.listAttributes.Size = new System.Drawing.Size(743, 326);
             this.listAttributes.TabIndex = 3;
-            this.listAttributes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listAttributes_CellContentClick);
+            this.listAttributes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listAttributes_CellClick);
+            // 
+            // Label
+            // 
+            this.Label.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Label.HeaderText = "Name";
+            this.Label.MinimumWidth = 6;
+            this.Label.Name = "Label";
+            this.Label.Width = 93;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "id";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Pencil
+            // 
+            this.Pencil.HeaderText = "↓";
+            this.Pencil.MinimumWidth = 6;
+            this.Pencil.Name = "Pencil";
+            this.Pencil.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Pencil.Text = "✏️";
+            this.Pencil.UseColumnTextForButtonValue = true;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Delete.Text = "🗑️";
+            this.Delete.UseColumnTextForButtonValue = true;
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.MinimumWidth = 6;
+            this.Type.Name = "Type";
+            // 
+            // NumberOfProducts
+            // 
+            this.NumberOfProducts.HeaderText = "Number of products";
+            this.NumberOfProducts.MinimumWidth = 6;
+            this.NumberOfProducts.Name = "NumberOfProducts";
             // 
             // tableLayoutPanel1
             // 
@@ -181,42 +229,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "All Attributes";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Label
-            // 
-            this.Label.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Label.HeaderText = "Name";
-            this.Label.MinimumWidth = 6;
-            this.Label.Name = "Label";
-            this.Label.Width = 93;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "id";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Pencil
-            // 
-            this.Pencil.HeaderText = "↓";
-            this.Pencil.MinimumWidth = 6;
-            this.Pencil.Name = "Pencil";
-            this.Pencil.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Pencil.Text = "✏️";
-            this.Pencil.UseColumnTextForButtonValue = true;
-            // 
-            // Type
-            // 
-            this.Type.HeaderText = "Type";
-            this.Type.MinimumWidth = 6;
-            this.Type.Name = "Type";
-            // 
-            // NumberOfProducts
-            // 
-            this.NumberOfProducts.HeaderText = "Number of products";
-            this.NumberOfProducts.MinimumWidth = 6;
-            this.NumberOfProducts.Name = "NumberOfProducts";
             // 
             // AtributosSeccion
             // 
@@ -252,6 +264,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Label;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewButtonColumn Pencil;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfProducts;
     }

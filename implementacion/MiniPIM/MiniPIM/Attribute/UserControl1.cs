@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MiniPIM.Attribute
 {
-    public partial class NewAttributeForm : Form
+    public partial class UserControl1 : UserControl
     {
-
+        private int id;
+        private AtributosSeccion seccionAtributos;
         public enum AttributeType
         {
             text,
@@ -22,6 +24,7 @@ namespace MiniPIM.Attribute
             video,
             photo
         }
+
 
         private static readonly Dictionary<string, AttributeType> TypeMapping = new Dictionary<string, AttributeType>
         {
@@ -32,57 +35,56 @@ namespace MiniPIM.Attribute
             { "Photo", AttributeType.photo }
         };
 
-        public NewAttributeForm()
+        public string AttributeName
         {
+            get => nameText.Text;
+            set => nameText.Text = value;
+        }
+
+        public string Attributetype
+        {
+            get => typeText.Text; // Obtener el valor seleccionado del ComboBox
+            set => typeText.Text = value; // Establecer el valor seleccionado en el ComboBox
+        }
+
+        public UserControl1(int attributeId, AtributosSeccion seccionAtributos)
+        {
+            id = attributeId;
             InitializeComponent();
+            this.seccionAtributos = seccionAtributos;
+            
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void CreateButton_Click(object sender, EventArgs e)
+        private void UpdateButton_Click(object sender, EventArgs e)
         {
             try
             {
                 // Crear una instancia del contexto de Entity Framework
                 using (var context = new grupo07DBEntities())
                 {
-                    //Miramos que los campos esten rellenos
-                    if (string.IsNullOrEmpty(AttributeNameText.Text) || string.IsNullOrEmpty(AttributeTypeText.Text))
+                    if (TypeMapping.TryGetValue(typeText.Text, out AttributeType attributeType))
                     {
-                        MessageBox.Show("Por favor, complete todos los campos.");
-                        return;
-                    }
+                        var atributo = context.AtributoPersonalizado.SingleOrDefault(a => a.id == id);
 
-                    //Si el tipo esta permitido por la base de datos
-                    if (TypeMapping.TryGetValue(AttributeTypeText.Text, out AttributeType attributeType))
-                    {
-                        //Creamos el nuevo atributo
-                        AtributoPersonalizado nuevoAtributo = new AtributoPersonalizado
-                        {
-                            nombre = AttributeNameText.Text,
-                            tipo = attributeType.ToString()
-                        };
-
-                        //Lo insertamos en la base de datos
-                        context.AtributoPersonalizado.Add(nuevoAtributo);
+                        //Lo actualizamos en la base de datos
+                        atributo.nombre = nameText.Text;
+                        atributo.tipo = typeText.Text;
                         context.SaveChanges();
 
                         //Borramos las textbox
-                        AttributeNameText.Text = "";
-                        AttributeTypeText.Text = "";
+                        nameText.Text = "";
+                        typeText.Text = "";
 
                         //Cerramos el form
-                        this.Close();
+                        this.ParentForm.Hide();
+
+                        seccionAtributos.RecargarAtributos();
                     }
                     else
                     {
                         // Manejar error de tipo desconocido
                         MessageBox.Show("Invalid attribute type. Please enter a valid type.");
                     }
-
                 }
             }
             catch (Exception ex)
@@ -90,6 +92,11 @@ namespace MiniPIM.Attribute
                 // Mostrar cualquier error que ocurra
                 MessageBox.Show($"Error al cargar los datos: {ex.Message}");
             }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.ParentForm.Hide();
         }
     }
 }

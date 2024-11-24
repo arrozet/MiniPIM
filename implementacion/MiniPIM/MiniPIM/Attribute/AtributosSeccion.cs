@@ -63,6 +63,37 @@ namespace MiniPIM.Attribute
             }
         }
 
+        public void RecargarAtributos()
+        {
+            try
+            {
+                using (var context = new grupo07DBEntities())
+                {
+                    // Consulta los datos actualizados
+                    var atributos = context.AtributoPersonalizado
+                        .Select(a => new
+                        {
+                            a.id,
+                            a.nombre,
+                            a.tipo,
+                            CantidadRelacionados = context.ProductoAtributo
+                            .Where(pa => pa.atributo_id == a.id)  // Relaciona con ProductoAtributo usando atributo_id
+                            .Count()  // Cuenta las relaciones
+                        })
+                        .ToList();
+
+                    // Asignar los datos actualizados al DataGridView
+                    listAttributes.DataSource = null; // Limpia los datos anteriores
+                    listAttributes.DataSource = atributos;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al recargar los datos: {ex.Message}");
+            }
+        }
+
+
         private void Products_Click(object sender, EventArgs e)
         {
             ProductosResumen productosForm = new ProductosResumen();
@@ -84,6 +115,9 @@ namespace MiniPIM.Attribute
         private void Categories_Click(object sender, EventArgs e)
         {
             CategoriaSeccion categoriaForm = new CategoriaSeccion();
+            categoriaForm.StartPosition = FormStartPosition.Manual; // Para permitir personalizar la posición
+            categoriaForm.Location = this.Location; // Misma posición que el formulario actual
+            categoriaForm.Size = this.Size; // Mismo tamaño que el formulario actual
             categoriaForm.Show();
             this.Close(); // Ocultar este formulario
         }
@@ -100,60 +134,80 @@ namespace MiniPIM.Attribute
         }
 
 
-        private void listAttributes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void listAttributes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //Meter el update y delete
-
-            // Validar que no sea un clic en el encabezado de columna
-            if (e.RowIndex >= 0)
+            if (e.ColumnIndex == listAttributes.Columns["pencil"].Index && e.RowIndex >= 0)
             {
+                // Validar que no sea un clic en el encabezado de columna
                 // Obtener el atributo seleccionado
                 var selectedRow = listAttributes.Rows[e.RowIndex];
                 int attributeId = (int)selectedRow.Cells["id"].Value;
                 string attributeName = selectedRow.Cells["label"].Value.ToString();
                 string attributeType = selectedRow.Cells["type"].Value.ToString();
 
-                // Mostrar cuadro de diálogo para elegir acción
-                var result = MessageBox.Show($"{attributeName}",
-                                             "Choose Action",
-                                             MessageBoxButtons.YesNoCancel,
-                                             MessageBoxIcon.Question,
-                                             MessageBoxDefaultButton.Button3);
-
-                if (result == DialogResult.Yes)
+                // Crear un formulario que contendrá el UserControl
+                Form attributeForm = new Form
                 {
-                    // Actualizar: abrir el formulario para editar
-                    //Abrir formulario para actualizar
+                    Text = "Edit Attribute",
+                    Size = new System.Drawing.Size(450, 300),
+                    StartPosition = FormStartPosition.CenterParent
+                };
 
-                }
-                else if (result == DialogResult.No)
+                // Crear la instancia del UserControl
+                UserControl1 attributeControl = new UserControl1(attributeId, this)
                 {
-                    // Borrar: confirmar antes de eliminar
-                    var confirmDelete = MessageBox.Show($"Are you sure you want to delete '{attributeName}'?",
-                                                        "Confirm Delete",
-                                                        MessageBoxButtons.YesNo,
-                                                        MessageBoxIcon.Warning);
+                    Dock = DockStyle.Fill,
+                };
 
-                    if (confirmDelete == DialogResult.Yes)
+                // Establecer los valores en el UserControl usando los setters
+                attributeControl.AttributeName = attributeName; // Establecer el nombre del atributo
+                attributeControl.Attributetype = attributeType;  // Establecer el tipo del atributo
+
+                // Agregar el UserControl al formulario
+                attributeForm.Controls.Add(attributeControl);
+
+                // Mostrar el formulario como modal
+                attributeForm.ShowDialog(); // Mostrar el formulario de manera modal
+
+                attributeForm.FormClosed += (s, args) => AtributosSeccion_Load(this, EventArgs.Empty);
+
+            }
+
+            if (e.ColumnIndex == listAttributes.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                // Validar que no sea un clic en el encabezado de columna
+                // Obtener el atributo seleccionado
+                var selectedRow = listAttributes.Rows[e.RowIndex];
+                int attributeId = (int)selectedRow.Cells["id"].Value;
+                string attributeName = selectedRow.Cells["label"].Value.ToString();
+                string attributeType = selectedRow.Cells["type"].Value.ToString();
+
+                // Borrar: confirmar antes de eliminar
+                var confirmDelete = MessageBox.Show($"Are you sure you want to delete '{attributeName}'?",
+                                                    "Confirm Delete",
+                                                    MessageBoxButtons.YesNo,
+                                                    MessageBoxIcon.Warning);
+
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    // Eliminar de la base de datos
+                    using (var context = new grupo07DBEntities())
                     {
-                        // Eliminar de la base de datos
-                        using (var context = new grupo07DBEntities())
+                        var attributeToDelete = context.AtributoPersonalizado.Find(attributeId);
+                        if (attributeToDelete != null)
                         {
-                            var attributeToDelete = context.AtributoPersonalizado.Find(attributeId);
-                            if (attributeToDelete != null)
-                            {
-                                context.AtributoPersonalizado.Remove(attributeToDelete);
-                                context.SaveChanges();
-                            }
+                            context.AtributoPersonalizado.Remove(attributeToDelete);
+                            context.SaveChanges();
                         }
-
-                        // Refrescar el DataGridView
-                        AtributosSeccion_Load(sender, e);
                     }
+
+                    // Refrescar el DataGridView
+                    AtributosSeccion_Load(sender, e);
                 }
+
+
             }
         }
-
-        
     }
 }

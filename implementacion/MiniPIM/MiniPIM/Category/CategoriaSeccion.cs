@@ -1,5 +1,6 @@
 ﻿using MiniPIM.Category;
 using MiniPIM.Product;
+using MiniPIM.Attribute;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,16 +73,19 @@ namespace MiniPIM.Category
 
         private void Attributes_Click(object sender, EventArgs e)
         {
-            //No hace nada
-            menuStrip1.Enabled = false;
+            AtributosSeccion atributosForm = new AtributosSeccion();
+            // Asignar la posición y el tamaño del formulario actual
+            atributosForm.StartPosition = FormStartPosition.Manual; // Para permitir personalizar la posición
+            atributosForm.Location = this.Location; // Misma posición que el formulario actual
+            atributosForm.Size = this.Size; // Mismo tamaño que el formulario actual
+            atributosForm.Show();
+            this.Close(); // Ocultar este formulario
         }
 
 
         private void Categories_Click(object sender, EventArgs e)
         {
-            CategoriaSeccion categoriaForm = new CategoriaSeccion();
-            categoriaForm.Show();
-            this.Close(); // Ocultar este formulario
+            menuStrip1.Enabled = false;
         }
 
 
