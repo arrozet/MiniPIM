@@ -35,6 +35,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SKU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pencil = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ProductTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShortDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Thumbnail = new System.Windows.Forms.DataGridViewImageColumn();
@@ -101,11 +102,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SKU,
             this.Pencil,
+            this.Delete,
             this.ProductTitle,
             this.ShortDescription,
             this.Thumbnail,
@@ -117,11 +119,11 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(988, 378);
             this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // SKU
             // 
             this.SKU.DataPropertyName = "text";
+            this.SKU.FillWeight = 113.0166F;
             this.SKU.HeaderText = "SKU";
             this.SKU.MinimumWidth = 6;
             this.SKU.Name = "SKU";
@@ -129,6 +131,7 @@
             // 
             // Pencil
             // 
+            this.Pencil.FillWeight = 63.85116F;
             this.Pencil.HeaderText = "⬇";
             this.Pencil.MinimumWidth = 6;
             this.Pencil.Name = "Pencil";
@@ -138,8 +141,18 @@
             this.Pencil.Text = "✏️";
             this.Pencil.UseColumnTextForButtonValue = true;
             // 
+            // Delete
+            // 
+            this.Delete.FillWeight = 71.06602F;
+            this.Delete.HeaderText = "X";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "🗑️";
+            this.Delete.UseColumnTextForButtonValue = true;
+            // 
             // ProductTitle
             // 
+            this.ProductTitle.FillWeight = 113.0166F;
             this.ProductTitle.HeaderText = "Product Title";
             this.ProductTitle.MinimumWidth = 6;
             this.ProductTitle.Name = "ProductTitle";
@@ -147,6 +160,7 @@
             // 
             // ShortDescription
             // 
+            this.ShortDescription.FillWeight = 113.0166F;
             this.ShortDescription.HeaderText = "Short Description";
             this.ShortDescription.MinimumWidth = 6;
             this.ShortDescription.Name = "ShortDescription";
@@ -154,6 +168,7 @@
             // 
             // Thumbnail
             // 
+            this.Thumbnail.FillWeight = 113.0166F;
             this.Thumbnail.HeaderText = "Thumbnail";
             this.Thumbnail.MinimumWidth = 6;
             this.Thumbnail.Name = "Thumbnail";
@@ -161,6 +176,7 @@
             // 
             // Categories
             // 
+            this.Categories.FillWeight = 113.0166F;
             this.Categories.HeaderText = "Categories";
             this.Categories.MinimumWidth = 6;
             this.Categories.Name = "Categories";
@@ -209,6 +225,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(993, 62);
             this.tableLayoutPanel1.TabIndex = 5;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // All_Products_label
             // 
@@ -232,6 +249,7 @@
             this.New_Product_Button.TabIndex = 4;
             this.New_Product_Button.Text = "+ New Product";
             this.New_Product_Button.UseVisualStyleBackColor = true;
+            this.New_Product_Button.Click += new System.EventHandler(this.New_Product_Button_Click);
             // 
             // ProductosResumen
             // 
@@ -265,19 +283,20 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SKU;
         private System.Windows.Forms.DataGridViewButtonColumn lapiz;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Short_description;
         private System.Windows.Forms.DataGridViewImageColumn Thumnail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Categories;
         private System.Windows.Forms.Button Vista_Tabla_Button;
         private System.Windows.Forms.Button Vista_Resumen_Button;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label All_Products_label;
         private System.Windows.Forms.Button New_Product_Button;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SKU;
         private System.Windows.Forms.DataGridViewButtonColumn Pencil;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShortDescription;
         private System.Windows.Forms.DataGridViewImageColumn Thumbnail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categories;
     }
 }

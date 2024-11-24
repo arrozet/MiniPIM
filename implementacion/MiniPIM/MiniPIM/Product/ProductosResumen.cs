@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MiniPIM.Attribute;
 using MiniPIM.Category;
+using MiniPIM.Product;
 
 namespace MiniPIM.Product
 {
@@ -19,6 +20,8 @@ namespace MiniPIM.Product
         {
             InitializeComponent();
             this.Load += new EventHandler(ProductosResumen_Load);
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick; // pa pode elimina y modifica
+
         }
 
         private void ProductosResumen_Load(object sender, EventArgs e)
@@ -26,7 +29,6 @@ namespace MiniPIM.Product
             //TODO
             productsToolStripMenuItem.Enabled = false; // esto lo podríamos poner directamente en el 
             dataGridView1.AutoGenerateColumns = false; // no se generan columnas nuevas feas
-            // dataGridView1.CellClick += DataGridView1_CellClick; // crea el evento de pulsar el lapiz (NO SE SI ESTÁ BIEN)
             cargarProductos();
             dataGridView1.ClearSelection(); // para que no aparezca selecionada la priemera columna
         }
@@ -58,6 +60,7 @@ namespace MiniPIM.Product
                                 : ""
                         })
                         .ToList();
+                    // Reescalar imagen
 
                     // Configurar las columnas del DataGridView
                     dataGridView1.Columns["SKU"].DataPropertyName = "sku";
@@ -95,7 +98,7 @@ namespace MiniPIM.Product
 
             // Mostrar el nuevo formulario y ocultar el actual
             atributosForm.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void categoriesToolStripMenuItem_Click(object sender, EventArgs e) // CATEGORIES
@@ -110,17 +113,117 @@ namespace MiniPIM.Product
 
             // Mostrar el nuevo formulario y ocultar el actual
             categoriasForm.Show();
-            this.Hide();
+            this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e) // + NEW PRODUCT
+        private Image ResizeImage(Image image, int width, int height)
+        {
+            // Crear un nuevo Bitmap con el tamaño deseado
+            Bitmap resizedImage = new Bitmap(width, height);
+
+            // Dibujar la imagen original en el nuevo Bitmap
+            using (Graphics g = Graphics.FromImage(resizedImage))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(image, 0, 0, width, height);
+            }
+
+            return resizedImage;
+        }
+        
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) // LAPIZ Y X
+        {
+            // Verificar que no se ha hecho clic en el encabezado (rowIndex >= 0)
+            if (e.RowIndex >= 0)
+            {
+                // Obtener el nombre de la columna clicada
+                string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
+
+                if (columnName.Equals("Lapiz")) // Botón de modificar
+                {
+
+                    // Obtener el índice de la fila seleccionada
+                    int rowIndex = e.RowIndex;
+
+                    // Obtener datos asociados a la fila
+                    var sku = dataGridView1.Rows[rowIndex].Cells["sku"].Value.ToString();
+                    //faltan datos
+
+
+                    // Abrir el formulario de modificación (Form2)
+                    // var form2 = new Form2(sku); // Suponiendo que pasas el SKU al constructor de Form2
+                    // form2.ShowDialog(); // Mostrar como un cuadro modal
+                }
+                else if (columnName.Equals("Delete")) // Botón de eliminar
+                {
+                    // Obtener el índice de la fila seleccionada
+                    int rowIndex = e.RowIndex;
+
+                    // Obtener datos asociados a la fila
+                    var sku = dataGridView1.Rows[rowIndex].Cells["sku"].Value.ToString();
+
+                    // Mostrar un mensaje de confirmación
+                    var result = MessageBox.Show($"Are you sure you want to delete product {sku}?",
+                                                 "Confirmar eliminación",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Error);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Aquí va el código para eliminar el producto de la base de datos
+                        //var p = dataGridView1.CurrentRow.DataBoundItem;
+                        using (var context = new grupo07DBEntities())
+                        {
+                            var producto = context.Producto.SingleOrDefault(p => p.sku == sku);
+                            if (producto != null)
+                            {
+                                // Eliminar el producto
+                                context.Producto.Remove(producto);
+
+                                // Guardar cambios en la base de datos
+                                context.SaveChanges();
+                                cargarProductos(); // recarga los productos
+                                dataGridView1.ClearSelection();
+                                MessageBox.Show("Product successfully deleted", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+
+                            // Mostrar un mensaje de éxito
+
+                        }
+
+
+                    }
+                }
+            }
+
+         
+
+    }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void New_Product_Button_Click(object sender, EventArgs e) //  + NEW PRODUCT
         {
+            
+            // Crear una instancia del UserControl "AddProduct"
+            AddProductControl addProductControl = new AddProductControl();
 
+            // Obtener el formulario principal (padre del UserControl actual)
+            // Limpiar el contenido actual del contenedor
+
+            this.Controls.Clear();
+
+            // Configurar y agregar el nuevo UserControl
+            addProductControl.Dock = DockStyle.Fill; // Ajustar el UserControl al tamaño del contenedor
+            this.Controls.Add(addProductControl); // Agregar el nuevo UserControl al contenedor
+            
+            
+           
+            
         }
     }
 }
