@@ -98,6 +98,7 @@
             this.txtSKU.Name = "txtSKU";
             this.txtSKU.Size = new System.Drawing.Size(244, 20);
             this.txtSKU.TabIndex = 1;
+            this.txtSKU.TextChanged += new System.EventHandler(this.txtSKU_TextChanged);
             // 
             // lblGTIN
             // 
@@ -116,6 +117,7 @@
             this.txtGTIN.Name = "txtGTIN";
             this.txtGTIN.Size = new System.Drawing.Size(244, 20);
             this.txtGTIN.TabIndex = 3;
+            this.txtGTIN.TextChanged += new System.EventHandler(this.txtGTIN_TextChanged);
             // 
             // lblProductName
             // 
@@ -134,6 +136,7 @@
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(244, 20);
             this.txtProductName.TabIndex = 5;
+            this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             // 
             // lblShortDescription
             // 
@@ -153,6 +156,7 @@
             this.txtShortDescription.Name = "txtShortDescription";
             this.txtShortDescription.Size = new System.Drawing.Size(244, 54);
             this.txtShortDescription.TabIndex = 7;
+            this.txtShortDescription.TextChanged += new System.EventHandler(this.txtShortDescription_TextChanged);
             // 
             // lblThumbnail
             // 
@@ -173,6 +177,7 @@
             this.pictureBoxThumbnail.Size = new System.Drawing.Size(244, 74);
             this.pictureBoxThumbnail.TabIndex = 9;
             this.pictureBoxThumbnail.TabStop = false;
+            this.pictureBoxThumbnail.Click += new System.EventHandler(this.pictureBoxThumbnail_Click);
             // 
             // btnLoadThumbnail
             // 
@@ -202,6 +207,7 @@
             this.cmbCategories.Name = "cmbCategories";
             this.cmbCategories.Size = new System.Drawing.Size(244, 21);
             this.cmbCategories.TabIndex = 12;
+            this.cmbCategories.SelectedIndexChanged += new System.EventHandler(this.cmbCategories_SelectedIndexChanged);
             // 
             // lblAttributes
             // 
@@ -221,6 +227,7 @@
             this.cmbAttributes.Name = "cmbAttributes";
             this.cmbAttributes.Size = new System.Drawing.Size(244, 21);
             this.cmbAttributes.TabIndex = 14;
+            this.cmbAttributes.SelectedIndexChanged += new System.EventHandler(this.cmbAttributes_SelectedIndexChanged);
             // 
             // flowLayoutPanelButtons
             // 
@@ -242,6 +249,7 @@
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnCreate
             // 
@@ -253,6 +261,7 @@
             this.btnCreate.TabIndex = 1;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // AddProductControl
             // 

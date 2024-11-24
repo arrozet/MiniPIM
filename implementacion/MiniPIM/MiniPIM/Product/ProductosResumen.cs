@@ -26,7 +26,6 @@ namespace MiniPIM.Product
 
         private void ProductosResumen_Load(object sender, EventArgs e)
         {
-            //TODO
             productsToolStripMenuItem.Enabled = false; // esto lo podríamos poner directamente en el 
             dataGridView1.AutoGenerateColumns = false; // no se generan columnas nuevas feas
             cargarProductos();
@@ -114,7 +113,7 @@ namespace MiniPIM.Product
 
             // Mostrar el nuevo formulario y ocultar el actual
             categoriasForm.Show();
-            this.Close();
+            this.Hide();
         }
 
         private Image ResizeImage(Image image, int width, int height)
@@ -222,9 +221,11 @@ namespace MiniPIM.Product
             addProductControl.Dock = DockStyle.Fill; // Ajustar el UserControl al tamaño del contenedor
             this.Controls.Add(addProductControl); // Agregar el nuevo UserControl al contenedor
             
-            
-           
-            
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
