@@ -14,24 +14,6 @@ namespace MiniPIM.Category
     public partial class NewCategoryForm : Form
     {
 
-        public enum AttributeType
-        {
-            texto,
-            numero,
-            booleano,
-            video,
-            foto
-        }
-
-        private static readonly Dictionary<string, AttributeType> TypeMapping = new Dictionary<string, AttributeType>
-        {
-            { "Text", AttributeType.texto },
-            { "Number", AttributeType.numero },
-            { "Boolean", AttributeType.booleano },
-            { "Video", AttributeType.video },
-            { "Photo", AttributeType.foto }
-        };
-
         public NewCategoryForm()
         {
             InitializeComponent();
@@ -44,45 +26,31 @@ namespace MiniPIM.Category
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 // Crear una instancia del contexto de Entity Framework
                 using (var context = new grupo07DBEntities())
                 {
                     //Miramos que los campos esten rellenos
-                    if (string.IsNullOrEmpty(AttributeNameText.Text) || string.IsNullOrEmpty(AttributeTypeText.Text))
+                    if (string.IsNullOrEmpty(CategoryNameText.Text))
                     {
-                        MessageBox.Show("Por favor, complete todos los campos.");
+                        MessageBox.Show("Please, fill in all the fields.");
                         return;
                     }
 
-                    //Si el tipo esta permitido por la base de datos
-                    if (TypeMapping.TryGetValue(AttributeTypeText.Text, out AttributeType attributeType))
+                    Categoria newCategory = new Categoria
                     {
-                        //Creamos el nuevo atributo
-                        AtributoPersonalizado nuevoAtributo = new AtributoPersonalizado
-                        {
-                            nombre = AttributeNameText.Text,
-                            tipo = attributeType.ToString()
-                        };
+                        nombre = CategoryNameText.Text,
+                    };
 
-                        //Lo insertamos en la base de datos
-                        context.AtributoPersonalizado.Add(nuevoAtributo);
-                        context.SaveChanges();
+                    context.Categoria.Add(newCategory);
+                    context.SaveChanges();
 
-                        //Borramos las textbox
-                        AttributeNameText.Text = "";
-                        AttributeTypeText.Text = "";
+                    //Borramos las textbox
+                    CategoryNameText.Text = "";
 
-                        //Cerramos el form
-                        this.Close();
-                    }
-                    else
-                    {
-                        // Manejar error de tipo desconocido
-                        MessageBox.Show("Invalid attribute type. Please enter a valid type.");
-                    }
-
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -90,6 +58,7 @@ namespace MiniPIM.Category
                 // Mostrar cualquier error que ocurra
                 MessageBox.Show($"Error al cargar los datos: {ex.Message}");
             }
+            
         }
     }
 }

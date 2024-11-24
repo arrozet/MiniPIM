@@ -28,64 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.AttributteNameLabel = new System.Windows.Forms.Label();
-            this.AttributeTypeLabel = new System.Windows.Forms.Label();
-            this.AttributeNameText = new System.Windows.Forms.TextBox();
-            this.AttributeTypeText = new System.Windows.Forms.ComboBox();
+            this.CategoryNameLabel = new System.Windows.Forms.Label();
+            this.CategoryNameText = new System.Windows.Forms.TextBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // AttributteNameLabel
+            // CategoryNameLabel
             // 
-            this.AttributteNameLabel.AutoSize = true;
-            this.AttributteNameLabel.Location = new System.Drawing.Point(109, 131);
-            this.AttributteNameLabel.Name = "AttributteNameLabel";
-            this.AttributteNameLabel.Size = new System.Drawing.Size(92, 16);
-            this.AttributteNameLabel.TabIndex = 0;
-            this.AttributteNameLabel.Text = "Attribute name";
+            this.CategoryNameLabel.AutoSize = true;
+            this.CategoryNameLabel.Location = new System.Drawing.Point(82, 106);
+            this.CategoryNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CategoryNameLabel.Name = "CategoryNameLabel";
+            this.CategoryNameLabel.Size = new System.Drawing.Size(78, 13);
+            this.CategoryNameLabel.TabIndex = 0;
+            this.CategoryNameLabel.Text = "Category name";
+            this.CategoryNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // AttributeTypeLabel
+            // CategoryNameText
             // 
-            this.AttributeTypeLabel.AutoSize = true;
-            this.AttributeTypeLabel.Location = new System.Drawing.Point(109, 293);
-            this.AttributeTypeLabel.Name = "AttributeTypeLabel";
-            this.AttributeTypeLabel.Size = new System.Drawing.Size(84, 16);
-            this.AttributeTypeLabel.TabIndex = 1;
-            this.AttributeTypeLabel.Text = "Attribute type\r\n";
-            // 
-            // AttributeNameText
-            // 
-            this.AttributeNameText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.CategoryNameText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AttributeNameText.Location = new System.Drawing.Point(112, 163);
-            this.AttributeNameText.Name = "AttributeNameText";
-            this.AttributeNameText.Size = new System.Drawing.Size(790, 22);
-            this.AttributeNameText.TabIndex = 2;
-            // 
-            // AttributeTypeText
-            // 
-            this.AttributeTypeText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AttributeTypeText.FormattingEnabled = true;
-            this.AttributeTypeText.Items.AddRange(new object[] {
-            "Text",
-            "Number",
-            "Boolean",
-            "Video",
-            "Image"});
-            this.AttributeTypeText.Location = new System.Drawing.Point(112, 332);
-            this.AttributeTypeText.Name = "AttributeTypeText";
-            this.AttributeTypeText.Size = new System.Drawing.Size(790, 24);
-            this.AttributeTypeText.TabIndex = 3;
+            this.CategoryNameText.Location = new System.Drawing.Point(84, 132);
+            this.CategoryNameText.Margin = new System.Windows.Forms.Padding(2);
+            this.CategoryNameText.Name = "CategoryNameText";
+            this.CategoryNameText.Size = new System.Drawing.Size(594, 20);
+            this.CategoryNameText.TabIndex = 2;
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(607, 442);
+            this.CancelButton.Location = new System.Drawing.Point(455, 359);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(118, 48);
+            this.CancelButton.Size = new System.Drawing.Size(88, 39);
             this.CancelButton.TabIndex = 4;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -94,26 +70,26 @@
             // CreateButton
             // 
             this.CreateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateButton.Location = new System.Drawing.Point(771, 442);
+            this.CreateButton.Location = new System.Drawing.Point(578, 359);
+            this.CreateButton.Margin = new System.Windows.Forms.Padding(2);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(121, 48);
+            this.CreateButton.Size = new System.Drawing.Size(91, 39);
             this.CreateButton.TabIndex = 5;
-            this.CreateButton.Text = "Create attribute";
+            this.CreateButton.Text = "Create category";
             this.CreateButton.UseVisualStyleBackColor = true;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
-            // NewAttributeForm
+            // NewCategoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 520);
+            this.ClientSize = new System.Drawing.Size(718, 422);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.AttributeTypeText);
-            this.Controls.Add(this.AttributeNameText);
-            this.Controls.Add(this.AttributeTypeLabel);
-            this.Controls.Add(this.AttributteNameLabel);
-            this.Name = "NewAttributeForm";
+            this.Controls.Add(this.CategoryNameText);
+            this.Controls.Add(this.CategoryNameLabel);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "NewCategoryForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -122,10 +98,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label AttributteNameLabel;
-        private System.Windows.Forms.Label AttributeTypeLabel;
-        private System.Windows.Forms.TextBox AttributeNameText;
-        private System.Windows.Forms.ComboBox AttributeTypeText;
+        private System.Windows.Forms.Label CategoryNameLabel;
+        private System.Windows.Forms.TextBox CategoryNameText;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button CreateButton;
     }

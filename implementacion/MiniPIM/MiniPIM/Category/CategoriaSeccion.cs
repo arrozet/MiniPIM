@@ -30,29 +30,25 @@ namespace MiniPIM.Category
                 using (var context = new grupo07DBEntities())
                 {
                     // Cargar los datos de la tabla Producto
-                    var atributos = context.AtributoPersonalizado
-                        .Select(a => new
+                    var categorias = context.Categoria
+                        .Select(c => new
                         {
-                            a.id,
-                            a.nombre,
-                            a.tipo,
-                            CantidadRelacionados = context.ProductoAtributo
-                            .Where(pa => pa.atributo_id == a.id)  // Relaciona con ProductoAtributo usando atributo_id
-                            .Count()  // Cuenta las relaciones
+                            c.id,
+                            c.nombre,
+                            CantidadRelacionados = c.Producto.Count()
                         })
                         .ToList();
-                    Console.WriteLine($"Se han recuperado {atributos.Count} productos.");
+                   
 
                     // Asignar los datos al DataGridView
-                    listAttributes.AutoGenerateColumns = false;
+                    listCategories.AutoGenerateColumns = false;
 
                     // Configurar las columnas del DataGridView
-                    listAttributes.Columns["Label"].DataPropertyName = "nombre";
-                    listAttributes.Columns["ID"].DataPropertyName = "id";
-                    listAttributes.Columns["Type"].DataPropertyName = "tipo";
-                    listAttributes.Columns["NumberOfProducts"].DataPropertyName = "CantidadRelacionados";
+                    listCategories.Columns["Label"].DataPropertyName = "nombre";
+                    listCategories.Columns["ID"].DataPropertyName = "id";
+                    listCategories.Columns["NumberOfProducts"].DataPropertyName = "CantidadRelacionados";
 
-                    listAttributes.DataSource = atributos;
+                    listCategories.DataSource = categorias;
 
                 }
             }
@@ -91,16 +87,16 @@ namespace MiniPIM.Category
 
         private void NewAttribute_Click_1(object sender, EventArgs e)
         {
-            NewCategoryForm crearAtributosForm = new NewCategoryForm();
+            NewCategoryForm crearCategoriaForm = new NewCategoryForm();
 
             //Esto recarga el datagrid cuando se cierre el nuevo form
-            crearAtributosForm.FormClosed += (s, args) => CategoriaSeccion_Load(this, EventArgs.Empty);
+            crearCategoriaForm.FormClosed += (s, args) => CategoriaSeccion_Load(this, EventArgs.Empty);
 
-            crearAtributosForm.Show();
+            crearCategoriaForm.Show();
         }
 
 
-        private void listAttributes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void listCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //Meter el update y delete
 
@@ -108,13 +104,12 @@ namespace MiniPIM.Category
             if (e.RowIndex >= 0)
             {
                 // Obtener el atributo seleccionado
-                var selectedRow = listAttributes.Rows[e.RowIndex];
-                int attributeId = (int)selectedRow.Cells["id"].Value;
-                string attributeName = selectedRow.Cells["label"].Value.ToString();
-                string attributeType = selectedRow.Cells["type"].Value.ToString();
+                var selectedRow = listCategories.Rows[e.RowIndex];
+                int cattegoryId = (int)selectedRow.Cells["id"].Value;
+                string categoryName = selectedRow.Cells["label"].Value.ToString();
 
                 // Mostrar cuadro de diálogo para elegir acción
-                var result = MessageBox.Show($"{attributeName}",
+                var result = MessageBox.Show($"{categoryName}",
                                              "Choose Action",
                                              MessageBoxButtons.YesNoCancel,
                                              MessageBoxIcon.Question,
@@ -129,7 +124,7 @@ namespace MiniPIM.Category
                 else if (result == DialogResult.No)
                 {
                     // Borrar: confirmar antes de eliminar
-                    var confirmDelete = MessageBox.Show($"Are you sure you want to delete '{attributeName}'?",
+                    var confirmDelete = MessageBox.Show($"Are you sure you want to delete '{categoryName}'?",
                                                         "Confirm Delete",
                                                         MessageBoxButtons.YesNo,
                                                         MessageBoxIcon.Warning);
@@ -139,10 +134,10 @@ namespace MiniPIM.Category
                         // Eliminar de la base de datos
                         using (var context = new grupo07DBEntities())
                         {
-                            var attributeToDelete = context.AtributoPersonalizado.Find(attributeId);
-                            if (attributeToDelete != null)
+                            var categoryToDelete = context.Categoria.Find(cattegoryId);
+                            if (categoryToDelete != null)
                             {
-                                context.AtributoPersonalizado.Remove(attributeToDelete);
+                                context.Categoria.Remove(categoryToDelete);
                                 context.SaveChanges();
                             }
                         }
