@@ -89,9 +89,9 @@ namespace MiniPIM.Attribute
         }
 
 
-        private void NewAttribute_Click(object sender, EventArgs e)
+        private void NewAttribute_Click_1(object sender, EventArgs e)
         {
-            NewAttributeForm crearAtributosForm  = new NewAttributeForm();
+            NewAttributeForm crearAtributosForm = new NewAttributeForm();
 
             //Esto recarga el datagrid cuando se cierre el nuevo form
             crearAtributosForm.FormClosed += (s, args) => AtributosSeccion_Load(this, EventArgs.Empty);
@@ -154,5 +154,6 @@ namespace MiniPIM.Attribute
             }
         }
 
+        
     }
 }

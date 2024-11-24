@@ -163,9 +163,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-	  <EmbeddedResource Include="Product\ProductosResumen.resx">
-		  <DependentUpon>ProductosResumen.cs</DependentUpon>
-	  </EmbeddedResource>
+    <EmbeddedResource Include="Category\CategoriaSeccion.resx">
+      <DependentUpon>CategoriaSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\ProductosResumen.resx">
+      <DependentUpon>ProductosResumen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Attribute\AtributosSeccion.resx">
       <DependentUpon>AtributosSeccion.cs</DependentUpon>
     </EmbeddedResource>
