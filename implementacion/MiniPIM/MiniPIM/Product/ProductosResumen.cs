@@ -70,7 +70,19 @@ namespace MiniPIM.Product
 
                     // Asignar los datos procesados al DataGridView
                     dataGridView1.DataSource = productosParaMostrar;
+                    // MUESTRA LA ETIQUETA SI NO HAY PRODUCTOS
+                    if (productosParaMostrar.Count > 0)
+                    {
+                        dataGridView1.Visible = true;  // Mostrar el DataGridView
+                        NoAttributes.Visible = false;  // Ocultar el Label
+                    }
+                    else
+                    {
+                        dataGridView1.Visible = false; // Ocultar el DataGridView
+                        NoAttributes.Visible = true;   // Mostrar el Label
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -254,6 +266,11 @@ namespace MiniPIM.Product
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void NoAttributes_Click(object sender, EventArgs e)
         {
 
         }

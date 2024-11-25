@@ -156,7 +156,7 @@ namespace MiniPIM.Product
         {
             // Mostrar el mensaje de confirmación en inglés
             DialogResult result = MessageBox.Show(
-                "Are you sure you want to cancel the product creation?",
+                "Are you sure you want to cancel the product update?",
                 "Cancel Product Creation",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);

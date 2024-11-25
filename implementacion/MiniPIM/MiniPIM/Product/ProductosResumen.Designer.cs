@@ -33,11 +33,6 @@
             this.categoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Vista_Tabla_Button = new System.Windows.Forms.Button();
-            this.Vista_Resumen_Button = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.All_Products_label = new System.Windows.Forms.Label();
-            this.New_Product_Button = new System.Windows.Forms.Button();
             this.Pencil = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Thumbnail = new System.Windows.Forms.DataGridViewImageColumn();
@@ -45,6 +40,12 @@
             this.ProductTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShortDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categories = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vista_Tabla_Button = new System.Windows.Forms.Button();
+            this.Vista_Resumen_Button = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.All_Products_label = new System.Windows.Forms.Label();
+            this.New_Product_Button = new System.Windows.Forms.Button();
+            this.NoAttributes = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -121,6 +122,68 @@
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
+            // Pencil
+            // 
+            this.Pencil.FillWeight = 63.85116F;
+            this.Pencil.HeaderText = "⬇";
+            this.Pencil.MinimumWidth = 6;
+            this.Pencil.Name = "Pencil";
+            this.Pencil.ReadOnly = true;
+            this.Pencil.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Pencil.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Pencil.Text = "✏️";
+            this.Pencil.UseColumnTextForButtonValue = true;
+            // 
+            // Delete
+            // 
+            this.Delete.FillWeight = 71.06602F;
+            this.Delete.HeaderText = "X";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "🗑️";
+            this.Delete.UseColumnTextForButtonValue = true;
+            // 
+            // Thumbnail
+            // 
+            this.Thumbnail.FillWeight = 113.0166F;
+            this.Thumbnail.HeaderText = "Thumbnail";
+            this.Thumbnail.MinimumWidth = 6;
+            this.Thumbnail.Name = "Thumbnail";
+            this.Thumbnail.ReadOnly = true;
+            // 
+            // SKU
+            // 
+            this.SKU.DataPropertyName = "text";
+            this.SKU.FillWeight = 113.0166F;
+            this.SKU.HeaderText = "SKU";
+            this.SKU.MinimumWidth = 6;
+            this.SKU.Name = "SKU";
+            this.SKU.ReadOnly = true;
+            // 
+            // ProductTitle
+            // 
+            this.ProductTitle.FillWeight = 113.0166F;
+            this.ProductTitle.HeaderText = "Product Title";
+            this.ProductTitle.MinimumWidth = 6;
+            this.ProductTitle.Name = "ProductTitle";
+            this.ProductTitle.ReadOnly = true;
+            // 
+            // ShortDescription
+            // 
+            this.ShortDescription.FillWeight = 113.0166F;
+            this.ShortDescription.HeaderText = "Short Description";
+            this.ShortDescription.MinimumWidth = 6;
+            this.ShortDescription.Name = "ShortDescription";
+            this.ShortDescription.ReadOnly = true;
+            // 
+            // Categories
+            // 
+            this.Categories.FillWeight = 113.0166F;
+            this.Categories.HeaderText = "Categories";
+            this.Categories.MinimumWidth = 6;
+            this.Categories.Name = "Categories";
+            this.Categories.ReadOnly = true;
+            // 
             // Vista_Tabla_Button
             // 
             this.Vista_Tabla_Button.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -190,67 +253,19 @@
             this.New_Product_Button.UseVisualStyleBackColor = true;
             this.New_Product_Button.Click += new System.EventHandler(this.New_Product_Button_Click);
             // 
-            // Pencil
+            // NoAttributes
             // 
-            this.Pencil.FillWeight = 63.85116F;
-            this.Pencil.HeaderText = "⬇";
-            this.Pencil.MinimumWidth = 6;
-            this.Pencil.Name = "Pencil";
-            this.Pencil.ReadOnly = true;
-            this.Pencil.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Pencil.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Pencil.Text = "✏️";
-            this.Pencil.UseColumnTextForButtonValue = true;
-            // 
-            // Delete
-            // 
-            this.Delete.FillWeight = 71.06602F;
-            this.Delete.HeaderText = "X";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Text = "🗑️";
-            this.Delete.UseColumnTextForButtonValue = true;
-            // 
-            // Thumbnail
-            // 
-            this.Thumbnail.FillWeight = 113.0166F;
-            this.Thumbnail.HeaderText = "Thumbnail";
-            this.Thumbnail.MinimumWidth = 6;
-            this.Thumbnail.Name = "Thumbnail";
-            this.Thumbnail.ReadOnly = true;
-            // 
-            // SKU
-            // 
-            this.SKU.DataPropertyName = "text";
-            this.SKU.FillWeight = 113.0166F;
-            this.SKU.HeaderText = "SKU";
-            this.SKU.MinimumWidth = 6;
-            this.SKU.Name = "SKU";
-            this.SKU.ReadOnly = true;
-            // 
-            // ProductTitle
-            // 
-            this.ProductTitle.FillWeight = 113.0166F;
-            this.ProductTitle.HeaderText = "Product Title";
-            this.ProductTitle.MinimumWidth = 6;
-            this.ProductTitle.Name = "ProductTitle";
-            this.ProductTitle.ReadOnly = true;
-            // 
-            // ShortDescription
-            // 
-            this.ShortDescription.FillWeight = 113.0166F;
-            this.ShortDescription.HeaderText = "Short Description";
-            this.ShortDescription.MinimumWidth = 6;
-            this.ShortDescription.Name = "ShortDescription";
-            this.ShortDescription.ReadOnly = true;
-            // 
-            // Categories
-            // 
-            this.Categories.FillWeight = 113.0166F;
-            this.Categories.HeaderText = "Categories";
-            this.Categories.MinimumWidth = 6;
-            this.Categories.Name = "Categories";
-            this.Categories.ReadOnly = true;
+            this.NoAttributes.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.NoAttributes.AutoSize = true;
+            this.NoAttributes.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.NoAttributes.Location = new System.Drawing.Point(281, 232);
+            this.NoAttributes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NoAttributes.Name = "NoAttributes";
+            this.NoAttributes.Size = new System.Drawing.Size(404, 46);
+            this.NoAttributes.TabIndex = 6;
+            this.NoAttributes.Text = "NO PRODUCTS YET";
+            this.NoAttributes.Visible = false;
+            this.NoAttributes.Click += new System.EventHandler(this.NoAttributes_Click);
             // 
             // ProductosResumen
             // 
@@ -258,6 +273,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(993, 471);
+            this.Controls.Add(this.NoAttributes);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.dataGridView1);
@@ -299,5 +315,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShortDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categories;
+        private System.Windows.Forms.Label NoAttributes;
     }
 }
