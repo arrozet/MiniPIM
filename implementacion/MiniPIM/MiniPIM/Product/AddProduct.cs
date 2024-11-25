@@ -17,6 +17,7 @@ namespace MiniPIM.Product
         public AddProductControl()
         {
             InitializeComponent();
+            this.Load += new EventHandler(AddProductControl_Load);
         }
 
         private void BtnLoadThumbnail_Click(object sender, EventArgs e)
@@ -50,17 +51,12 @@ namespace MiniPIM.Product
             // Cargar categorías y atributos personalizados al abrir el control
             using (var context = new grupo07DBEntities())
             {
-                var categorias = context.Categoria.Select(c => new { c.id, c.nombre }).ToList();
-                cmbCategories.DataSource = categorias;
-                cmbCategories.DisplayMember = "nombre";
-                cmbCategories.ValueMember = "id";
-
-                var atributos = context.AtributoPersonalizado.Select(a => new { a.id, a.nombre }).ToList();
-                cmbAttributes.DataSource = atributos;
-                cmbAttributes.DisplayMember = "nombre";
-                cmbAttributes.ValueMember = "id";
+                var categorias = context.Categoria.ToList();
+                checkedListBoxCategories.DataSource = categorias;
             }
+            checkAttributeBoxes();
         }
+
         private void txtSKU_TextChanged(object sender, EventArgs e)
         {
 
@@ -134,13 +130,14 @@ namespace MiniPIM.Product
         private void btnCreate_Click(object sender, EventArgs e) // BOTON DE CREAR
         {
             if(!string.IsNullOrEmpty(txtSKU.Text) && !string.IsNullOrEmpty(txtGTIN.Text) && !string.IsNullOrEmpty(txtProductName.Text) &&
-                !string.IsNullOrEmpty(txtShortDescription.Text)) 
+                !string.IsNullOrEmpty(txtShortDescription.Text) && pictureBoxThumbnail.Image != null && !string.IsNullOrEmpty(txtLongDescription.Text))
             {
 
                 string sku = txtSKU.Text;
                 string gtin = txtGTIN.Text;
                 string name = txtProductName.Text;
                 string shortDescription = txtShortDescription.Text;
+                string longDescription = txtLongDescription.Text;
 
                 if (EsGTIN14Valido(gtin) && EsSKUValido(sku))
                 {
@@ -153,30 +150,29 @@ namespace MiniPIM.Product
                             gtin = gtin,
                             label = name,
                             descripcionCorta = shortDescription,
-                            fechaCreacion = DateTime.Now
+                            fechaCreacion = DateTime.Now,
+                            descripcionLarga = longDescription,
+                            thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image),
                         };
 
-                        // Guardar imagen si existe
-                        if (pictureBoxThumbnail.Image != null)
-                        {
-                            using (var ms = new MemoryStream())
-                            {
-                                pictureBoxThumbnail.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                                producto.thumbnail = ms.ToArray();
-                            }
-                        }
+                        context.Producto.Add(producto);
+                        context.SaveChanges();
+                        /*
+                        var nuevoProducto = context.Producto
+                            .Include("Categoria") // Incluir las categorías relacionadas
+                            .FirstOrDefault(p => p.sku == sku); // Filtrar por el SKU
 
-                        // Asociar categoría seleccionada
-                        if (cmbCategories.SelectedIndex != -1)
-                        {
-                            int selectedCategoryId = (int)cmbCategories.SelectedValue;
-                            var categoria = context.Categoria.FirstOrDefault(c => c.id == selectedCategoryId);
-                            if (categoria != null)
-                            {
-                                producto.Categoria.Add(categoria);
-                            }
-                        }
+                        // Crear una lista para asociar las categorías seleccionadas al producto
+                        var categoriasSeleccionadas = checkedListBoxCategories.CheckedItems
+                            .OfType<Categoria>() // Convertir los ítems seleccionados a objetos de tipo Categoria
+                            .ToList();
 
+                        foreach (Categoria item in categoriasSeleccionadas)
+                        {
+                            nuevoProducto.Categoria.Add(item);
+                        };
+                        context.SaveChanges();
+                        */
                         // Asociar atributo personalizado seleccionado
                         /*
                         if (cmbAttributes.SelectedIndex != -1)
@@ -189,6 +185,112 @@ namespace MiniPIM.Product
                             }
                         }
                         */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        // EDU ESCRIBE
+
+                        var atributosPersonalizados = context.AtributoPersonalizado
+                            .Select(a => new
+                            {
+                                a.id,
+                                a.nombre,
+                                a.tipo,
+                                a.espacioOcupado
+                            })
+                            .ToList();
+                        
+                        //guarrada incoming
+                        if (textBoxA1.Visible)
+                        {
+
+                            if (textBoxA1.Text != null)
+                            {
+                                var at1 = new ProductoAtributo
+                                {
+
+                                    producto_sku = sku,
+                                    atributo_id = atributosPersonalizados[0].id,
+                                    valor = textBoxA1.Text,
+
+                                };
+                                context.ProductoAtributo.Add(at1);
+                            }
+                            if (textBoxA2.Visible)
+                            {
+                                if (textBoxA2.Text != null)
+                                {
+                                    var at2 = new ProductoAtributo
+                                    {
+
+                                        producto_sku = sku,
+                                        atributo_id = atributosPersonalizados[1].id,
+                                        valor = textBoxA2.Text,
+
+                                    };
+                                    context.ProductoAtributo.Add(at2);
+                                }
+                                if (textBoxA3.Visible)
+                                {
+                                    if (textBoxA3.Text != null)
+                                    {
+                                        var at3 = new ProductoAtributo
+                                        {
+
+                                            producto_sku = sku,
+                                            atributo_id = atributosPersonalizados[2].id,
+                                            valor = textBoxA3.Text,
+
+                                        };
+                                        context.ProductoAtributo.Add(at3);
+                                    }
+                                    
+                                    if (textBoxA4.Visible)
+                                    {
+                                        var at4 = new ProductoAtributo
+                                        {
+
+                                            producto_sku = sku,
+                                            atributo_id = atributosPersonalizados[3].id,
+                                            valor = textBoxA4.Text,
+
+                                        };
+                                        context.ProductoAtributo.Add(at4);
+                                        if (textBoxA5.Visible)
+                                        {
+                                            var at5 = new ProductoAtributo
+                                            {
+
+                                                producto_sku = sku,
+                                                atributo_id = atributosPersonalizados[4].id,
+                                                valor = textBoxA5.Text,
+
+                                            };
+                                            context.ProductoAtributo.Add(at5);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+
+
+
+
                         // Agregar y guardar cambios en la base de datos
                         context.Producto.Add(producto);
                         context.SaveChanges();
@@ -199,6 +301,7 @@ namespace MiniPIM.Product
                         
                         // THUMBNAIL TIENE QUE SER OBLIGATORIO HAY QUE AÑADIR DESCRIPCION LARGA Y ADEMAS NO SE CREAN LOS PRODUCTOS POR LO QUE SEA
                     }
+
 
                     // PARA DECIR QUE EL SKU Y EL GTIN SON INVÁLIDOS
                 } else if (!EsGTIN14Valido(gtin) && !EsSKUValido(sku)) // si el sku y gtin no son válidos
@@ -330,5 +433,62 @@ namespace MiniPIM.Product
             return true; // El SKU es válido y no existe en la base de datos
         }
 
+        private byte[] ConvertirImagenABytes(Image imagen)
+        {
+            using (var ms = new MemoryStream())
+            {
+                // Detectar si la imagen es JPEG o PNG
+                if (System.Drawing.Imaging.ImageFormat.Jpeg.Equals(imagen.RawFormat))
+                {
+                    // Guardar la imagen en formato JPEG
+                    imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+                else if (System.Drawing.Imaging.ImageFormat.Png.Equals(imagen.RawFormat))
+                {
+                    // Guardar la imagen en formato PNG
+                    imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                }
+                else
+                {
+                    throw new InvalidOperationException("El formato de la imagen no es compatible. Solo se aceptan JPG o PNG.");
+                }
+
+                return ms.ToArray();
+            }
+        }
+
+        private void checkAttributeBoxes()
+        {
+            using(var context = new grupo07DBEntities())
+            {
+                var atributosPersonalizados = context.AtributoPersonalizado
+            .Select(a => new
+            {
+                a.id,
+                a.nombre,
+                a.tipo,
+                a.espacioOcupado
+            })
+            .ToList();
+                List<Label> labels = new List<Label>();
+                labels.Add(lblA1); labels.Add(lblA2); labels.Add(lblA3); labels.Add(lblA4); labels.Add(lblA5);
+                List<System.Windows.Forms.TextBox> textBoxes = new List<System.Windows.Forms.TextBox>();
+                textBoxes.Add(textBoxA1); textBoxes.Add(textBoxA2); textBoxes.Add(textBoxA3); textBoxes.Add(textBoxA4); textBoxes.Add(textBoxA5);
+                for (int i = 0; i < atributosPersonalizados.Count; i++)
+                {
+                    Label l = labels[i];
+                    System.Windows.Forms.TextBox txt = textBoxes[i];
+                    l.Text = atributosPersonalizados[i].nombre;
+                    l.Visible = true;
+                    l.Enabled = true;
+                    txt.Visible = true;
+                    txt.Enabled = true;
+                    
+                }
+            }
+            
+        }
+
     }
 }
+

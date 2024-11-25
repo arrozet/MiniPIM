@@ -140,7 +140,7 @@ namespace MiniPIM.Product
                 // Obtener el nombre de la columna clicada
                 string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
 
-                if (columnName.Equals("Lapiz")) // Botón de modificar
+                if (columnName.Equals("Pencil")) // Botón de modificar
                 {
 
                     // Obtener el índice de la fila seleccionada
@@ -149,7 +149,12 @@ namespace MiniPIM.Product
                     // Obtener datos asociados a la fila
                     var sku = dataGridView1.Rows[rowIndex].Cells["sku"].Value.ToString();
                     //faltan datos
+                    UpdateProductControl upc = new UpdateProductControl(sku);
+                    this.Controls.Clear();
 
+                    // Configurar y agregar el nuevo UserControl
+                    upc.Dock = DockStyle.Fill; // Ajustar el UserControl al tamaño del contenedor
+                    this.Controls.Add(upc); // Agregar el nuevo UserControl al contenedor
 
                     // Abrir el formulario de modificación (Form2)
                     // var form2 = new Form2(sku); // Suponiendo que pasas el SKU al constructor de Form2

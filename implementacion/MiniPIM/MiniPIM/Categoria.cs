@@ -23,5 +23,8 @@ namespace MiniPIM
         public string nombre { get; set; }
     
         public virtual ICollection<Producto> Producto { get; set; }
+        public override string ToString(){
+            return nombre;
+        }
     }
 }
