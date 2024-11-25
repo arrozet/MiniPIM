@@ -235,7 +235,7 @@ namespace MiniPIM.Product
                     foreach (int item_id in categoriaIds)
                     {
                         Categoria c = context.Categoria.FirstOrDefault(cat => cat.id == item_id);
-                        nuevoProducto.Categoria.Add(c);
+                        updatableProduct.Categoria.Add(c);
                     };
 
                     if (!nombreOG.Equals(name) || !dcOG.Equals(shortDescription) || !dlOG.Equals(longDescription))
