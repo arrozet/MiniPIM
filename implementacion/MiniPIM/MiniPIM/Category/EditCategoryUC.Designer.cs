@@ -39,17 +39,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(112, 138);
+            this.label1.Location = new System.Drawing.Point(100, 110);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.Size = new System.Drawing.Size(0, 16);
             this.label1.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(93, 138);
+            this.label2.Location = new System.Drawing.Point(83, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.Size = new System.Drawing.Size(99, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Category name";
             // 
@@ -58,17 +58,19 @@
             this.nameText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameText.Location = new System.Drawing.Point(97, 180);
+            this.nameText.Location = new System.Drawing.Point(86, 144);
+            this.nameText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nameText.Name = "nameText";
-            this.nameText.Size = new System.Drawing.Size(362, 39);
+            this.nameText.Size = new System.Drawing.Size(362, 22);
             this.nameText.TabIndex = 2;
             // 
             // CancelButton
             // 
             this.CancelButton.AutoSize = true;
-            this.CancelButton.Location = new System.Drawing.Point(313, 289);
+            this.CancelButton.Location = new System.Drawing.Point(222, 231);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(113, 46);
+            this.CancelButton.Size = new System.Drawing.Size(100, 37);
             this.CancelButton.TabIndex = 3;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -76,9 +78,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(50, 10);
+            this.button2.Location = new System.Drawing.Point(44, 8);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(8, 8);
+            this.button2.Size = new System.Drawing.Size(7, 6);
             this.button2.TabIndex = 4;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -86,9 +89,10 @@
             // UpdateButton
             // 
             this.UpdateButton.AutoSize = true;
-            this.UpdateButton.Location = new System.Drawing.Point(448, 289);
+            this.UpdateButton.Location = new System.Drawing.Point(350, 231);
+            this.UpdateButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(110, 46);
+            this.UpdateButton.Size = new System.Drawing.Size(98, 37);
             this.UpdateButton.TabIndex = 5;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
@@ -96,7 +100,7 @@
             // 
             // EditCategoryUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.button2);
@@ -104,8 +108,9 @@
             this.Controls.Add(this.nameText);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "EditCategoryUC";
-            this.Size = new System.Drawing.Size(437, 258);
+            this.Size = new System.Drawing.Size(532, 342);
             this.ResumeLayout(false);
             this.PerformLayout();
 
