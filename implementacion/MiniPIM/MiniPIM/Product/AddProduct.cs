@@ -157,22 +157,25 @@ namespace MiniPIM.Product
 
                         context.Producto.Add(producto);
                         context.SaveChanges();
-                        /*
+
                         var nuevoProducto = context.Producto
-                            .Include("Categoria") // Incluir las categorías relacionadas
-                            .FirstOrDefault(p => p.sku == sku); // Filtrar por el SKU
+                           .Include("Categoria")
+                           .FirstOrDefault(p => p.sku == sku); // Filtrar por SKU
 
                         // Crear una lista para asociar las categorías seleccionadas al producto
-                        var categoriasSeleccionadas = checkedListBoxCategories.CheckedItems
+                        var categoriaIds = checkedListBoxCategories.CheckedItems
                             .OfType<Categoria>() // Convertir los ítems seleccionados a objetos de tipo Categoria
-                            .ToList();
+                            .Select(c => c.id)   // Seleccionar solo la propiedad id
+                            .ToList();           // Convertir a una lista
 
-                        foreach (Categoria item in categoriasSeleccionadas)
+
+                        foreach (int item_id in categoriaIds)
                         {
-                            nuevoProducto.Categoria.Add(item);
+                            Categoria c = context.Categoria.FirstOrDefault(cat => cat.id == item_id);
+                            nuevoProducto.Categoria.Add(c);
                         };
                         context.SaveChanges();
-                        */
+                        
                         // Asociar atributo personalizado seleccionado
                         /*
                         if (cmbAttributes.SelectedIndex != -1)
@@ -285,15 +288,6 @@ namespace MiniPIM.Product
                                 }
                             }
                         }
-
-
-
-
-
-
-                        // Agregar y guardar cambios en la base de datos
-                        context.Producto.Add(producto);
-                        context.SaveChanges();
 
                         MessageBox.Show("Product created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
