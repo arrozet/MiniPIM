@@ -43,6 +43,7 @@ namespace MiniPIM.Attribute
                         .ToList();
                     Console.WriteLine($"Se han recuperado {atributos.Count} productos.");
 
+
                     // Asignar los datos al DataGridView
                     listAttributes.AutoGenerateColumns = false;
 
@@ -53,6 +54,19 @@ namespace MiniPIM.Attribute
                     listAttributes.Columns["NumberOfProducts"].DataPropertyName = "CantidadRelacionados";
 
                     listAttributes.DataSource = atributos;
+
+                    // Verificar si hay datos y mostrar/ocultar la etiqueta
+                    if (atributos.Count > 0)
+                    {
+                        listAttributes.Visible = true;  // Mostrar el DataGridView
+                        NoAttributes.Visible = false;  // Ocultar el Label
+                    }
+                    else
+                    {
+                        listAttributes.Visible = false; // Ocultar el DataGridView
+                        NoAttributes.Visible = true;   // Mostrar el Label
+                    }
+
 
                 }
             }
@@ -85,6 +99,18 @@ namespace MiniPIM.Attribute
                     // Asignar los datos actualizados al DataGridView
                     listAttributes.DataSource = null; // Limpia los datos anteriores
                     listAttributes.DataSource = atributos;
+
+                    // Verificar si hay datos y mostrar/ocultar la etiqueta
+                    if (atributos.Count > 0)
+                    {
+                        listAttributes.Visible = true;  // Mostrar el DataGridView
+                        NoAttributes.Visible = false;  // Ocultar el Label
+                    }
+                    else
+                    {
+                        listAttributes.Visible = false; // Ocultar el DataGridView
+                        NoAttributes.Visible = true;   // Mostrar el Label
+                    }
                 }
             }
             catch (Exception ex)
@@ -125,6 +151,16 @@ namespace MiniPIM.Attribute
 
         private void NewAttribute_Click_1(object sender, EventArgs e)
         {
+            if (listAttributes.Rows.Count >= 5)
+            {
+                // Mostrar un mensaje indicando que no se pueden añadir más productos
+                MessageBox.Show("You cannot add more attributes. The limit is 5.",
+                                "Limit reached",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
             NewAttributeForm crearAtributosForm = new NewAttributeForm();
 
             //Esto recarga el datagrid cuando se cierre el nuevo form

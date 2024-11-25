@@ -39,7 +39,16 @@ namespace MiniPIM.Attribute
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("¿Are you sure you want to cancel this procces?",
+                                          "Confirm",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
+
+            // Si el usuario selecciona 'Sí', cerrar la ventana
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -52,7 +61,7 @@ namespace MiniPIM.Attribute
                     //Miramos que los campos esten rellenos
                     if (string.IsNullOrEmpty(AttributeNameText.Text) || string.IsNullOrEmpty(AttributeTypeText.Text))
                     {
-                        MessageBox.Show("Por favor, complete todos los campos.");
+                        MessageBox.Show("You must complete the required fields");
                         return;
                     }
 

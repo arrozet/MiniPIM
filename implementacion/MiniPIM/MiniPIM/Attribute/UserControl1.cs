@@ -96,7 +96,17 @@ namespace MiniPIM.Attribute
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Hide();
+            DialogResult result = MessageBox.Show("¿Are you sure you want to cancel this procces?",
+                                          "Confirm",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
+
+            // Si el usuario selecciona 'Sí', cerrar la ventana
+            if (result == DialogResult.Yes)
+            {
+                this.ParentForm.Hide();
+            }
+            
         }
     }
 }
