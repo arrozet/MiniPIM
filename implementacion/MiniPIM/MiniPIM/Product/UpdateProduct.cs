@@ -15,6 +15,7 @@ namespace MiniPIM.Product
 {
     public partial class UpdateProductControl : UserControl
     {
+
         public UpdateProductControl(Producto p, bool isUpdate)
         {
             InitializeComponent();
@@ -201,16 +202,18 @@ namespace MiniPIM.Product
                     {
                         // Crear producto
 
-                        productToUpdate.sku = sku;
-                        productToUpdate.gtin = gtin;
-                        productToUpdate.label = name;
-                        productToUpdate.descripcionCorta = shortDescription;
-                        productToUpdate.fechaCreacion = DateTime.Now;
-                        productToUpdate.descripcionLarga = longDescription;
+                        //productToUpdate.sku = sku;
+                        //productToUpdate.gtin = gtin;
+                        Producto updatableProduct = context.Producto.Where(x => x.sku == productToUpdate.sku).FirstOrDefault();
+
+                        updatableProduct.label = name;
+                        updatableProduct.descripcionCorta = shortDescription;
+                        updatableProduct.ultimaModificacion = DateTime.Now;
+                        updatableProduct.descripcionLarga = longDescription;
 
                         if (!imagenOriginal.Equals(pictureBoxThumbnail.Image)) // PA QUE NO DE ERROR
                         {
-                        productToUpdate.thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image);
+                            updatableProduct.thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image);
                         }
 
 
@@ -233,108 +236,8 @@ namespace MiniPIM.Product
                     };
                     context.SaveChanges();
 
-                        // Asociar atributo personalizado seleccionado
-                        /*
-                        if (cmbAttributes.SelectedIndex != -1)
-                        {
-                            int selectedAttributeId = (int)cmbAttributes.SelectedValue;
-                            var atributo = context.AtributoPersonalizado.FirstOrDefault(a => a.id == selectedAttributeId);
-                            if (atributo != null)
-                            {
-                                producto.ProductoAtributo.Add(atributo);
-                            }
-                        }
-                        */
+                        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        // EDU ESCRIBE
-
-                        var atributosPersonalizados = context.AtributoPersonalizado
-                            .Select(a => new
-                            {
-                                a.id,
-                                a.nombre,
-                                a.tipo,
-                                a.espacioOcupado
-                            })
-                            .ToList();
-
-                        //guarrada incoming
-                        if (textBoxA1.Visible)
-                        {
-
-                            var at1 = new ProductoAtributo
-                            {
-
-                                producto_sku = sku,
-                                atributo_id = atributosPersonalizados[0].id,
-                                valor = textBoxA1.Text,
-
-                            };
-                            context.ProductoAtributo.Add(at1);
-                            if (textBoxA2.Visible)
-                            {
-                                var at2 = new ProductoAtributo
-                                {
-
-                                    producto_sku = sku,
-                                    atributo_id = atributosPersonalizados[1].id,
-                                    valor = textBoxA2.Text,
-
-                                };
-                                context.ProductoAtributo.Add(at2);
-                                if (textBoxA3.Visible)
-                                {
-                                    var at3 = new ProductoAtributo
-                                    {
-
-                                        producto_sku = sku,
-                                        atributo_id = atributosPersonalizados[2].id,
-                                        valor = textBoxA3.Text,
-
-                                    };
-                                    context.ProductoAtributo.Add(at3);
-                                    if (textBoxA4.Visible)
-                                    {
-                                        var at4 = new ProductoAtributo
-                                        {
-
-                                            producto_sku = sku,
-                                            atributo_id = atributosPersonalizados[3].id,
-                                            valor = textBoxA4.Text,
-
-                                        };
-                                        context.ProductoAtributo.Add(at4);
-                                        if (textBoxA5.Visible)
-                                        {
-                                            var at5 = new ProductoAtributo
-                                            {
-
-                                                producto_sku = sku,
-                                                atributo_id = atributosPersonalizados[4].id,
-                                                valor = textBoxA5.Text,
-
-                                            };
-                                            context.ProductoAtributo.Add(at5);
-                                        }
-                                    }
-                                }
-                            }
-                        }
                         // Agregar y guardar cambios en la base de datos
                         //context.Producto.Add(producto);
                         //context.SaveChanges();
