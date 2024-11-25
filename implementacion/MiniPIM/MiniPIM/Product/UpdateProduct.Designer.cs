@@ -1,4 +1,6 @@
-﻿namespace MiniPIM.Product
+﻿using System.Drawing;
+
+namespace MiniPIM.Product
 {
     partial class UpdateProductControl
     {
@@ -454,5 +456,6 @@
         public System.Windows.Forms.Label lblA5;
         private Producto productToUpdate;
         private bool isUpdate;
+        private Image imagenOriginal;
     }
 }

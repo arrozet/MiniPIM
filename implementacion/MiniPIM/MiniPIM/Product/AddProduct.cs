@@ -318,7 +318,7 @@ namespace MiniPIM.Product
                         productosResumenForm.Show();
 
                         this.ParentForm.Hide();  // Esto oculta el formulario actual
-                        // THUMBNAIL TIENE QUE SER OBLIGATORIO HAY QUE AÑADIR DESCRIPCION LARGA Y ADEMAS NO SE CREAN LOS PRODUCTOS POR LO QUE SEA
+
                     }
 
 
