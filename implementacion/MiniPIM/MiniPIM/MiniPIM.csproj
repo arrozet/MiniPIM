@@ -104,6 +104,12 @@
     <Compile Include="Category\CategoriaSeccion.Designer.cs">
       <DependentUpon>CategoriaSeccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Category\EditCategoryUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Category\EditCategoryUC.Designer.cs">
+      <DependentUpon>EditCategoryUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category\NewCategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Category\CategoriaSeccion.resx">
       <DependentUpon>CategoriaSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\EditCategoryUC.resx">
+      <DependentUpon>EditCategoryUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product\UpdateProduct.resx">
       <DependentUpon>UpdateProduct.cs</DependentUpon>

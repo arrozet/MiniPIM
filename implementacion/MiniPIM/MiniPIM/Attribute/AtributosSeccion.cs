@@ -164,7 +164,12 @@ namespace MiniPIM.Attribute
             NewAttributeForm crearAtributosForm = new NewAttributeForm();
 
             //Esto recarga el datagrid cuando se cierre el nuevo form
-            crearAtributosForm.FormClosed += (s, args) => AtributosSeccion_Load(this, EventArgs.Empty);
+
+            crearAtributosForm.FormClosed += (s, args) =>
+            {
+                // Recargar el DataGridView
+                AtributosSeccion_Load(this, EventArgs.Empty);
+            };
 
             crearAtributosForm.Show();
         }

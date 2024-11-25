@@ -50,6 +50,11 @@ namespace MiniPIM.Category
                     //Borramos las textbox
                     CategoryNameText.Text = "";
 
+                    this.Hide();
+
+                    MessageBox.Show("The category has been successfully created.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //Cerramos el form
                     this.Close();
                 }
             }

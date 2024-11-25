@@ -22,7 +22,7 @@ namespace MiniPIM.Category
             this.Load += new System.EventHandler(this.CategoriaSeccion_Load);
         }
 
-        private void CategoriaSeccion_Load(object sender, EventArgs e)
+        public void CategoriaSeccion_Load(object sender, EventArgs e)
         {
 
             try
@@ -50,6 +50,18 @@ namespace MiniPIM.Category
                     listCategories.Columns["NumberOfProducts"].DataPropertyName = "CantidadRelacionados";
 
                     listCategories.DataSource = categorias;
+
+                    // Verificar si hay datos y mostrar/ocultar la etiqueta
+                    if (categorias.Count > 0)
+                    {
+                        listCategories.Visible = true;  // Mostrar el DataGridView
+                        NoCategories.Visible = false;  // Ocultar el Label
+                    }
+                    else
+                    {
+                        listCategories.Visible = false; // Ocultar el DataGridView
+                        NoCategories.Visible = true;   // Mostrar el Label
+                    }
 
                 }
             }
@@ -94,62 +106,85 @@ namespace MiniPIM.Category
             NewCategoryForm crearCategoriaForm = new NewCategoryForm();
 
             //Esto recarga el datagrid cuando se cierre el nuevo form
-            crearCategoriaForm.FormClosed += (s, args) => CategoriaSeccion_Load(this, EventArgs.Empty);
+            crearCategoriaForm.FormClosed += (s, args) =>
+            {
+                // Recargar el DataGridView
+                CategoriaSeccion_Load(this, EventArgs.Empty);
 
+            };
             crearCategoriaForm.Show();
         }
 
 
         private void listCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Meter el update y delete
-
             // Validar que no sea un clic en el encabezado de columna
-            if (e.RowIndex >= 0)
+            if (e.ColumnIndex == listCategories.Columns["pencil"].Index && e.RowIndex >= 0)
             {
                 // Obtener el atributo seleccionado
                 var selectedRow = listCategories.Rows[e.RowIndex];
-                int cattegoryId = (int)selectedRow.Cells["id"].Value;
+                int categoryId = (int)selectedRow.Cells["id"].Value;
                 string categoryName = selectedRow.Cells["label"].Value.ToString();
 
-                // Mostrar cuadro de diálogo para elegir acción
-                var result = MessageBox.Show($"{categoryName}",
-                                             "Choose Action",
-                                             MessageBoxButtons.YesNoCancel,
-                                             MessageBoxIcon.Question,
-                                             MessageBoxDefaultButton.Button3);
-
-                if (result == DialogResult.Yes)
+                // Crear un formulario que contendrá el UserControl
+                Form categoryForm = new Form
                 {
-                    // Actualizar: abrir el formulario para editar
-                    //Abrir formulario para actualizar
+                    Text = "Edit Category",
+                    Size = new System.Drawing.Size(450, 300),
+                    StartPosition = FormStartPosition.CenterParent
+                };
 
-                }
-                else if (result == DialogResult.No)
+                // Crear la instancia del UserControl
+                EditCategoryUC categoryControl = new EditCategoryUC(categoryId, this)
                 {
-                    // Borrar: confirmar antes de eliminar
-                    var confirmDelete = MessageBox.Show($"Are you sure you want to delete '{categoryName}'?",
-                                                        "Confirm Delete",
-                                                        MessageBoxButtons.YesNo,
-                                                        MessageBoxIcon.Warning);
+                    Dock = DockStyle.Fill,
+                };
 
-                    if (confirmDelete == DialogResult.Yes)
+                // Establecer los valores en el UserControl usando los setters
+                categoryControl.CategoryName = categoryName; // Establecer el nombre del atributo
+
+                // Agregar el UserControl al formulario
+                categoryForm.Controls.Add(categoryControl);
+
+                // Mostrar el formulario como modal
+                categoryForm.ShowDialog(); // Mostrar el formulario de manera modal
+
+                categoryForm.FormClosed += (s, args) => CategoriaSeccion_Load(this, EventArgs.Empty);
+
+            }
+
+            if (e.ColumnIndex == listCategories.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                // Validar que no sea un clic en el encabezado de columna
+                // Obtener el atributo seleccionado
+                var selectedRow = listCategories.Rows[e.RowIndex];
+                int categoryId = (int)selectedRow.Cells["id"].Value;
+                string categoryName = selectedRow.Cells["label"].Value.ToString();
+
+                // Borrar: confirmar antes de eliminar
+                var confirmDelete = MessageBox.Show($"Are you sure you want to delete '{categoryName}'?",
+                                                    "Confirm Delete",
+                                                    MessageBoxButtons.YesNo,
+                                                    MessageBoxIcon.Warning);
+
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    // Eliminar de la base de datos
+                    using (var context = new grupo07DBEntities())
                     {
-                        // Eliminar de la base de datos
-                        using (var context = new grupo07DBEntities())
+                        var categoryToDelete = context.Categoria.Find(categoryId);
+                        if (categoryToDelete != null)
                         {
-                            var categoryToDelete = context.Categoria.Find(cattegoryId);
-                            if (categoryToDelete != null)
-                            {
-                                context.Categoria.Remove(categoryToDelete);
-                                context.SaveChanges();
-                            }
+                            context.Categoria.Remove(categoryToDelete);
+                            context.SaveChanges();
                         }
-
-                        // Refrescar el DataGridView
-                        CategoriaSeccion_Load(sender, e);
                     }
+
+                    // Refrescar el DataGridView
+                    CategoriaSeccion_Load(sender, e);
                 }
+
+
             }
         }
 

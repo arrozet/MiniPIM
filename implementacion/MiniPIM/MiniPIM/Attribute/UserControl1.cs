@@ -62,6 +62,13 @@ namespace MiniPIM.Attribute
                 // Crear una instancia del contexto de Entity Framework
                 using (var context = new grupo07DBEntities())
                 {
+
+                    if (string.IsNullOrEmpty(nameText.Text) || string.IsNullOrEmpty(typeText.Text))
+                    {
+                        MessageBox.Show("Please, fill in all the fields.");
+                        return;
+                    }
+
                     if (TypeMapping.TryGetValue(typeText.Text, out AttributeType attributeType))
                     {
                         var atributo = context.AtributoPersonalizado.SingleOrDefault(a => a.id == id);
@@ -76,9 +83,11 @@ namespace MiniPIM.Attribute
                         typeText.Text = "";
 
                         //Cerramos el form
-                        this.ParentForm.Hide();
+                        this.ParentForm.Close();
 
                         seccionAtributos.RecargarAtributos();
+
+                        MessageBox.Show("The attribute has been successfully updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -96,7 +105,7 @@ namespace MiniPIM.Attribute
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Are you sure you want to cancel this procces?",
+            DialogResult result = MessageBox.Show("Are you sure you want to cancel this process?",
                                           "Confirm",
                                           MessageBoxButtons.YesNo,
                                           MessageBoxIcon.Question);
@@ -104,9 +113,10 @@ namespace MiniPIM.Attribute
             // Si el usuario selecciona 'Sí', cerrar la ventana
             if (result == DialogResult.Yes)
             {
-                this.ParentForm.Hide();
+                this.ParentForm.Close();
             }
             
         }
+
     }
 }

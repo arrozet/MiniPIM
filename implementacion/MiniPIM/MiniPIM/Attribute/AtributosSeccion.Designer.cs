@@ -30,23 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button NewAttribute;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Products = new System.Windows.Forms.ToolStripMenuItem();
             this.Attributes = new System.Windows.Forms.ToolStripMenuItem();
             this.Categories = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.listAttributes = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.NoAttributes = new System.Windows.Forms.Label();
             this.Label = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pencil = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumberOfProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.NoAttributes = new System.Windows.Forms.Label();
             NewAttribute = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listAttributes)).BeginInit();
@@ -57,9 +57,10 @@
             // 
             NewAttribute.Dock = System.Windows.Forms.DockStyle.Fill;
             NewAttribute.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            NewAttribute.Location = new System.Drawing.Point(385, 3);
+            NewAttribute.Location = new System.Drawing.Point(433, 4);
+            NewAttribute.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             NewAttribute.Name = "NewAttribute";
-            NewAttribute.Size = new System.Drawing.Size(377, 77);
+            NewAttribute.Size = new System.Drawing.Size(425, 96);
             NewAttribute.TabIndex = 6;
             NewAttribute.Text = "+ New attribute";
             NewAttribute.UseVisualStyleBackColor = true;
@@ -68,6 +69,7 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Indigo;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Products,
@@ -75,7 +77,8 @@
             this.Categories});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(765, 36);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(861, 40);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -85,7 +88,7 @@
             this.Products.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Products.ForeColor = System.Drawing.Color.White;
             this.Products.Name = "Products";
-            this.Products.Size = new System.Drawing.Size(103, 32);
+            this.Products.Size = new System.Drawing.Size(122, 36);
             this.Products.Text = "Products";
             this.Products.Click += new System.EventHandler(this.Products_Click);
             // 
@@ -96,7 +99,7 @@
             this.Attributes.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Attributes.ForeColor = System.Drawing.Color.Gray;
             this.Attributes.Name = "Attributes";
-            this.Attributes.Size = new System.Drawing.Size(113, 32);
+            this.Attributes.Size = new System.Drawing.Size(134, 36);
             this.Attributes.Text = "Attributes";
             this.Attributes.Click += new System.EventHandler(this.Attributes_Click);
             // 
@@ -106,7 +109,7 @@
             this.Categories.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Categories.ForeColor = System.Drawing.Color.White;
             this.Categories.Name = "Categories";
-            this.Categories.Size = new System.Drawing.Size(119, 32);
+            this.Categories.Size = new System.Drawing.Size(143, 36);
             this.Categories.Text = "Categories";
             this.Categories.Click += new System.EventHandler(this.Categories_Click);
             // 
@@ -124,14 +127,14 @@
             this.listAttributes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listAttributes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.listAttributes.CausesValidation = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listAttributes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listAttributes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listAttributes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listAttributes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Label,
@@ -140,21 +143,64 @@
             this.Delete,
             this.Type,
             this.NumberOfProducts});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listAttributes.DefaultCellStyle = dataGridViewCellStyle8;
-            this.listAttributes.Location = new System.Drawing.Point(10, 125);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listAttributes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.listAttributes.Location = new System.Drawing.Point(11, 156);
+            this.listAttributes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listAttributes.Name = "listAttributes";
             this.listAttributes.RowHeadersWidth = 51;
             this.listAttributes.RowTemplate.Height = 24;
-            this.listAttributes.Size = new System.Drawing.Size(743, 326);
+            this.listAttributes.Size = new System.Drawing.Size(836, 408);
             this.listAttributes.TabIndex = 3;
             this.listAttributes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listAttributes_CellClick);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(NewAttribute, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 49);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(861, 104);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.75F);
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(424, 104);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "All Attributes";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // NoAttributes
+            // 
+            this.NoAttributes.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.NoAttributes.AutoSize = true;
+            this.NoAttributes.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.NoAttributes.Location = new System.Drawing.Point(150, 325);
+            this.NoAttributes.Name = "NoAttributes";
+            this.NoAttributes.Size = new System.Drawing.Size(643, 69);
+            this.NoAttributes.TabIndex = 5;
+            this.NoAttributes.Text = "NO ATTRIBUTES YET";
+            this.NoAttributes.Visible = false;
             // 
             // Label
             // 
@@ -182,7 +228,7 @@
             // 
             // Delete
             // 
-            this.Delete.HeaderText = "Delete";
+            this.Delete.HeaderText = "X";
             this.Delete.MinimumWidth = 6;
             this.Delete.Name = "Delete";
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -202,57 +248,17 @@
             this.NumberOfProducts.MinimumWidth = 6;
             this.NumberOfProducts.Name = "NumberOfProducts";
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(NewAttribute, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 39);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(765, 83);
-            this.tableLayoutPanel1.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.75F);
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(376, 83);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "All Attributes";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // NoAttributes
-            // 
-            this.NoAttributes.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.NoAttributes.AutoSize = true;
-            this.NoAttributes.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.NoAttributes.Location = new System.Drawing.Point(133, 260);
-            this.NoAttributes.Name = "NoAttributes";
-            this.NoAttributes.Size = new System.Drawing.Size(534, 58);
-            this.NoAttributes.TabIndex = 5;
-            this.NoAttributes.Text = "NO ATTRIBUTES YET";
-            this.NoAttributes.Visible = false;
-            // 
             // AtributosSeccion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 450);
+            this.ClientSize = new System.Drawing.Size(861, 562);
             this.Controls.Add(this.NoAttributes);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.listAttributes);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AtributosSeccion";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
@@ -275,12 +281,12 @@
         private System.Windows.Forms.ToolStripMenuItem Categories;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label NoAttributes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Label;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewButtonColumn Pencil;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfProducts;
-        private System.Windows.Forms.Label NoAttributes;
     }
 }

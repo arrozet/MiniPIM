@@ -39,35 +39,36 @@
             // AttributteNameLabel
             // 
             this.AttributteNameLabel.AutoSize = true;
-            this.AttributteNameLabel.Location = new System.Drawing.Point(109, 131);
+            this.AttributteNameLabel.Location = new System.Drawing.Point(123, 164);
             this.AttributteNameLabel.Name = "AttributteNameLabel";
-            this.AttributteNameLabel.Size = new System.Drawing.Size(92, 16);
+            this.AttributteNameLabel.Size = new System.Drawing.Size(114, 20);
             this.AttributteNameLabel.TabIndex = 0;
             this.AttributteNameLabel.Text = "Attribute name";
             // 
             // AttributeTypeLabel
             // 
             this.AttributeTypeLabel.AutoSize = true;
-            this.AttributeTypeLabel.Location = new System.Drawing.Point(109, 293);
+            this.AttributeTypeLabel.Location = new System.Drawing.Point(123, 366);
             this.AttributeTypeLabel.Name = "AttributeTypeLabel";
-            this.AttributeTypeLabel.Size = new System.Drawing.Size(84, 16);
+            this.AttributeTypeLabel.Size = new System.Drawing.Size(104, 20);
             this.AttributeTypeLabel.TabIndex = 1;
             this.AttributeTypeLabel.Text = "Attribute type\r\n";
             // 
             // AttributeNameText
             // 
-            this.AttributeNameText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.AttributeNameText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AttributeNameText.Location = new System.Drawing.Point(112, 163);
+            this.AttributeNameText.Location = new System.Drawing.Point(126, 204);
+            this.AttributeNameText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AttributeNameText.Name = "AttributeNameText";
-            this.AttributeNameText.Size = new System.Drawing.Size(790, 22);
+            this.AttributeNameText.Size = new System.Drawing.Size(888, 26);
             this.AttributeNameText.TabIndex = 2;
             // 
             // AttributeTypeText
             // 
-            this.AttributeTypeText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.AttributeTypeText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AttributeTypeText.FormattingEnabled = true;
             this.AttributeTypeText.Items.AddRange(new object[] {
@@ -75,17 +76,19 @@
             "Number",
             "Boolean",
             "Video",
-            "Image"});
-            this.AttributeTypeText.Location = new System.Drawing.Point(112, 332);
+            "Photo"});
+            this.AttributeTypeText.Location = new System.Drawing.Point(126, 415);
+            this.AttributeTypeText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AttributeTypeText.Name = "AttributeTypeText";
-            this.AttributeTypeText.Size = new System.Drawing.Size(790, 24);
+            this.AttributeTypeText.Size = new System.Drawing.Size(888, 28);
             this.AttributeTypeText.TabIndex = 3;
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(607, 442);
+            this.CancelButton.Location = new System.Drawing.Point(683, 552);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(118, 48);
+            this.CancelButton.Size = new System.Drawing.Size(133, 60);
             this.CancelButton.TabIndex = 4;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -94,9 +97,10 @@
             // CreateButton
             // 
             this.CreateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateButton.Location = new System.Drawing.Point(771, 442);
+            this.CreateButton.Location = new System.Drawing.Point(867, 552);
+            this.CreateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(121, 48);
+            this.CreateButton.Size = new System.Drawing.Size(136, 60);
             this.CreateButton.TabIndex = 5;
             this.CreateButton.Text = "Create attribute";
             this.CreateButton.UseVisualStyleBackColor = true;
@@ -104,15 +108,16 @@
             // 
             // NewAttributeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 520);
+            this.ClientSize = new System.Drawing.Size(1077, 650);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AttributeTypeText);
             this.Controls.Add(this.AttributeNameText);
             this.Controls.Add(this.AttributeTypeLabel);
             this.Controls.Add(this.AttributteNameLabel);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "NewAttributeForm";
             this.Text = "Form1";
             this.ResumeLayout(false);

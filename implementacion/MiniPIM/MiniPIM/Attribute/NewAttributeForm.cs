@@ -83,6 +83,10 @@ namespace MiniPIM.Attribute
                         AttributeNameText.Text = "";
                         AttributeTypeText.Text = "";
 
+                        this.Hide();
+
+                        MessageBox.Show("The attribute has been successfully created.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         //Cerramos el form
                         this.Close();
                     }
