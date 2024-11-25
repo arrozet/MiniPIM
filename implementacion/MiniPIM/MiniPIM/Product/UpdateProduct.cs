@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -82,9 +83,11 @@ namespace MiniPIM.Product
             txtProductName.Text = productToUpdate.label.ToString();
             txtShortDescription.Text = productToUpdate.descripcionCorta.ToString();
             txtLongDescription.Text = productToUpdate.descripcionLarga.ToString();
+            
 
             Image imagen = ConvertirBytesAImagen(productToUpdate.thumbnail);
-
+            this.imagenOriginal = imagen;
+            
             if (imagen != null)
             {
                 pictureBoxThumbnail.Image = imagen; // Mostrar la imagen en el PictureBox
@@ -204,7 +207,11 @@ namespace MiniPIM.Product
                         productToUpdate.descripcionCorta = shortDescription;
                         productToUpdate.fechaCreacion = DateTime.Now;
                         productToUpdate.descripcionLarga = longDescription;
+
+                        if (!imagenOriginal.Equals(pictureBoxThumbnail.Image)) // PA QUE NO DE ERROR
+                        {
                         productToUpdate.thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image);
+                        }
 
 
                     // Crear una lista para asociar las categorías seleccionadas al producto
@@ -328,27 +335,34 @@ namespace MiniPIM.Product
                                 }
                             }
                         }
-
-
-
-
-
-
                         // Agregar y guardar cambios en la base de datos
                         //context.Producto.Add(producto);
                         //context.SaveChanges();
 
-                        MessageBox.Show("Product created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Product updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                         // Limpiar formulario
+                        // Crear una nueva instancia del formulario ProductosResumen
+                        ProductosResumen productosResumenForm = new ProductosResumen();
 
-                        // THUMBNAIL TIENE QUE SER OBLIGATORIO HAY QUE AÑADIR DESCRIPCION LARGA Y ADEMAS NO SE CREAN LOS PRODUCTOS POR LO QUE SEA
+
+                        // Asignar la posición y el tamaño del formulario actual
+                        productosResumenForm.StartPosition = FormStartPosition.Manual; // Para permitir personalizar la posición
+
+                        // Calcular la ubicación absoluta de la pantalla para el nuevo formulario
+                        Point formLocation = this.ParentForm.Location;
+                        Point controlLocation = this.Location;
+                        productosResumenForm.Location = new Point(formLocation.X + controlLocation.X, formLocation.Y + controlLocation.Y);
+
+                        productosResumenForm.Size = this.Size; // Mismo tamaño que el formulario actual
+
+                        // Mostrar el formulario ProductosResumen
+                        this.Controls.Clear();
+                        productosResumenForm.Show();
+
+                        this.ParentForm.Hide();  // Esto oculta el formulario actual
                     }
-
-
-                    // PARA DECIR QUE EL SKU Y EL GTIN SON INVÁLIDOS
-                
-                
 
 
             }
@@ -446,9 +460,36 @@ namespace MiniPIM.Product
 
             using (var ms = new MemoryStream(bytesImagen))
             {
-                return Image.FromStream(ms); // Crear la imagen desde el stream
+                // Crear la imagen desde el stream
+                Image imagenOriginal = Image.FromStream(ms);
+
+                // Redimensionar la imagen a 200x200
+                Image imagenRedimensionada = RedimensionarImagen(imagenOriginal, 200, 200);
+
+                // Convertir la imagen redimensionada a formato PNG o JPG
+                return imagenRedimensionada;
             }
         }
+
+        private Image RedimensionarImagen(Image imagenOriginal, int ancho, int alto)
+        {
+            // Crear una nueva imagen con las dimensiones deseadas
+            Bitmap imagenRedimensionada = new Bitmap(ancho, alto);
+
+            // Usar el objeto Graphics para dibujar la imagen redimensionada
+            using (Graphics g = Graphics.FromImage(imagenRedimensionada))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                g.Clear(Color.Transparent); // Fondo transparente si es PNG
+
+                // Dibujar la imagen original redimensionada
+                g.DrawImage(imagenOriginal, 0, 0, ancho, alto);
+            }
+
+            return imagenRedimensionada;
+        }
+
 
     }
 }
