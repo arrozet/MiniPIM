@@ -35,6 +35,7 @@ namespace MiniPIM.Product
                     if (img.Width == 200 && img.Height == 200)
                     {
                         pictureBoxThumbnail.Image = img; // Cargar imagen al PictureBox
+                        
                     }
                     else
                     {
@@ -58,10 +59,24 @@ namespace MiniPIM.Product
                 var categorias = context.Categoria.ToList();
                 checkedListBoxCategories.DataSource = categorias;
 
-               
+                var nuevoProducto = context.Producto
+                           .Include("Categoria")
+                           .FirstOrDefault(np => np.sku == productToUpdate.sku); // Filtrar por SKU
+
+                var categoriasProducto = nuevoProducto.Categoria;
+
+                // Checkear las categorias que tiene el producto
+                foreach(Categoria item in categoriasProducto)
+                {
+                    //Console.WriteLine("NOMBRE DE CATEGORIA DE PRODUCTO:"+item.nombre);
+                    int index = checkedListBoxCategories.Items.IndexOf(item);
+                    checkedListBoxCategories.SetItemChecked(index, true);
+                }
             }
             checkAttributeBoxes();
              
+            
+
             txtSKU.Text = productToUpdate.sku.ToString();
             txtGTIN.Text = productToUpdate.gtin.ToString();
             txtProductName.Text = productToUpdate.label.ToString();
@@ -386,18 +401,20 @@ namespace MiniPIM.Product
             using (var context = new grupo07DBEntities())
             {
                 var atributosPersonalizados = context.AtributoPersonalizado
-            .Select(a => new
-            {
-                a.id,
-                a.nombre,
-                a.tipo,
-                a.espacioOcupado
-            })
-            .ToList();
+                .Select(a => new
+                {
+                    a.id,
+                    a.nombre,
+                    a.tipo,
+                    a.espacioOcupado
+                })
+                .ToList();
+
                 List<Label> labels = new List<Label>();
                 labels.Add(lblA1); labels.Add(lblA2); labels.Add(lblA3); labels.Add(lblA4); labels.Add(lblA5);
                 List<System.Windows.Forms.TextBox> textBoxes = new List<System.Windows.Forms.TextBox>();
                 textBoxes.Add(textBoxA1); textBoxes.Add(textBoxA2); textBoxes.Add(textBoxA3); textBoxes.Add(textBoxA4); textBoxes.Add(textBoxA5);
+
                 for (int i = 0; i < atributosPersonalizados.Count; i++)
                 {
                     Label l = labels[i];
@@ -407,7 +424,16 @@ namespace MiniPIM.Product
                     l.Enabled = true;
                     txt.Visible = true;
                     txt.Enabled = true;
-
+                    var atributos = context.ProductoAtributo.Where(p => p.producto_sku == productToUpdate.sku).ToList();
+                    
+                    foreach (ProductoAtributo pa in atributos)
+                    {
+                        if (atributosPersonalizados[i].id.Equals(pa.atributo_id))
+                        {
+                            txt.Text = pa.valor.ToString();
+                        }
+                    }
+                    
                 }
             }
 
