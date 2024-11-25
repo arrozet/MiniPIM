@@ -14,11 +14,12 @@ namespace MiniPIM.Product
 {
     public partial class UpdateProductControl : UserControl
     {
-        public UpdateProductControl(Producto p)
+        public UpdateProductControl(Producto p, bool isUpdate)
         {
             InitializeComponent();
             this.Load += new EventHandler(AddProductControl_Load);
-            this.productToUpdate = p; 
+            this.productToUpdate = p;
+            this.isUpdate = isUpdate;
         }
 
         private void BtnLoadThumbnail_Click(object sender, EventArgs e)
@@ -56,6 +57,8 @@ namespace MiniPIM.Product
             {
                 var categorias = context.Categoria.ToList();
                 checkedListBoxCategories.DataSource = categorias;
+
+               
             }
             checkAttributeBoxes();
              
@@ -75,8 +78,22 @@ namespace MiniPIM.Product
             {
                 pictureBoxThumbnail.Image = null; // Limpia el PictureBox si no hay imagen
             }
-            
 
+            
+            //SOLO LECTURA
+            if (!this.isUpdate)
+            {
+                this.txtProductName.ReadOnly = true;
+                this.txtShortDescription.ReadOnly = true;
+                this.txtLongDescription.ReadOnly = true;
+                this.btnLoadThumbnail.Visible = false;
+                this.checkedListBoxCategories.Enabled = false;
+                this.textBoxA1.ReadOnly = true;
+                this.textBoxA2.ReadOnly = true;
+                this.textBoxA3.ReadOnly = true;
+                this.textBoxA4.ReadOnly = true;
+                this.textBoxA5.ReadOnly = true;
+            }
         }
 
         private void txtSKU_TextChanged(object sender, EventArgs e)

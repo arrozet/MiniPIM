@@ -240,6 +240,7 @@
             this.txtLongDescription.Location = new System.Drawing.Point(102, 204);
             this.txtLongDescription.Multiline = true;
             this.txtLongDescription.Name = "txtLongDescription";
+            this.txtLongDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtLongDescription.Size = new System.Drawing.Size(292, 79);
             this.txtLongDescription.TabIndex = 15;
             // 
@@ -247,7 +248,9 @@
             // 
             this.checkedListBoxCategories.FormattingEnabled = true;
             this.checkedListBoxCategories.Location = new System.Drawing.Point(102, 289);
+            this.checkedListBoxCategories.MultiColumn = true;
             this.checkedListBoxCategories.Name = "checkedListBoxCategories";
+            this.checkedListBoxCategories.ScrollAlwaysVisible = true;
             this.checkedListBoxCategories.Size = new System.Drawing.Size(244, 49);
             this.checkedListBoxCategories.TabIndex = 3;
             // 
@@ -450,5 +453,6 @@
         public System.Windows.Forms.Label lblA4;
         public System.Windows.Forms.Label lblA5;
         private Producto productToUpdate;
+        private bool isUpdate;
     }
 }

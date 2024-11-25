@@ -154,7 +154,7 @@ namespace MiniPIM.Product
                     {
                         productoSeleccionado = context.Producto.FirstOrDefault(p => p.sku == sku);
                     }
-                    UpdateProductControl upc = new UpdateProductControl(productoSeleccionado);
+                    UpdateProductControl upc = new UpdateProductControl(productoSeleccionado, true);
                     this.Controls.Clear();
 
                     // Configurar y agregar el nuevo UserControl
@@ -204,6 +204,26 @@ namespace MiniPIM.Product
 
 
                     }
+                } else if (columnName.Equals("SKU"))
+                {
+
+                    // Obtener el índice de la fila seleccionada
+                    int rowIndex = e.RowIndex;
+
+                    // Obtener datos asociados a la fila
+                    var sku = dataGridView1.Rows[rowIndex].Cells["sku"].Value.ToString();
+                    //faltan datos
+                    Producto productoSeleccionado;
+                    using (var context = new grupo07DBEntities())
+                    {
+                        productoSeleccionado = context.Producto.FirstOrDefault(p => p.sku == sku);
+                    }
+                    UpdateProductControl upc = new UpdateProductControl(productoSeleccionado, false);
+                    this.Controls.Clear();
+
+                    // Configurar y agregar el nuevo UserControl
+                    upc.Dock = DockStyle.Fill; // Ajustar el UserControl al tamaño del contenedor
+                    this.Controls.Add(upc); // Agregar el nuevo UserControl al contenedor
                 }
             }
 
