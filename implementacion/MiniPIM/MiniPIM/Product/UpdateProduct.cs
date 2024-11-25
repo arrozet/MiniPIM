@@ -18,7 +18,7 @@ namespace MiniPIM.Product
         {
             InitializeComponent();
             this.Load += new EventHandler(AddProductControl_Load);
-            this.productToUpdate = p;
+            this.productToUpdate = p; 
         }
 
         private void BtnLoadThumbnail_Click(object sender, EventArgs e)
@@ -75,6 +75,7 @@ namespace MiniPIM.Product
             {
                 pictureBoxThumbnail.Image = null; // Limpia el PictureBox si no hay imagen
             }
+            
 
         }
 
@@ -161,8 +162,6 @@ namespace MiniPIM.Product
                 string shortDescription = txtShortDescription.Text;
                 string longDescription = txtLongDescription.Text;
 
-                if (EsGTIN14Valido(gtin) && EsSKUValido(sku))
-                {
                     using (var context = new grupo07DBEntities())
                     {
                         // Crear producto
@@ -174,26 +173,27 @@ namespace MiniPIM.Product
                         productToUpdate.fechaCreacion = DateTime.Now;
                         productToUpdate.descripcionLarga = longDescription;
                         productToUpdate.thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image);
-                        
 
-                        // Crear una lista para asociar las categorías seleccionadas al producto
-                        var categoriasSeleccionadas = checkedListBoxCategories.CheckedItems
-                            .OfType<Categoria>() // Convertir los ítems seleccionados a objetos de tipo Categoria
-                            .ToList();
 
-                        foreach (var item in categoriasSeleccionadas)
-                        {
-                            if (item.id != null)
-                            {
-                                Console.WriteLine("INSERT INTO ProductoCategoria (producto_sku, categoria_id) VALUES ('{0}', {1})", sku, item.id);
+                    // Crear una lista para asociar las categorías seleccionadas al producto
+                    var nuevoProducto = context.Producto
+                       .Include("Categoria")
+                       .FirstOrDefault(p => p.sku == sku); // Filtrar por SKU
 
-                                context.Database.ExecuteSqlCommand(
-                                    "INSERT INTO ProductoCategoria (producto_sku, categoria_id) VALUES ('{0}', {1})", sku, item.id);
-                            }
+                    // Crear una lista para asociar las categorías seleccionadas al producto
+                    var categoriaIds = checkedListBoxCategories.CheckedItems
+                        .OfType<Categoria>() // Convertir los ítems seleccionados a objetos de tipo Categoria
+                        .Select(c => c.id)   // Seleccionar solo la propiedad id
+                        .ToList();           // Convertir a una lista
 
-                        }
 
-                        context.SaveChanges();
+                    foreach (int item_id in categoriaIds)
+                    {
+                        Categoria c = context.Categoria.FirstOrDefault(cat => cat.id == item_id);
+                        nuevoProducto.Categoria.Add(c);
+                    };
+                    context.SaveChanges();
+
                         // Asociar atributo personalizado seleccionado
                         /*
                         if (cmbAttributes.SelectedIndex != -1)
@@ -315,34 +315,8 @@ namespace MiniPIM.Product
 
 
                     // PARA DECIR QUE EL SKU Y EL GTIN SON INVÁLIDOS
-                }
-                else if (!EsGTIN14Valido(gtin) && !EsSKUValido(sku)) // si el sku y gtin no son válidos
-                {
-                    DialogResult result = MessageBox.Show(
-                    "Neither the SKU nor the GTIN is valid.",
-                    "Bad GTIN and SKU",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                }
-                else if (!EsGTIN14Valido(gtin)) // si el gtin no es válido
-                {
-                    DialogResult result = MessageBox.Show(
-                    "The GTIN is not valid.",
-                    "Bad GTIN",
-                    MessageBoxButtons.OK,
-
-                    MessageBoxIcon.Warning);
-                }
-                else if (!EsSKUValido(sku)) // si el sku no es válido
-                {
-                    DialogResult result = MessageBox.Show(
-                    "The SKU is not valid.",
-                    "Bad SKU",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                }
+                
+                
 
 
             }
@@ -359,94 +333,12 @@ namespace MiniPIM.Product
 
 
 
-        // FUNCIONES PARA COMPROBAR QUE EL SKU ES VALIDO
-        public static bool EsGTIN14Valido(string gtin)
-        {
-            // Verificamos si el GTIN tiene exactamente 14 caracteres numéricos
-            if (string.IsNullOrEmpty(gtin) || gtin.Length != 14 || !ulong.TryParse(gtin, out _))
-            {
-                return false;
-            }
-
-            // Validar con el algoritmo de Luhn
-            if (!EsValidoConLuhn(gtin))
-            {
-                return false;
-            }
-
-            // Verificar si el GTIN ya existe en la base de datos
-            using (var context = new grupo07DBEntities())
-            {
-                // Comprobamos si ya existe un producto con ese GTIN en la base de datos
-                bool existe = context.Producto.Any(p => p.gtin == gtin);
-                if (existe)
-                {
-                    return false; // El GTIN ya existe en la base de datos
-                }
-            }
-
-            return true; // El GTIN es válido y no existe en la base de datos
-        }
-
-        // Función auxiliar para verificar si el GTIN es válido según el algoritmo de Luhn
-        private static bool EsValidoConLuhn(string gtin)
-        {
-            int suma = 0;
-
-            // Iteramos sobre cada dígito del GTIN-14, desde el último hasta el primero
-            for (int i = 0; i < 14; i++)
-            {
-                // Tomamos el dígito en la posición i (empezamos desde la derecha)
-                int digito = gtin[13 - i] - '0';
-
-                // Aplicamos el algoritmo de Luhn: multiplicamos los dígitos en posiciones impares por 3
-                // y los dígitos en posiciones pares por 1
-                if (i % 2 == 0)
-                {
-                    suma += digito; // posición impar (empezando desde el 1)
-                }
-                else
-                {
-                    suma += digito * 3; // posición par
-                }
-            }
-
-            // Verificamos si la suma es divisible por 10
-            return suma % 10 == 0;
-        }
 
 
 
 
 
-        // FUNCION PARA VERIFICAR QUE EL SKU ES VALIDO
-        public static bool EsSKUValido(string sku)
-        {
-            // Verificamos si el SKU tiene una longitud válida (por ejemplo, entre 5 y 20 caracteres)
-            if (string.IsNullOrEmpty(sku) || sku.Length < 5 || sku.Length > 20)
-            {
-                return false; // El SKU no tiene una longitud válida
-            }
-
-            // Verificamos si el SKU contiene solo caracteres alfanuméricos
-            if (!sku.All(char.IsLetterOrDigit))
-            {
-                return false; // El SKU contiene caracteres no alfanuméricos
-            }
-
-            // Verificar si el SKU ya existe en la base de datos
-            using (var context = new grupo07DBEntities())
-            {
-                // Comprobamos si ya existe un producto con ese SKU en la base de datos
-                bool existe = context.Producto.Any(p => p.sku == sku);
-                if (existe)
-                {
-                    return false; // El SKU ya existe en la base de datos
-                }
-            }
-
-            return true; // El SKU es válido y no existe en la base de datos
-        }
+       
 
         private byte[] ConvertirImagenABytes(Image imagen)
         {

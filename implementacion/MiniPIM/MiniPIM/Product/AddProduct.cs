@@ -220,7 +220,7 @@ namespace MiniPIM.Product
                         if (textBoxA1.Visible)
                         {
 
-                            if (textBoxA1.Text != null)
+                            if (!string.IsNullOrEmpty(textBoxA1.Text))
                             {
                                 var at1 = new ProductoAtributo
                                 {
@@ -234,7 +234,7 @@ namespace MiniPIM.Product
                             }
                             if (textBoxA2.Visible)
                             {
-                                if (textBoxA2.Text != null)
+                                if (!string.IsNullOrEmpty(textBoxA2.Text))
                                 {
                                     var at2 = new ProductoAtributo
                                     {
@@ -248,7 +248,7 @@ namespace MiniPIM.Product
                                 }
                                 if (textBoxA3.Visible)
                                 {
-                                    if (textBoxA3.Text != null)
+                                    if (!string.IsNullOrEmpty(textBoxA3.Text))
                                     {
                                         var at3 = new ProductoAtributo
                                         {
@@ -263,7 +263,7 @@ namespace MiniPIM.Product
                                     
                                     if (textBoxA4.Visible)
                                     {
-                                        if (textBoxA4.Text != null)
+                                        if (!string.IsNullOrEmpty(textBoxA4.Text))
                                         {
                                             var at4 = new ProductoAtributo
                                             {
@@ -277,7 +277,7 @@ namespace MiniPIM.Product
                                         }
                                         if (textBoxA5.Visible)
                                         {
-                                            if(textBoxA5.Text != null)
+                                            if(!string.IsNullOrEmpty(textBoxA5.Text))
                                             {
                                                 var at5 = new ProductoAtributo
                                                 {
@@ -294,11 +294,30 @@ namespace MiniPIM.Product
                                 }
                             }
                         }
+                        context.SaveChanges();
 
                         MessageBox.Show("Product created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Limpiar formulario
-                        
+                        // Crear una nueva instancia del formulario ProductosResumen
+                        ProductosResumen productosResumenForm = new ProductosResumen();
+
+
+                        // Asignar la posición y el tamaño del formulario actual
+                        productosResumenForm.StartPosition = FormStartPosition.Manual; // Para permitir personalizar la posición
+
+                        // Calcular la ubicación absoluta de la pantalla para el nuevo formulario
+                        Point formLocation = this.ParentForm.Location;
+                        Point controlLocation = this.Location;
+                        productosResumenForm.Location = new Point(formLocation.X + controlLocation.X, formLocation.Y + controlLocation.Y);
+
+                        productosResumenForm.Size = this.Size; // Mismo tamaño que el formulario actual
+
+                        // Mostrar el formulario ProductosResumen
+                        this.Controls.Clear();
+                        productosResumenForm.Show();
+
+                        this.ParentForm.Hide();  // Esto oculta el formulario actual
                         // THUMBNAIL TIENE QUE SER OBLIGATORIO HAY QUE AÑADIR DESCRIPCION LARGA Y ADEMAS NO SE CREAN LOS PRODUCTOS POR LO QUE SEA
                     }
 

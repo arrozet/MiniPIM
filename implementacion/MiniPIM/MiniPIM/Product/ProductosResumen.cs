@@ -149,8 +149,12 @@ namespace MiniPIM.Product
                     // Obtener datos asociados a la fila
                     var sku = dataGridView1.Rows[rowIndex].Cells["sku"].Value.ToString();
                     //faltan datos
-                   
-                    UpdateProductControl upc = new UpdateProductControl(new Producto());
+                    Producto productoSeleccionado;
+                    using (var context = new grupo07DBEntities())
+                    {
+                        productoSeleccionado = context.Producto.FirstOrDefault(p => p.sku == sku);
+                    }
+                    UpdateProductControl upc = new UpdateProductControl(productoSeleccionado);
                     this.Controls.Clear();
 
                     // Configurar y agregar el nuevo UserControl
