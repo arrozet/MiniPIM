@@ -14,11 +14,11 @@ namespace MiniPIM.Product
 {
     public partial class UpdateProductControl : UserControl
     {
-        public UpdateProductControl(string sku)
+        public UpdateProductControl(Producto p)
         {
             InitializeComponent();
             this.Load += new EventHandler(AddProductControl_Load);
-            this.skuToUpdate = sku;
+            this.productToUpdate = p;
         }
 
         private void BtnLoadThumbnail_Click(object sender, EventArgs e)
@@ -58,16 +58,23 @@ namespace MiniPIM.Product
                 checkedListBoxCategories.DataSource = categorias;
             }
             checkAttributeBoxes();
-            Producto product;
-            using (var context = new grupo07DBEntities())
+             
+            txtSKU.Text = productToUpdate.sku.ToString();
+            txtGTIN.Text = productToUpdate.gtin.ToString();
+            txtProductName.Text = productToUpdate.label.ToString();
+            txtShortDescription.Text = productToUpdate.descripcionCorta.ToString();
+            txtLongDescription.Text = productToUpdate.descripcionLarga.ToString();
+
+            Image imagen = ConvertirBytesAImagen(productToUpdate.thumbnail);
+
+            if (imagen != null)
             {
-                product = (Producto)context.Producto.Select(p => skuToUpdate == p.sku);
+                pictureBoxThumbnail.Image = imagen; // Mostrar la imagen en el PictureBox
             }
-            txtSKU.Text = product.sku.ToString();
-            txtGTIN.Text = product.gtin.ToString();
-            txtProductName.Text = product.label.ToString();
-            txtShortDescription.Text = product.descripcionCorta.ToString();
-            txtLongDescription.Text = product.descripcionLarga.ToString();
+            else
+            {
+                pictureBoxThumbnail.Image = null; // Limpia el PictureBox si no hay imagen
+            }
 
         }
 
@@ -158,17 +165,15 @@ namespace MiniPIM.Product
                 {
                     using (var context = new grupo07DBEntities())
                     {
-                        Producto product;
-                        product = (Producto)context.Producto.Select(p => skuToUpdate == p.sku);
                         // Crear producto
 
-                        product.sku = sku;
-                        product.gtin = gtin;
-                        product.label = name;
-                        product.descripcionCorta = shortDescription;
-                        product.fechaCreacion = DateTime.Now;
-                        product.descripcionLarga = longDescription;
-                        product.thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image);
+                        productToUpdate.sku = sku;
+                        productToUpdate.gtin = gtin;
+                        productToUpdate.label = name;
+                        productToUpdate.descripcionCorta = shortDescription;
+                        productToUpdate.fechaCreacion = DateTime.Now;
+                        productToUpdate.descripcionLarga = longDescription;
+                        productToUpdate.thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image);
                         
 
                         // Crear una lista para asociar las categorías seleccionadas al producto
@@ -497,6 +502,17 @@ namespace MiniPIM.Product
                 }
             }
 
+        }
+
+        private Image ConvertirBytesAImagen(byte[] bytesImagen)
+        {
+            if (bytesImagen == null || bytesImagen.Length == 0)
+                return null; // Si no hay imagen, devolver null
+
+            using (var ms = new MemoryStream(bytesImagen))
+            {
+                return Image.FromStream(ms); // Crear la imagen desde el stream
+            }
         }
 
     }

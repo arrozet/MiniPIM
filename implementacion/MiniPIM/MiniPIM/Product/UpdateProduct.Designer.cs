@@ -449,6 +449,6 @@
         public System.Windows.Forms.Label lblA3;
         public System.Windows.Forms.Label lblA4;
         public System.Windows.Forms.Label lblA5;
-        private string skuToUpdate;
+        private Producto productToUpdate;
     }
 }

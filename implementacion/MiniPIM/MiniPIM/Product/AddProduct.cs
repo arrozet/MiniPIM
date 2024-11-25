@@ -263,26 +263,32 @@ namespace MiniPIM.Product
                                     
                                     if (textBoxA4.Visible)
                                     {
-                                        var at4 = new ProductoAtributo
+                                        if (textBoxA4.Text != null)
                                         {
-
-                                            producto_sku = sku,
-                                            atributo_id = atributosPersonalizados[3].id,
-                                            valor = textBoxA4.Text,
-
-                                        };
-                                        context.ProductoAtributo.Add(at4);
-                                        if (textBoxA5.Visible)
-                                        {
-                                            var at5 = new ProductoAtributo
+                                            var at4 = new ProductoAtributo
                                             {
 
                                                 producto_sku = sku,
-                                                atributo_id = atributosPersonalizados[4].id,
-                                                valor = textBoxA5.Text,
+                                                atributo_id = atributosPersonalizados[3].id,
+                                                valor = textBoxA4.Text,
 
                                             };
-                                            context.ProductoAtributo.Add(at5);
+                                            context.ProductoAtributo.Add(at4);
+                                        }
+                                        if (textBoxA5.Visible)
+                                        {
+                                            if(textBoxA5.Text != null)
+                                            {
+                                                var at5 = new ProductoAtributo
+                                                {
+
+                                                    producto_sku = sku,
+                                                    atributo_id = atributosPersonalizados[4].id,
+                                                    valor = textBoxA5.Text,
+
+                                                };
+                                                context.ProductoAtributo.Add(at5);
+                                            }
                                         }
                                     }
                                 }
