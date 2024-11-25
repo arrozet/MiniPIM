@@ -457,5 +457,8 @@ namespace MiniPIM.Product
         private Producto productToUpdate;
         private bool isUpdate;
         private Image imagenOriginal;
+        private string nombreOG;
+        private string dcOG;
+        private string dlOG;
     }
 }

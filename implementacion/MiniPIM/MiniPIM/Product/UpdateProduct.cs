@@ -88,6 +88,9 @@ namespace MiniPIM.Product
 
             Image imagen = ConvertirBytesAImagen(productToUpdate.thumbnail);
             this.imagenOriginal = imagen;
+            this.nombreOG = productToUpdate.label;
+            this.dcOG = productToUpdate.descripcionCorta;
+            this.dlOG = productToUpdate.descripcionLarga;
             
             if (imagen != null)
             {
@@ -198,23 +201,23 @@ namespace MiniPIM.Product
                 string shortDescription = txtShortDescription.Text;
                 string longDescription = txtLongDescription.Text;
 
-                    using (var context = new grupo07DBEntities())
+                using (var context = new grupo07DBEntities())
+                {
+                    // Crear producto
+
+                    //productToUpdate.sku = sku;
+                    //productToUpdate.gtin = gtin;
+                    Producto updatableProduct = context.Producto.Where(x => x.sku == productToUpdate.sku).FirstOrDefault();
+
+                    updatableProduct.label = name;
+                    updatableProduct.descripcionCorta = shortDescription;
+                    updatableProduct.ultimaModificacion = DateTime.Now;
+                    updatableProduct.descripcionLarga = longDescription;
+
+                    if (!imagenOriginal.Equals(pictureBoxThumbnail.Image)) // PA QUE NO DE ERROR
                     {
-                        // Crear producto
-
-                        //productToUpdate.sku = sku;
-                        //productToUpdate.gtin = gtin;
-                        Producto updatableProduct = context.Producto.Where(x => x.sku == productToUpdate.sku).FirstOrDefault();
-
-                        updatableProduct.label = name;
-                        updatableProduct.descripcionCorta = shortDescription;
-                        updatableProduct.ultimaModificacion = DateTime.Now;
-                        updatableProduct.descripcionLarga = longDescription;
-
-                        if (!imagenOriginal.Equals(pictureBoxThumbnail.Image)) // PA QUE NO DE ERROR
-                        {
-                            updatableProduct.thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image);
-                        }
+                        updatableProduct.thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image);
+                    }
 
 
                     // Crear una lista para asociar las categorías seleccionadas al producto
@@ -234,8 +237,14 @@ namespace MiniPIM.Product
                         Categoria c = context.Categoria.FirstOrDefault(cat => cat.id == item_id);
                         nuevoProducto.Categoria.Add(c);
                     };
-                    context.SaveChanges();
 
+                    if (!nombreOG.Equals(name) || !dcOG.Equals(shortDescription) || !dlOG.Equals(longDescription))
+                    {
+                        context.SaveChanges();
+                    }
+                }
+                using (var context = new grupo07DBEntities())
+                {
                     // pa que se modifiquen los atrbutos NO PREGUNTEN COMO FUNCIONA
                     var atributosPersonalizados = context.AtributoPersonalizado
                                                                 .Select(a => new
@@ -255,7 +264,7 @@ namespace MiniPIM.Product
                     {
                         Label l = labels[i];
                         System.Windows.Forms.TextBox txt = textBoxes[i];
-                        var atributos = context.ProductoAtributo.Where(p => p.producto_sku == updatableProduct.sku).ToList();
+                        var atributos = context.ProductoAtributo.Where(p => p.producto_sku == productToUpdate.sku).ToList();
 
                         foreach (ProductoAtributo pa in atributos)
                         {
@@ -267,6 +276,7 @@ namespace MiniPIM.Product
 
                     }
                     context.SaveChanges();
+                }  
                     // Agregar y guardar cambios en la base de datos
                     //context.Producto.Add(producto);
                     //context.SaveChanges();
@@ -294,7 +304,7 @@ namespace MiniPIM.Product
                         productosResumenForm.Show();
 
                         this.ParentForm.Hide();  // Esto oculta el formulario actual
-                    }
+                 
 
 
             }
