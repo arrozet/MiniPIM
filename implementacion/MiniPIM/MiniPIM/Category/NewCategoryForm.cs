@@ -39,6 +39,15 @@ namespace MiniPIM.Category
                         return;
                     }
 
+                    bool categoriaExistente = context.Categoria
+                        .Any(c => c.nombre == CategoryNameText.Text);
+
+                    if (categoriaExistente)
+                    {
+                        MessageBox.Show("The category name already exists. Please choose a different name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     Categoria newCategory = new Categoria
                     {
                         nombre = CategoryNameText.Text,

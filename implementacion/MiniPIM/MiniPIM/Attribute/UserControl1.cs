@@ -69,6 +69,16 @@ namespace MiniPIM.Attribute
                         return;
                     }
 
+                    // Verificar si el nombre del atributo ya existe en la base de datos
+                    bool atributoExistente = context.AtributoPersonalizado
+                        .Any(a => a.nombre == nameText.Text && a.id != id);
+
+                    if (atributoExistente)
+                    {
+                        MessageBox.Show("The attribute name already exists. Please choose a different name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     if (TypeMapping.TryGetValue(typeText.Text, out AttributeType attributeType))
                     {
                         var atributo = context.AtributoPersonalizado.SingleOrDefault(a => a.id == id);
