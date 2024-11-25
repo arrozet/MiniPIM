@@ -236,13 +236,42 @@ namespace MiniPIM.Product
                     };
                     context.SaveChanges();
 
-                        
+                    // pa que se modifiquen los atrbutos NO PREGUNTEN COMO FUNCIONA
+                    var atributosPersonalizados = context.AtributoPersonalizado
+                                                                .Select(a => new
+                                                                {
+                                                                    a.id,
+                                                                    a.nombre,
+                                                                    a.tipo,
+                                                                    a.espacioOcupado
+                                                                })
+                                    .ToList();
 
-                        // Agregar y guardar cambios en la base de datos
-                        //context.Producto.Add(producto);
-                        //context.SaveChanges();
+                    List<Label> labels = new List<Label>();
+                    labels.Add(lblA1); labels.Add(lblA2); labels.Add(lblA3); labels.Add(lblA4); labels.Add(lblA5);
+                    List<System.Windows.Forms.TextBox> textBoxes = new List<System.Windows.Forms.TextBox>();
+                    textBoxes.Add(textBoxA1); textBoxes.Add(textBoxA2); textBoxes.Add(textBoxA3); textBoxes.Add(textBoxA4); textBoxes.Add(textBoxA5);
+                    for (int i = 0; i < atributosPersonalizados.Count; i++)
+                    {
+                        Label l = labels[i];
+                        System.Windows.Forms.TextBox txt = textBoxes[i];
+                        var atributos = context.ProductoAtributo.Where(p => p.producto_sku == updatableProduct.sku).ToList();
 
-                        MessageBox.Show("Product updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        foreach (ProductoAtributo pa in atributos)
+                        {
+                            if (atributosPersonalizados[i].id.Equals(pa.atributo_id))
+                            {
+                                pa.valor = txt.Text;
+                            }
+                        }
+
+                    }
+                    context.SaveChanges();
+                    // Agregar y guardar cambios en la base de datos
+                    //context.Producto.Add(producto);
+                    //context.SaveChanges();
+
+                    MessageBox.Show("Product updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                         // Limpiar formulario
