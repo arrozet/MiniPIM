@@ -21,7 +21,16 @@ namespace MiniPIM.Category
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("¿Are you sure you want to cancel this procces?",
+                                          "Confirm",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
+
+            // Si el usuario selecciona 'Sí', cerrar la ventana
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -35,7 +44,7 @@ namespace MiniPIM.Category
                     //Miramos que los campos esten rellenos
                     if (string.IsNullOrEmpty(CategoryNameText.Text))
                     {
-                        MessageBox.Show("Please, fill in all the fields.");
+                        MessageBox.Show("Please, fill in all the fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
