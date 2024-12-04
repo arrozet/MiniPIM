@@ -741,3 +741,5 @@ test-results.json
 #---------------------------------------------------------------------
 entrevista/entrevista.mp3
 entrevista/entrevista.mkv
+/CU/segunda_iteracion/DiagramasSecuencia/.vpprefdata
+CU/segunda_iteracion/DiagramasSecuencia/.lock
