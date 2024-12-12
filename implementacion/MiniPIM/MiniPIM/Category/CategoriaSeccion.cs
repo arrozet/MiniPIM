@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MiniPIM.Account;
 
 namespace MiniPIM.Category
 {
@@ -188,6 +189,15 @@ namespace MiniPIM.Category
             }
         }
 
-        
+        private void accountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountForm acForm = new AccountForm();
+            acForm.StartPosition = this.StartPosition;
+            acForm.Location = this.Location;
+            acForm.Size = Size;
+
+            acForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button NewAttribute;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Products = new System.Windows.Forms.ToolStripMenuItem();
             this.Attributes = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +47,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.NoAttributes = new System.Windows.Forms.Label();
+            this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             NewAttribute = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listAttributes)).BeginInit();
@@ -57,9 +58,10 @@
             // 
             NewAttribute.Dock = System.Windows.Forms.DockStyle.Fill;
             NewAttribute.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            NewAttribute.Location = new System.Drawing.Point(385, 3);
+            NewAttribute.Location = new System.Drawing.Point(445, 2);
+            NewAttribute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             NewAttribute.Name = "NewAttribute";
-            NewAttribute.Size = new System.Drawing.Size(377, 77);
+            NewAttribute.Size = new System.Drawing.Size(439, 63);
             NewAttribute.TabIndex = 6;
             NewAttribute.Text = "+ New attribute";
             NewAttribute.UseVisualStyleBackColor = true;
@@ -72,11 +74,12 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Products,
             this.Attributes,
-            this.Categories});
+            this.Categories,
+            this.accountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(765, 36);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(886, 29);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,7 +89,7 @@
             this.Products.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Products.ForeColor = System.Drawing.Color.White;
             this.Products.Name = "Products";
-            this.Products.Size = new System.Drawing.Size(103, 32);
+            this.Products.Size = new System.Drawing.Size(83, 25);
             this.Products.Text = "Products";
             this.Products.Click += new System.EventHandler(this.Products_Click);
             // 
@@ -97,7 +100,7 @@
             this.Attributes.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Attributes.ForeColor = System.Drawing.Color.Gray;
             this.Attributes.Name = "Attributes";
-            this.Attributes.Size = new System.Drawing.Size(113, 32);
+            this.Attributes.Size = new System.Drawing.Size(90, 25);
             this.Attributes.Text = "Attributes";
             this.Attributes.Click += new System.EventHandler(this.Attributes_Click);
             // 
@@ -107,7 +110,7 @@
             this.Categories.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Categories.ForeColor = System.Drawing.Color.White;
             this.Categories.Name = "Categories";
-            this.Categories.Size = new System.Drawing.Size(119, 32);
+            this.Categories.Size = new System.Drawing.Size(96, 25);
             this.Categories.Text = "Categories";
             this.Categories.Click += new System.EventHandler(this.Categories_Click);
             // 
@@ -125,14 +128,14 @@
             this.listAttributes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listAttributes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.listAttributes.CausesValidation = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listAttributes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listAttributes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.listAttributes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listAttributes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Label,
@@ -141,19 +144,20 @@
             this.Delete,
             this.Type,
             this.NumberOfProducts});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listAttributes.DefaultCellStyle = dataGridViewCellStyle2;
-            this.listAttributes.Location = new System.Drawing.Point(10, 125);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listAttributes.DefaultCellStyle = dataGridViewCellStyle4;
+            this.listAttributes.Location = new System.Drawing.Point(8, 102);
+            this.listAttributes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listAttributes.Name = "listAttributes";
             this.listAttributes.RowHeadersWidth = 51;
             this.listAttributes.RowTemplate.Height = 24;
-            this.listAttributes.Size = new System.Drawing.Size(743, 326);
+            this.listAttributes.Size = new System.Drawing.Size(869, 378);
             this.listAttributes.TabIndex = 3;
             this.listAttributes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listAttributes_CellClick);
             // 
@@ -213,11 +217,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(NewAttribute, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 39);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 32);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(765, 83);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(886, 67);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // label1
@@ -225,9 +230,10 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.75F);
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(376, 83);
+            this.label1.Size = new System.Drawing.Size(439, 67);
             this.label1.TabIndex = 7;
             this.label1.Text = "All Attributes";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -237,23 +243,35 @@
             this.NoAttributes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.NoAttributes.AutoSize = true;
             this.NoAttributes.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.NoAttributes.Location = new System.Drawing.Point(133, 260);
+            this.NoAttributes.Location = new System.Drawing.Point(256, 267);
+            this.NoAttributes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NoAttributes.Name = "NoAttributes";
-            this.NoAttributes.Size = new System.Drawing.Size(534, 58);
+            this.NoAttributes.Size = new System.Drawing.Size(427, 46);
             this.NoAttributes.TabIndex = 5;
             this.NoAttributes.Text = "NO ATTRIBUTES YET";
             this.NoAttributes.Visible = false;
             // 
+            // accountToolStripMenuItem
+            // 
+            this.accountToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.accountToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.accountToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(78, 25);
+            this.accountToolStripMenuItem.Text = "Account";
+            this.accountToolStripMenuItem.Click += new System.EventHandler(this.accountToolStripMenuItem_Click);
+            // 
             // AtributosSeccion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 450);
+            this.ClientSize = new System.Drawing.Size(886, 479);
             this.Controls.Add(this.NoAttributes);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.listAttributes);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AtributosSeccion";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
@@ -283,5 +301,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfProducts;
+        private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
     }
 }

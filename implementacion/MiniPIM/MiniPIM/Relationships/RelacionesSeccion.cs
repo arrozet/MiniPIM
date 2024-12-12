@@ -1,4 +1,5 @@
-﻿using MiniPIM.Attribute;
+﻿using MiniPIM.Account;
+using MiniPIM.Attribute;
 using MiniPIM.Category;
 using MiniPIM.Product;
 using System;
@@ -250,6 +251,17 @@ namespace MiniPIM.Relationships
 
 
             }
+        }
+
+        private void accountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountForm acForm = new AccountForm();
+            acForm.StartPosition = this.StartPosition;
+            acForm.Location = this.Location;
+            acForm.Size = Size;
+
+            acForm.Show();
+            this.Hide();
         }
     }
 }
