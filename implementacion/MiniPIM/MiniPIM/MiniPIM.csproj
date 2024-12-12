@@ -116,6 +116,9 @@
     <Compile Include="Category\NewCategoryForm.Designer.cs">
       <DependentUpon>NewCategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cuenta.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +164,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Relacion.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelacionProducto.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationships\RelacionesSeccion.cs">
       <SubType>Form</SubType>

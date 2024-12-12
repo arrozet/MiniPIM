@@ -12,20 +12,14 @@ namespace MiniPIM
     using System;
     using System.Collections.Generic;
     
-    public partial class AtributoPersonalizado
+    public partial class RelacionProducto
     {
-        public AtributoPersonalizado()
-        {
-            this.ProductoAtributo = new HashSet<ProductoAtributo>();
-        }
+        public string producto_sku_principal { get; set; }
+        public string nombre_relacion { get; set; }
+        public string producto_sku_relacionado { get; set; }
     
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public string tipo { get; set; }
-        public Nullable<int> espacioOcupado { get; set; }
-        public int cuenta_id { get; set; }
-    
-        public virtual Cuenta Cuenta { get; set; }
-        public virtual ICollection<ProductoAtributo> ProductoAtributo { get; set; }
+        public virtual Producto Producto { get; set; }
+        public virtual Producto Producto1 { get; set; }
+        public virtual Relacion Relacion { get; set; }
     }
 }

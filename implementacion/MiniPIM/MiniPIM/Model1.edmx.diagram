@@ -4,13 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fd593e6def7f43b89b25d7ffab67be0a" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="grupo07DBModel.AtributoPersonalizado" Width="1.5" PointX="5.25" PointY="7" />
-        <EntityTypeShape EntityType="grupo07DBModel.Categoria" Width="1.5" PointX="2.25" PointY="5.375" />
-        <EntityTypeShape EntityType="grupo07DBModel.Producto" Width="1.5" PointX="2.25" PointY="1.5" />
-        <EntityTypeShape EntityType="grupo07DBModel.ProductoAtributo" Width="1.5" PointX="5.125" PointY="2" />
+      <Diagram DiagramId="fd593e6def7f43b89b25d7ffab67be0a" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="grupo07DBModel.AtributoPersonalizado" Width="1.5" PointX="12" PointY="2.75" />
+        <EntityTypeShape EntityType="grupo07DBModel.Categoria" Width="1.5" PointX="11.625" PointY="7" />
+        <EntityTypeShape EntityType="grupo07DBModel.Cuenta" Width="1.5" PointX="5.375" PointY="1" />
+        <EntityTypeShape EntityType="grupo07DBModel.Producto" Width="2" PointX="6.375" PointY="4.25" />
+        <EntityTypeShape EntityType="grupo07DBModel.ProductoAtributo" Width="1.5" PointX="9.125" PointY="3.375" />
+        <EntityTypeShape EntityType="grupo07DBModel.Relacion" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="grupo07DBModel.RelacionProducto" Width="1.5" PointX="6.125" PointY="10.25" />
+        <AssociationConnector Association="grupo07DBModel.AtributoPersonalizado_ibfk_1" />
         <AssociationConnector Association="grupo07DBModel.ProductoAtributo_ibfk_2" />
+        <AssociationConnector Association="grupo07DBModel.Categoria_ibfk_1" />
+        <AssociationConnector Association="grupo07DBModel.Producto_ibfk_1" />
+        <AssociationConnector Association="grupo07DBModel.Relacion_ibfk_1" />
         <AssociationConnector Association="grupo07DBModel.ProductoAtributo_ibfk_1" />
+        <AssociationConnector Association="grupo07DBModel.RelacionProducto_ibfk_1" />
+        <AssociationConnector Association="grupo07DBModel.RelacionProducto_ibfk_2" />
+        <AssociationConnector Association="grupo07DBModel.fk_nombre_relacion" />
         <AssociationConnector Association="grupo07DBModel.ProductoCategoria" />
       </Diagram>
     </edmx:Diagrams>

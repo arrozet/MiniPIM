@@ -13,6 +13,7 @@
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="tipo" Type="enum" Nullable="false" />
           <Property Name="espacioOcupado" Type="int" />
+          <Property Name="cuenta_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Categoria">
           <Key>
@@ -20,6 +21,16 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cuenta_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fecha_creacion" Type="date" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -34,6 +45,7 @@
           <Property Name="descripcionLarga" Type="text" />
           <Property Name="espacioOcupado" Type="int" />
           <Property Name="thumbnail" Type="blob" />
+          <Property Name="cuenta_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductoAtributo">
           <Key>
@@ -52,6 +64,71 @@
           <Property Name="producto_sku" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="categoria_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Relacion">
+          <Key>
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cuenta_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelacionProducto">
+          <Key>
+            <PropertyRef Name="producto_sku_principal" />
+            <PropertyRef Name="nombre_relacion" />
+            <PropertyRef Name="producto_sku_relacionado" />
+          </Key>
+          <Property Name="producto_sku_principal" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre_relacion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="producto_sku_relacionado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="AtributoPersonalizado_ibfk_1">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="AtributoPersonalizado" Type="Self.AtributoPersonalizado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AtributoPersonalizado">
+              <PropertyRef Name="cuenta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Categoria_ibfk_1">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Categoria">
+              <PropertyRef Name="cuenta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nombre_relacion">
+          <End Role="Relacion" Type="Self.Relacion" Multiplicity="1" />
+          <End Role="RelacionProducto" Type="Self.RelacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relacion">
+              <PropertyRef Name="nombre" />
+            </Principal>
+            <Dependent Role="RelacionProducto">
+              <PropertyRef Name="nombre_relacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Producto_ibfk_1">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="cuenta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ProductoAtributo_ibfk_1">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="ProductoAtributo" Type="Self.ProductoAtributo" Multiplicity="*" />
@@ -100,12 +177,67 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Relacion_ibfk_1">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Relacion" Type="Self.Relacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Relacion">
+              <PropertyRef Name="cuenta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelacionProducto_ibfk_1">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="RelacionProducto" Type="Self.RelacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="sku" />
+            </Principal>
+            <Dependent Role="RelacionProducto">
+              <PropertyRef Name="producto_sku_principal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelacionProducto_ibfk_2">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="RelacionProducto" Type="Self.RelacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="sku" />
+            </Principal>
+            <Dependent Role="RelacionProducto">
+              <PropertyRef Name="producto_sku_relacionado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="grupo07DBModelStoreContainer">
           <EntitySet Name="AtributoPersonalizado" EntityType="Self.AtributoPersonalizado" Schema="grupo07DB" store:Type="Tables" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="grupo07DB" store:Type="Tables" />
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="grupo07DB" store:Type="Tables" />
           <EntitySet Name="Producto" EntityType="Self.Producto" Schema="grupo07DB" store:Type="Tables" />
           <EntitySet Name="ProductoAtributo" EntityType="Self.ProductoAtributo" Schema="grupo07DB" store:Type="Tables" />
           <EntitySet Name="ProductoCategoria" EntityType="Self.ProductoCategoria" Schema="grupo07DB" store:Type="Tables" />
+          <EntitySet Name="Relacion" EntityType="Self.Relacion" Schema="grupo07DB" store:Type="Tables" />
+          <EntitySet Name="RelacionProducto" EntityType="Self.RelacionProducto" Schema="grupo07DB" store:Type="Tables" />
+          <AssociationSet Name="AtributoPersonalizado_ibfk_1" Association="Self.AtributoPersonalizado_ibfk_1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="AtributoPersonalizado" EntitySet="AtributoPersonalizado" />
+          </AssociationSet>
+          <AssociationSet Name="Categoria_ibfk_1" Association="Self.Categoria_ibfk_1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Categoria" EntitySet="Categoria" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nombre_relacion" Association="Self.fk_nombre_relacion">
+            <End Role="Relacion" EntitySet="Relacion" />
+            <End Role="RelacionProducto" EntitySet="RelacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="Producto_ibfk_1" Association="Self.Producto_ibfk_1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
           <AssociationSet Name="ProductoAtributo_ibfk_1" Association="Self.ProductoAtributo_ibfk_1">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="ProductoAtributo" EntitySet="ProductoAtributo" />
@@ -122,6 +254,18 @@
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="ProductoCategoria" EntitySet="ProductoCategoria" />
           </AssociationSet>
+          <AssociationSet Name="Relacion_ibfk_1" Association="Self.Relacion_ibfk_1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Relacion" EntitySet="Relacion" />
+          </AssociationSet>
+          <AssociationSet Name="RelacionProducto_ibfk_1" Association="Self.RelacionProducto_ibfk_1">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="RelacionProducto" EntitySet="RelacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="RelacionProducto_ibfk_2" Association="Self.RelacionProducto_ibfk_2">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="RelacionProducto" EntitySet="RelacionProducto" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -130,15 +274,46 @@
         <EntityContainer Name="grupo07DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AtributoPersonalizado" EntityType="grupo07DBModel.AtributoPersonalizado" />
           <EntitySet Name="Categoria" EntityType="grupo07DBModel.Categoria" />
+          <EntitySet Name="Cuenta" EntityType="grupo07DBModel.Cuenta" />
           <EntitySet Name="Producto" EntityType="grupo07DBModel.Producto" />
           <EntitySet Name="ProductoAtributo" EntityType="grupo07DBModel.ProductoAtributo" />
+          <EntitySet Name="Relacion" EntityType="grupo07DBModel.Relacion" />
+          <EntitySet Name="RelacionProducto" EntityType="grupo07DBModel.RelacionProducto" />
+          <AssociationSet Name="AtributoPersonalizado_ibfk_1" Association="grupo07DBModel.AtributoPersonalizado_ibfk_1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="AtributoPersonalizado" EntitySet="AtributoPersonalizado" />
+          </AssociationSet>
           <AssociationSet Name="ProductoAtributo_ibfk_2" Association="grupo07DBModel.ProductoAtributo_ibfk_2">
             <End Role="AtributoPersonalizado" EntitySet="AtributoPersonalizado" />
             <End Role="ProductoAtributo" EntitySet="ProductoAtributo" />
           </AssociationSet>
+          <AssociationSet Name="Categoria_ibfk_1" Association="grupo07DBModel.Categoria_ibfk_1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Categoria" EntitySet="Categoria" />
+          </AssociationSet>
+          <AssociationSet Name="Producto_ibfk_1" Association="grupo07DBModel.Producto_ibfk_1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="Relacion_ibfk_1" Association="grupo07DBModel.Relacion_ibfk_1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Relacion" EntitySet="Relacion" />
+          </AssociationSet>
           <AssociationSet Name="ProductoAtributo_ibfk_1" Association="grupo07DBModel.ProductoAtributo_ibfk_1">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="ProductoAtributo" EntitySet="ProductoAtributo" />
+          </AssociationSet>
+          <AssociationSet Name="RelacionProducto_ibfk_1" Association="grupo07DBModel.RelacionProducto_ibfk_1">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="RelacionProducto" EntitySet="RelacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="RelacionProducto_ibfk_2" Association="grupo07DBModel.RelacionProducto_ibfk_2">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="RelacionProducto" EntitySet="RelacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nombre_relacion" Association="grupo07DBModel.fk_nombre_relacion">
+            <End Role="Relacion" EntitySet="Relacion" />
+            <End Role="RelacionProducto" EntitySet="RelacionProducto" />
           </AssociationSet>
           <AssociationSet Name="ProductoCategoria" Association="grupo07DBModel.ProductoCategoria">
             <End Role="Producto" EntitySet="Producto" />
@@ -153,6 +328,8 @@
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="tipo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="espacioOcupado" Type="Int32" />
+          <Property Name="cuenta_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="grupo07DBModel.AtributoPersonalizado_ibfk_1" FromRole="AtributoPersonalizado" ToRole="Cuenta" />
           <NavigationProperty Name="ProductoAtributo" Relationship="grupo07DBModel.ProductoAtributo_ibfk_2" FromRole="AtributoPersonalizado" ToRole="ProductoAtributo" />
         </EntityType>
         <EntityType Name="Categoria">
@@ -161,7 +338,22 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cuenta_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="grupo07DBModel.Categoria_ibfk_1" FromRole="Categoria" ToRole="Cuenta" />
           <NavigationProperty Name="Producto" Relationship="grupo07DBModel.ProductoCategoria" FromRole="Categoria" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AtributoPersonalizado" Relationship="grupo07DBModel.AtributoPersonalizado_ibfk_1" FromRole="Cuenta" ToRole="AtributoPersonalizado" />
+          <NavigationProperty Name="Categoria" Relationship="grupo07DBModel.Categoria_ibfk_1" FromRole="Cuenta" ToRole="Categoria" />
+          <NavigationProperty Name="Producto" Relationship="grupo07DBModel.Producto_ibfk_1" FromRole="Cuenta" ToRole="Producto" />
+          <NavigationProperty Name="Relacion" Relationship="grupo07DBModel.Relacion_ibfk_1" FromRole="Cuenta" ToRole="Relacion" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -176,7 +368,11 @@
           <Property Name="descripcionLarga" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="espacioOcupado" Type="Int32" />
           <Property Name="thumbnail" Type="Binary" MaxLength="65535" FixedLength="false" />
+          <Property Name="cuenta_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="grupo07DBModel.Producto_ibfk_1" FromRole="Producto" ToRole="Cuenta" />
           <NavigationProperty Name="ProductoAtributo" Relationship="grupo07DBModel.ProductoAtributo_ibfk_1" FromRole="Producto" ToRole="ProductoAtributo" />
+          <NavigationProperty Name="RelacionProducto" Relationship="grupo07DBModel.RelacionProducto_ibfk_1" FromRole="Producto" ToRole="RelacionProducto" />
+          <NavigationProperty Name="RelacionProducto1" Relationship="grupo07DBModel.RelacionProducto_ibfk_2" FromRole="Producto" ToRole="RelacionProducto" />
           <NavigationProperty Name="Categoria" Relationship="grupo07DBModel.ProductoCategoria" FromRole="Producto" ToRole="Categoria" />
         </EntityType>
         <EntityType Name="ProductoAtributo">
@@ -190,6 +386,40 @@
           <NavigationProperty Name="AtributoPersonalizado" Relationship="grupo07DBModel.ProductoAtributo_ibfk_2" FromRole="ProductoAtributo" ToRole="AtributoPersonalizado" />
           <NavigationProperty Name="Producto" Relationship="grupo07DBModel.ProductoAtributo_ibfk_1" FromRole="ProductoAtributo" ToRole="Producto" />
         </EntityType>
+        <EntityType Name="Relacion">
+          <Key>
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cuenta_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="grupo07DBModel.Relacion_ibfk_1" FromRole="Relacion" ToRole="Cuenta" />
+          <NavigationProperty Name="RelacionProducto" Relationship="grupo07DBModel.fk_nombre_relacion" FromRole="Relacion" ToRole="RelacionProducto" />
+        </EntityType>
+        <EntityType Name="RelacionProducto">
+          <Key>
+            <PropertyRef Name="producto_sku_principal" />
+            <PropertyRef Name="nombre_relacion" />
+            <PropertyRef Name="producto_sku_relacionado" />
+          </Key>
+          <Property Name="producto_sku_principal" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nombre_relacion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="producto_sku_relacionado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Producto" Relationship="grupo07DBModel.RelacionProducto_ibfk_1" FromRole="RelacionProducto" ToRole="Producto" />
+          <NavigationProperty Name="Producto1" Relationship="grupo07DBModel.RelacionProducto_ibfk_2" FromRole="RelacionProducto" ToRole="Producto" />
+          <NavigationProperty Name="Relacion" Relationship="grupo07DBModel.fk_nombre_relacion" FromRole="RelacionProducto" ToRole="Relacion" />
+        </EntityType>
+        <Association Name="AtributoPersonalizado_ibfk_1">
+          <End Type="grupo07DBModel.Cuenta" Role="Cuenta" Multiplicity="1" />
+          <End Type="grupo07DBModel.AtributoPersonalizado" Role="AtributoPersonalizado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AtributoPersonalizado">
+              <PropertyRef Name="cuenta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ProductoAtributo_ibfk_2">
           <End Type="grupo07DBModel.AtributoPersonalizado" Role="AtributoPersonalizado" Multiplicity="1" />
           <End Type="grupo07DBModel.ProductoAtributo" Role="ProductoAtributo" Multiplicity="*" />
@@ -202,6 +432,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Categoria_ibfk_1">
+          <End Type="grupo07DBModel.Cuenta" Role="Cuenta" Multiplicity="1" />
+          <End Type="grupo07DBModel.Categoria" Role="Categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Categoria">
+              <PropertyRef Name="cuenta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Producto_ibfk_1">
+          <End Type="grupo07DBModel.Cuenta" Role="Cuenta" Multiplicity="1" />
+          <End Type="grupo07DBModel.Producto" Role="Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="cuenta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relacion_ibfk_1">
+          <End Type="grupo07DBModel.Cuenta" Role="Cuenta" Multiplicity="1" />
+          <End Type="grupo07DBModel.Relacion" Role="Relacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Relacion">
+              <PropertyRef Name="cuenta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ProductoAtributo_ibfk_1">
           <End Type="grupo07DBModel.Producto" Role="Producto" Multiplicity="1" />
           <End Type="grupo07DBModel.ProductoAtributo" Role="ProductoAtributo" Multiplicity="*" />
@@ -211,6 +477,42 @@
             </Principal>
             <Dependent Role="ProductoAtributo">
               <PropertyRef Name="producto_sku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelacionProducto_ibfk_1">
+          <End Type="grupo07DBModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="grupo07DBModel.RelacionProducto" Role="RelacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="sku" />
+            </Principal>
+            <Dependent Role="RelacionProducto">
+              <PropertyRef Name="producto_sku_principal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelacionProducto_ibfk_2">
+          <End Type="grupo07DBModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="grupo07DBModel.RelacionProducto" Role="RelacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="sku" />
+            </Principal>
+            <Dependent Role="RelacionProducto">
+              <PropertyRef Name="producto_sku_relacionado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nombre_relacion">
+          <End Type="grupo07DBModel.Relacion" Role="Relacion" Multiplicity="1" />
+          <End Type="grupo07DBModel.RelacionProducto" Role="RelacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relacion">
+              <PropertyRef Name="nombre" />
+            </Principal>
+            <Dependent Role="RelacionProducto">
+              <PropertyRef Name="nombre_relacion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -227,6 +529,7 @@
           <EntitySetMapping Name="AtributoPersonalizado">
             <EntityTypeMapping TypeName="grupo07DBModel.AtributoPersonalizado">
               <MappingFragment StoreEntitySet="AtributoPersonalizado">
+                <ScalarProperty Name="cuenta_id" ColumnName="cuenta_id" />
                 <ScalarProperty Name="espacioOcupado" ColumnName="espacioOcupado" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -237,6 +540,17 @@
           <EntitySetMapping Name="Categoria">
             <EntityTypeMapping TypeName="grupo07DBModel.Categoria">
               <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="cuenta_id" ColumnName="cuenta_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuenta">
+            <EntityTypeMapping TypeName="grupo07DBModel.Cuenta">
+              <MappingFragment StoreEntitySet="Cuenta">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -245,6 +559,7 @@
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="grupo07DBModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="cuenta_id" ColumnName="cuenta_id" />
                 <ScalarProperty Name="thumbnail" ColumnName="thumbnail" />
                 <ScalarProperty Name="espacioOcupado" ColumnName="espacioOcupado" />
                 <ScalarProperty Name="descripcionLarga" ColumnName="descripcionLarga" />
@@ -263,6 +578,23 @@
                 <ScalarProperty Name="valor" ColumnName="valor" />
                 <ScalarProperty Name="atributo_id" ColumnName="atributo_id" />
                 <ScalarProperty Name="producto_sku" ColumnName="producto_sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Relacion">
+            <EntityTypeMapping TypeName="grupo07DBModel.Relacion">
+              <MappingFragment StoreEntitySet="Relacion">
+                <ScalarProperty Name="cuenta_id" ColumnName="cuenta_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelacionProducto">
+            <EntityTypeMapping TypeName="grupo07DBModel.RelacionProducto">
+              <MappingFragment StoreEntitySet="RelacionProducto">
+                <ScalarProperty Name="producto_sku_relacionado" ColumnName="producto_sku_relacionado" />
+                <ScalarProperty Name="nombre_relacion" ColumnName="nombre_relacion" />
+                <ScalarProperty Name="producto_sku_principal" ColumnName="producto_sku_principal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

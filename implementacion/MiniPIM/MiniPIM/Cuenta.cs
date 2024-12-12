@@ -12,18 +12,24 @@ namespace MiniPIM
     using System;
     using System.Collections.Generic;
     
-    public partial class Categoria
+    public partial class Cuenta
     {
-        public Categoria()
+        public Cuenta()
         {
+            this.AtributoPersonalizado = new HashSet<AtributoPersonalizado>();
+            this.Categoria = new HashSet<Categoria>();
             this.Producto = new HashSet<Producto>();
+            this.Relacion = new HashSet<Relacion>();
         }
     
         public int id { get; set; }
         public string nombre { get; set; }
-        public int cuenta_id { get; set; }
+        public System.DateTime fecha_creacion { get; set; }
+        public string email { get; set; }
     
-        public virtual Cuenta Cuenta { get; set; }
+        public virtual ICollection<AtributoPersonalizado> AtributoPersonalizado { get; set; }
+        public virtual ICollection<Categoria> Categoria { get; set; }
         public virtual ICollection<Producto> Producto { get; set; }
+        public virtual ICollection<Relacion> Relacion { get; set; }
     }
 }

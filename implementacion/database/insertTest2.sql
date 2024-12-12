@@ -37,6 +37,8 @@ ALTER TABLE RelacionProducto DROP COLUMN id;
 ALTER TABLE RelacionProducto 
 ADD PRIMARY KEY (producto_sku_principal, nombre_relacion, producto_sku_relacionado);
 
+UPDATE Cuenta SET email = "juanma@ganador.es" WHERE id = 1;
+
 
 
 
