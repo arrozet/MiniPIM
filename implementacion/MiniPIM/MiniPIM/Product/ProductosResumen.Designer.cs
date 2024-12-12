@@ -33,6 +33,8 @@
             this.categoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.relationshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Pencil = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -41,13 +43,12 @@
             this.ProductTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShortDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categories = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vista_Tabla_Button = new System.Windows.Forms.Button();
-            this.Vista_Resumen_Button = new System.Windows.Forms.Button();
+            this.btnExportCSV = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.All_Products_label = new System.Windows.Forms.Label();
             this.New_Product_Button = new System.Windows.Forms.Button();
+            this.categoriesListBox = new System.Windows.Forms.ListBox();
             this.NoAttributes = new System.Windows.Forms.Label();
-            this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -89,7 +90,8 @@
             this.attributesToolStripMenuItem,
             this.categoriesToolStripMenuItem,
             this.relationshipsToolStripMenuItem,
-            this.accountToolStripMenuItem});
+            this.accountToolStripMenuItem,
+            this.exportToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(993, 29);
@@ -104,6 +106,25 @@
             this.relationshipsToolStripMenuItem.Size = new System.Drawing.Size(115, 25);
             this.relationshipsToolStripMenuItem.Text = "Relationships";
             this.relationshipsToolStripMenuItem.Click += new System.EventHandler(this.relationshipsToolStripMenuItem_Click);
+            // 
+            // accountToolStripMenuItem
+            // 
+            this.accountToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.accountToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accountToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(78, 25);
+            this.accountToolStripMenuItem.Text = "Account";
+            this.accountToolStripMenuItem.Click += new System.EventHandler(this.accountToolStripMenuItem_Click);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.exportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(66, 25);
+            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -197,29 +218,19 @@
             this.Categories.Name = "Categories";
             this.Categories.ReadOnly = true;
             // 
-            // Vista_Tabla_Button
+            // btnExportCSV
             // 
-            this.Vista_Tabla_Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Vista_Tabla_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Vista_Tabla_Button.Location = new System.Drawing.Point(747, 3);
-            this.Vista_Tabla_Button.Name = "Vista_Tabla_Button";
-            this.Vista_Tabla_Button.Size = new System.Drawing.Size(243, 57);
-            this.Vista_Tabla_Button.TabIndex = 2;
-            this.Vista_Tabla_Button.Text = "📊";
-            this.Vista_Tabla_Button.UseVisualStyleBackColor = true;
-            // 
-            // Vista_Resumen_Button
-            // 
-            this.Vista_Resumen_Button.AutoSize = true;
-            this.Vista_Resumen_Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Vista_Resumen_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Vista_Resumen_Button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Vista_Resumen_Button.Location = new System.Drawing.Point(499, 3);
-            this.Vista_Resumen_Button.Name = "Vista_Resumen_Button";
-            this.Vista_Resumen_Button.Size = new System.Drawing.Size(242, 57);
-            this.Vista_Resumen_Button.TabIndex = 1;
-            this.Vista_Resumen_Button.Text = "📋";
-            this.Vista_Resumen_Button.UseVisualStyleBackColor = true;
+            this.btnExportCSV.AutoSize = true;
+            this.btnExportCSV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExportCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportCSV.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnExportCSV.Location = new System.Drawing.Point(499, 3);
+            this.btnExportCSV.Name = "btnExportCSV";
+            this.btnExportCSV.Size = new System.Drawing.Size(242, 57);
+            this.btnExportCSV.TabIndex = 1;
+            this.btnExportCSV.Text = "📋";
+            this.btnExportCSV.UseVisualStyleBackColor = true;
+            this.btnExportCSV.Click += new System.EventHandler(this.btnExportCSV_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -228,10 +239,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.Vista_Resumen_Button, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.Vista_Tabla_Button, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnExportCSV, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.All_Products_label, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.New_Product_Button, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.categoriesListBox, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 29);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -266,6 +277,17 @@
             this.New_Product_Button.UseVisualStyleBackColor = true;
             this.New_Product_Button.Click += new System.EventHandler(this.New_Product_Button_Click);
             // 
+            // categoriesListBox
+            // 
+            this.categoriesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.categoriesListBox.FormattingEnabled = true;
+            this.categoriesListBox.ItemHeight = 20;
+            this.categoriesListBox.Location = new System.Drawing.Point(747, 3);
+            this.categoriesListBox.Name = "categoriesListBox";
+            this.categoriesListBox.Size = new System.Drawing.Size(243, 57);
+            this.categoriesListBox.TabIndex = 5;
+            this.categoriesListBox.SelectedIndexChanged += new System.EventHandler(this.categoriesListBox_SelectedIndexChanged);
+            // 
             // NoAttributes
             // 
             this.NoAttributes.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -279,16 +301,6 @@
             this.NoAttributes.Text = "NO PRODUCTS YET";
             this.NoAttributes.Visible = false;
             this.NoAttributes.Click += new System.EventHandler(this.NoAttributes_Click);
-            // 
-            // accountToolStripMenuItem
-            // 
-            this.accountToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.accountToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(78, 25);
-            this.accountToolStripMenuItem.Text = "Account";
-            this.accountToolStripMenuItem.Click += new System.EventHandler(this.accountToolStripMenuItem_Click);
             // 
             // ProductosResumen
             // 
@@ -327,7 +339,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Short_description;
         private System.Windows.Forms.DataGridViewImageColumn Thumnail;
         private System.Windows.Forms.Button Vista_Tabla_Button;
-        private System.Windows.Forms.Button Vista_Resumen_Button;
+        private System.Windows.Forms.Button btnExportCSV;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label All_Products_label;
         private System.Windows.Forms.Button New_Product_Button;
@@ -341,5 +353,7 @@
         private System.Windows.Forms.Label NoAttributes;
         private System.Windows.Forms.ToolStripMenuItem relationshipsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ListBox categoriesListBox;
     }
 }

@@ -13,11 +13,13 @@ using MiniPIM.Category;
 using MiniPIM.Relationships;
 using MiniPIM.Product;
 using MiniPIM.Account;
+using System.Runtime.Remoting.Contexts;
 
 namespace MiniPIM.Product
 {
     public partial class ProductosResumen : Form
     {
+        grupo07DBEntities contextGlobalFeo = new grupo07DBEntities();
         public ProductosResumen()
         {
             InitializeComponent();
@@ -28,8 +30,18 @@ namespace MiniPIM.Product
 
         private void ProductosResumen_Load(object sender, EventArgs e)
         {
+            CargarCategories();
             productsToolStripMenuItem.Enabled = false; // esto lo podríamos poner directamente en el 
             dataGridView1.AutoGenerateColumns = false; // no se generan columnas nuevas feas
+            New_Product_Button.Visible = true; // para que no muera
+            dataGridView1.Columns["Pencil"].Visible = true;
+            dataGridView1.Columns["Delete"].Visible = true;
+            productsToolStripMenuItem.Enabled = false;
+            exportToolStripMenuItem.Enabled = true;
+            categoriesListBox.Visible = false;
+            btnExportCSV.Visible = false;
+            All_Products_label.Text = "All Products";
+
             cargarProductos();
             dataGridView1.ClearSelection(); // para que no aparezca selecionada la priemera columna
         }
@@ -96,7 +108,7 @@ namespace MiniPIM.Product
 
         private void productsToolStripMenuItem_Click(object sender, EventArgs e) //PRODUCTS
         {
-            // No hace nada porque estamos en el formulario de Productos
+            ProductosResumen_Load(sender, e);   
         }
 
         private void attributesToolStripMenuItem_Click(object sender, EventArgs e) // ATTRIBUTES
@@ -301,6 +313,145 @@ namespace MiniPIM.Product
 
             acForm.Show();
             this.Hide();
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            New_Product_Button.Visible = false;
+            dataGridView1.Columns["Delete"].Visible = false;
+            dataGridView1.Columns["Pencil"].Visible = false;
+            productsToolStripMenuItem.Enabled = true;
+            exportToolStripMenuItem.Enabled = false;
+            categoriesListBox.Visible = true;
+            btnExportCSV.Visible = true;
+            All_Products_label.Text = "Filtered Products";
+        }
+        private void CargarCategories()
+        {
+            
+            var categorias = contextGlobalFeo.Categoria.ToList();
+            categoriesListBox.DataSource = categorias;
+            categoriesListBox.ClearSelected();
+            
+
+            
+        }
+
+        private void btnExportCSV_Click(object sender, EventArgs e)
+        {
+            List<Producto> toExport = new List<Producto>();
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                string sku = row.Cells["SKU"].Value.ToString();
+                toExport.Add(contextGlobalFeo.Producto.Where(p => p.sku.Equals(sku)).FirstOrDefault());
+            }
+            ExportarA_CSV(toExport);
+        }
+        private void ExportarA_CSV(List<Producto> productos)
+        {
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MiniPIM");
+            string filePath = Path.Combine(folderPath, "amazonExport.csv");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                // Escribir la cabecera del archivo CSV
+                sw.WriteLine("SKU,Title,FulfilledBy,Amazon_SKU,Price,OfferPrimer");
+
+                // Escribir los productos al archivo
+                foreach (Producto producto in productos)
+                {
+                    // Obtener el precio del producto
+                    decimal price = ObtenerPrecioValido(producto.ProductoAtributo);
+
+                    // Si no tiene un precio válido, lo omitimos
+                    if (price == -1)
+                    {
+                        MessageBox.Show($"No se pudo exportar el producto {producto.label} ya que no contiene un atributo numérico");
+                        continue;
+                    }
+                    Cuenta cuenta = contextGlobalFeo.Cuenta.Where(c => c.id == producto.cuenta_id).FirstOrDefault();
+
+                    // Escribir la línea del producto en el CSV
+                    sw.WriteLine($"{producto.sku},{producto.label},{cuenta.nombre},{producto.gtin},{price},false");
+                }
+            }
+            MessageBox.Show($"Exportación a CSV completa en {filePath}");
+        }
+        private decimal ObtenerPrecioValido(ICollection<ProductoAtributo> productoAtributos)
+        {
+            // Buscar el primer atributo que sea de tipo numérico (number)
+            foreach (var productoAtributo in productoAtributos)
+            {
+                if (productoAtributo.AtributoPersonalizado.tipo == "number")
+                {
+                    // Convertir el valor del atributo a decimal si es un precio
+                    decimal precio;
+                    if (Decimal.TryParse(productoAtributo.valor.ToString(), out precio))
+                    {
+                        return precio;
+                    }
+                }
+            }
+
+            // Si no se encuentra un precio válido, retornar -1
+            return -1;
+        }
+
+
+        private void categoriesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Categoria categoria = (Categoria)categoriesListBox.SelectedItem;
+            if (categoria != null) //se ejecuta al cargar por algun motivo, sin esto hace caput
+            {
+                var productos = contextGlobalFeo.Producto
+                .Include("Categoria") // Cargar la relación con Categoria
+                .ToList();
+
+
+                productos = productos.Where(p => p.Categoria.Any(c => c.id == categoria.id)).ToList(); // seleccionar solo los gormitis que son de la categoria seleccionada
+
+                // Procesar los datos para el DataGridView
+                var productosParaMostrar = productos
+                    .Select(p => new
+                    {
+                        p.sku,
+                        p.label,
+                        p.descripcionCorta,
+                        p.thumbnail,
+                        // Concatenar los nombres de las categorías
+                        Categories = p.Categoria != null && p.Categoria.Any()
+                            ? string.Join(", ", p.Categoria.Select(c => c.nombre))
+                            : ""
+                    })
+                    .ToList();
+                // Reescalar imagen
+
+                // Configurar las columnas del DataGridView
+                dataGridView1.Columns["SKU"].DataPropertyName = "sku";
+                dataGridView1.Columns["ProductTitle"].DataPropertyName = "label";
+                dataGridView1.Columns["ShortDescription"].DataPropertyName = "descripcionCorta";
+                dataGridView1.Columns["Thumbnail"].DataPropertyName = "thumbnail";
+                dataGridView1.Columns["Categories"].DataPropertyName = "Categories";
+
+                // Asignar los datos procesados al DataGridView
+                dataGridView1.DataSource = productosParaMostrar;
+                // MUESTRA LA ETIQUETA SI NO HAY PRODUCTOS
+                if (productosParaMostrar.Count > 0)
+                {
+                    dataGridView1.Visible = true;  // Mostrar el DataGridView
+                    NoAttributes.Visible = false;  // Ocultar el Label
+                }
+                else
+                {
+                    dataGridView1.Visible = false; // Ocultar el DataGridView
+                    NoAttributes.Visible = true;   // Mostrar el Label
+                }
+            }
+            
         }
     }
 }

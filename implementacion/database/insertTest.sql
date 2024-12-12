@@ -32,4 +32,5 @@ VALUES ('G001', (SELECT id FROM Categoria WHERE nombre = 'Figuras'));
  
  INSERT INTO ProductoCategoria (producto_sku, categoria_id)
 VALUES ('G001', (SELECT id FROM Categoria WHERE nombre = 'Decoración'));
+
  

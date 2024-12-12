@@ -38,3 +38,8 @@ CREATE TABLE RelacionProducto (
     FOREIGN KEY (producto_sku_principal) REFERENCES Producto(sku) ON DELETE CASCADE,
     FOREIGN KEY (producto_sku_relacionado) REFERENCES Producto(sku) ON DELETE CASCADE
 );
+
+-- Añadir la columna email a la tabla Cuenta
+ALTER TABLE Cuenta
+ADD COLUMN email VARCHAR(255) NOT NULL UNIQUE;
+
