@@ -204,7 +204,7 @@ namespace MiniPIM.Relationships
                 {
                     // Añado el producto principal
                     string skuPrincipal = context.RelacionProducto.Where(rp => rp.nombre_relacion == relationName).FirstOrDefault().producto_sku_principal;
-                    MessageBox.Show(skuPrincipal);
+                    //MessageBox.Show(skuPrincipal);
                     //updateRelation.SKU_Principal = skuPrincipal;
 
                     // Crear la instancia del UserControl
@@ -213,20 +213,6 @@ namespace MiniPIM.Relationships
                         Dock = DockStyle.Fill,
                     };
 
-                    //updateRelation.productoSeleccionado = context.Producto.Where(p => p.sku == skuPrincipal).FirstOrDefault();
-                    // Ahora cojo la lista de productos relacionados
-                    /*List<Producto> productosRelacionados = new List<Producto>();
-                    var relacionProductos = context.RelacionProducto.Where(rp => rp.nombre_relacion == relationName).ToList();
-                   
-                    foreach (var relacionado  in relacionProductos)
-                    {
-                        Producto productoRelacionado = context.Producto.Where(p => p.sku == relacionado.producto_sku_relacionado).FirstOrDefault();
-                        productosRelacionados.Add(productoRelacionado);
-                    }
-
-                    updateRelation.productosRelacionados = productosRelacionados;
-                    */
-                    // Agregar el UserControl al formulario
                     relationshipForm.Controls.Add(updateRelation);
 
                     // Mostrar el formulario como modal

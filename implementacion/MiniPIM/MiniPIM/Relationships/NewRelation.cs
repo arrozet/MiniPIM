@@ -51,8 +51,6 @@ namespace MiniPIM.Relationships
                         return;
                     }
 
-                    Console.WriteLine("1hola");
-
                     // Verificar si el nombre de la relacion ya existe en la base de datos
                     bool relacionExistente = context.Relacion
                         .Any(r => r.nombre == tName.Text);
@@ -81,9 +79,7 @@ namespace MiniPIM.Relationships
                         cuenta_id = context.Cuenta.FirstOrDefault().id
                     };
 
-                    Console.WriteLine("2hola");
                     Producto productoPrincipal = (Producto)lProduct.SelectedItem;
-                    Console.WriteLine(productoPrincipal);
 
                     // Insertamos el objeto Relacion
                     context.Relacion.Add(nuevaRelacion);

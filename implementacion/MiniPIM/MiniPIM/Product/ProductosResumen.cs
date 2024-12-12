@@ -20,6 +20,7 @@ namespace MiniPIM.Product
     public partial class ProductosResumen : Form
     {
         grupo07DBEntities contextGlobalFeo = new grupo07DBEntities();
+        bool export = false;
         public ProductosResumen()
         {
             InitializeComponent();
@@ -28,19 +29,36 @@ namespace MiniPIM.Product
 
         }
 
+        public ProductosResumen(bool export)
+        {
+            InitializeComponent();
+            this.Load += new EventHandler(ProductosResumen_Load);
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick; // pa pode elimina y modifica
+            this.export = export;
+        }
+
         private void ProductosResumen_Load(object sender, EventArgs e)
         {
-            CargarCategories();
-            productsToolStripMenuItem.Enabled = false; // esto lo podríamos poner directamente en el 
             dataGridView1.AutoGenerateColumns = false; // no se generan columnas nuevas feas
-            New_Product_Button.Visible = true; // para que no muera
-            dataGridView1.Columns["Pencil"].Visible = true;
-            dataGridView1.Columns["Delete"].Visible = true;
-            productsToolStripMenuItem.Enabled = false;
-            exportToolStripMenuItem.Enabled = true;
-            categoriesListBox.Visible = false;
-            btnExportCSV.Visible = false;
-            All_Products_label.Text = "All Products";
+            if (export)
+            {
+                CargarCategories();
+                All_Products_label.Text = "Filtered Products";
+            }
+            else
+            {
+                All_Products_label.Text = "All Products";
+            }
+          
+            productsToolStripMenuItem.Enabled = export;
+            exportToolStripMenuItem.Enabled = !export;
+            
+            // Toco la visibilidad en función de export
+            New_Product_Button.Visible = !export;
+            dataGridView1.Columns["Pencil"].Visible = !export;
+            dataGridView1.Columns["Delete"].Visible = !export;
+            categoriesListBox.Visible = export;
+            btnExportCSV.Visible = export;
 
             cargarProductos();
             dataGridView1.ClearSelection(); // para que no aparezca selecionada la priemera columna
@@ -108,7 +126,13 @@ namespace MiniPIM.Product
 
         private void productsToolStripMenuItem_Click(object sender, EventArgs e) //PRODUCTS
         {
-            ProductosResumen_Load(sender, e);   
+            ProductosResumen producto = new ProductosResumen();
+            producto.StartPosition = FormStartPosition.Manual;
+            producto.Location = this.Location;
+            producto.Size = Size;
+
+            producto.Show();
+            this.Hide();
         }
 
         private void attributesToolStripMenuItem_Click(object sender, EventArgs e) // ATTRIBUTES
@@ -154,6 +178,28 @@ namespace MiniPIM.Product
 
             // Mostrar el nuevo formulario y ocultar el actual
             relacionesForm.Show();
+            this.Hide();
+        }
+
+        private void accountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountForm acForm = new AccountForm();
+            acForm.StartPosition = FormStartPosition.Manual;
+            acForm.Location = this.Location;
+            acForm.Size = Size;
+
+            acForm.Show();
+            this.Hide();
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductosResumen export = new ProductosResumen(true);
+            export.StartPosition = FormStartPosition.Manual;
+            export.Location = this.Location;
+            export.Size = Size;
+
+            export.Show();
             this.Hide();
         }
 
@@ -304,28 +350,7 @@ namespace MiniPIM.Product
 
         }
 
-        private void accountToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AccountForm acForm = new AccountForm();
-            acForm.StartPosition = this.StartPosition;
-            acForm.Location = this.Location;
-            acForm.Size = Size;
-
-            acForm.Show();
-            this.Hide();
-        }
-
-        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            New_Product_Button.Visible = false;
-            dataGridView1.Columns["Delete"].Visible = false;
-            dataGridView1.Columns["Pencil"].Visible = false;
-            productsToolStripMenuItem.Enabled = true;
-            exportToolStripMenuItem.Enabled = false;
-            categoriesListBox.Visible = true;
-            btnExportCSV.Visible = true;
-            All_Products_label.Text = "Filtered Products";
-        }
+       
         private void CargarCategories()
         {
             

@@ -16,33 +16,47 @@ namespace MiniPIM.Relationships
     public partial class UpdateRelation : UserControl
     {
         private RelacionesSeccion seccionRelaciones;
-        private string _skuPrincipal; // Campo privado para almacenar el SKU
         grupo07DBEntities context = new grupo07DBEntities();
+        private string _nombre; // Campo privado para almacenar el valor
 
         public string nombre
         {
-            get => tName.Text;
-            set => tName.Text = value;
+            get => _nombre; // Devuelve el valor de la variable privada
+            set
+            {
+                _nombre = value; // Asigna el valor a la variable privada
+                tName.Text = value; // Actualiza el control visual (si es necesario)
+            }
         }
 
-        public string SKU_Principal
-        {
-            get => _skuPrincipal; // Devuelve el valor del campo privado
-            set => _skuPrincipal = value; // Asigna el valor al campo privado
-        }
 
-        public UpdateRelation(string nombre, RelacionesSeccion seccionRelaciones, string SKU)
+        public UpdateRelation(string nombre, RelacionesSeccion seccionRelaciones, string skuPrincipal)
         {
             InitializeComponent();
             this.nombre = nombre;
             this.seccionRelaciones = seccionRelaciones;
-            MessageBox.Show(SKU);
 
             // Configurar el DataSource para los ListBox
             lProduct.DataSource = context.Producto.ToList();
             lRelated.DataSource = context.Producto.ToList();
-            MessageBox.Show(context.Producto.Where(p => p.sku == SKU).FirstOrDefault().ToString());
-            lProduct.SelectedItem = context.Producto.Where(p => p.sku == SKU).FirstOrDefault();
+
+            // Selecciono el producto principal
+            //MessageBox.Show(context.Producto.Where(p => p.sku == SKU).FirstOrDefault().ToString());
+            lProduct.ClearSelected();
+            lRelated.ClearSelected();
+            lProduct.SelectedItem = context.Producto.Where(p => p.sku == skuPrincipal).FirstOrDefault();
+
+            // Selecciono los productos relacionados
+            var relacionProductos = context.RelacionProducto.Where(rp => rp.nombre_relacion == nombre).ToList();
+
+            List<Producto> todosLosProductos = context.Producto.ToList();
+            foreach (var relacionado in relacionProductos)
+            {
+                Producto productoRelacionado = context.Producto.Where(p => p.sku == relacionado.producto_sku_relacionado).FirstOrDefault();
+                
+                int index = todosLosProductos.IndexOf(productoRelacionado);
+                lRelated.SetSelected(index, true);
+            }
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -53,41 +67,75 @@ namespace MiniPIM.Relationships
                 using (var context = new grupo07DBEntities())
                 {
 
+                    //Miramos que los campos esten rellenos
                     if (string.IsNullOrEmpty(tName.Text))
                     {
-                        MessageBox.Show("Please, fill in all the fields.");
+                        MessageBox.Show("You must complete the required fields");
                         return;
                     }
 
-                    // Verificar si el nombre del atributo ya existe en la base de datos
+                    // Verificar si el nombre de la relacion ya existe en la base de datos
                     bool relacionExistente = context.Relacion
-                        .Any(r => r.nombre == tName.Text);
+                        .Any(r => r.nombre == tName.Text && r.nombre != nombre);
 
                     if (relacionExistente)
                     {
-                        MessageBox.Show("The relation name already exists. Please choose a different name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("The relationship name already exists. Please choose a different name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    /*
-                    
-                    var relacion = context.Relacion.SingleOrDefault(r => r.nombre == nombre);
 
-                    //Lo actualizamos en la base de datos
-                    relacion.nombre = tName.Text;
+                    if (lRelated.SelectedItems.Count == 0)
+                    {
+                        MessageBox.Show("You have not selected any related products.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (lProduct.SelectedItem == null)
+                    {
+                        MessageBox.Show("You must select one main product.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    Producto productoPrincipal = (Producto)lProduct.SelectedItem;
+                    foreach (Producto relacionado in lRelated.SelectedItems)
+                    {
+                        if (productoPrincipal.sku == relacionado.sku)
+                        {
+                            MessageBox.Show("You cannot relate a product with itself.");
+                            return;
+                        }
+
+                    }
+
+                    // Hay borrado en cascada. Con esto se borra toda la info
+                    Relacion estaRelacion = context.Relacion.FirstOrDefault(r => r.nombre == nombre);
+                    context.Relacion.Remove(estaRelacion);
                     context.SaveChanges();
+                    // Actualizo la relación
+                    Relacion relacionActualizada = new Relacion
+                    {
+                        nombre = tName.Text,
+                        cuenta_id = context.Cuenta.FirstOrDefault().id
+                    };
+                    context.Relacion.Add(relacionActualizada);
 
-                    //Borramos las textbox
-                    tName.Text = "";
+                    // Insertamos las relaciones con los productos
+                    foreach (Producto relacionado in lRelated.SelectedItems)
+                    {
+                        
+                        RelacionProducto rp = new RelacionProducto
+                        {
+                            producto_sku_principal = productoPrincipal.sku,
+                            nombre_relacion = relacionActualizada.nombre,
+                            producto_sku_relacionado = relacionado.sku
+                        };
 
-                    //Cerramos el form
-                    this.ParentForm.Close();
+                        context.RelacionProducto.Add(rp);
+                    }
 
+                    context.SaveChanges();
                     seccionRelaciones.RecargarRelaciones();
-
-                    MessageBox.Show("The relationship has been successfully updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-
-                    */
+                    this.ParentForm.Close();
                 }
             }
             catch (Exception ex)

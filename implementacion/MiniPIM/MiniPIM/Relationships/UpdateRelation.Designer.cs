@@ -42,10 +42,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(98, 81);
+            this.label1.Location = new System.Drawing.Point(78, 65);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
@@ -54,19 +54,19 @@
             this.tName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tName.Location = new System.Drawing.Point(101, 112);
+            this.tName.Location = new System.Drawing.Point(81, 90);
             this.tName.Margin = new System.Windows.Forms.Padding(2);
             this.tName.Name = "tName";
-            this.tName.Size = new System.Drawing.Size(346, 22);
+            this.tName.Size = new System.Drawing.Size(278, 20);
             this.tName.TabIndex = 2;
             // 
             // CancelButton
             // 
             this.CancelButton.AutoSize = true;
-            this.CancelButton.Location = new System.Drawing.Point(267, 318);
+            this.CancelButton.Location = new System.Drawing.Point(214, 254);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(70, 41);
+            this.CancelButton.Size = new System.Drawing.Size(56, 33);
             this.CancelButton.TabIndex = 4;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -75,10 +75,10 @@
             // UpdateButton
             // 
             this.UpdateButton.AutoSize = true;
-            this.UpdateButton.Location = new System.Drawing.Point(402, 318);
+            this.UpdateButton.Location = new System.Drawing.Point(322, 254);
             this.UpdateButton.Margin = new System.Windows.Forms.Padding(2);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(70, 41);
+            this.UpdateButton.Size = new System.Drawing.Size(56, 33);
             this.UpdateButton.TabIndex = 5;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
@@ -87,51 +87,55 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 45);
+            this.label3.Location = new System.Drawing.Point(80, 36);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 16);
+            this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Relationship details";
             // 
             // lProduct
             // 
             this.lProduct.FormattingEnabled = true;
-            this.lProduct.ItemHeight = 16;
-            this.lProduct.Location = new System.Drawing.Point(119, 188);
+            this.lProduct.Location = new System.Drawing.Point(95, 150);
+            this.lProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lProduct.Name = "lProduct";
-            this.lProduct.Size = new System.Drawing.Size(120, 116);
+            this.lProduct.Size = new System.Drawing.Size(97, 82);
             this.lProduct.TabIndex = 7;
             // 
             // lRelated
             // 
             this.lRelated.FormattingEnabled = true;
-            this.lRelated.ItemHeight = 16;
-            this.lRelated.Location = new System.Drawing.Point(327, 188);
+            this.lRelated.Location = new System.Drawing.Point(262, 150);
+            this.lRelated.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lRelated.Name = "lRelated";
-            this.lRelated.Size = new System.Drawing.Size(120, 116);
+            this.lRelated.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lRelated.Size = new System.Drawing.Size(97, 82);
             this.lRelated.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(145, 162);
+            this.label4.Location = new System.Drawing.Point(116, 130);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 16);
+            this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Product";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(354, 162);
+            this.label5.Location = new System.Drawing.Point(283, 130);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 16);
+            this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Related";
             // 
-            // UserControl2
+            // UpdateRelation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -143,8 +147,8 @@
             this.Controls.Add(this.tName);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "UserControl2";
-            this.Size = new System.Drawing.Size(568, 396);
+            this.Name = "UpdateRelation";
+            this.Size = new System.Drawing.Size(454, 317);
             this.ResumeLayout(false);
             this.PerformLayout();
 
