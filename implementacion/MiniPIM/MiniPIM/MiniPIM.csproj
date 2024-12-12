@@ -221,6 +221,12 @@
     <Compile Include="Relationships\NewRelation.Designer.cs">
       <DependentUpon>NewRelation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relationships\UpdateRelation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Relationships\UpdateRelation.Designer.cs">
+      <DependentUpon>UpdateRelation.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Relationships\NewRelation.resx">
       <DependentUpon>NewRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relationships\UpdateRelation.resx">
+      <DependentUpon>UpdateRelation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>

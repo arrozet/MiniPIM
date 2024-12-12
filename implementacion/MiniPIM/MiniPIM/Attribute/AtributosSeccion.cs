@@ -197,7 +197,7 @@ namespace MiniPIM.Attribute
                 };
 
                 // Crear la instancia del UserControl
-               /* UserControl1 attributeControl = new UserControl1(attributeId, this)
+                UserControl1 attributeControl = new UserControl1(attributeId, this)
                 {
                     Dock = DockStyle.Fill,
                 };
@@ -213,7 +213,7 @@ namespace MiniPIM.Attribute
                 attributeForm.ShowDialog(); // Mostrar el formulario de manera modal
 
                 attributeForm.FormClosed += (s, args) => AtributosSeccion_Load(this, EventArgs.Empty);
-               */
+               
             }
 
             if (e.ColumnIndex == listAttributes.Columns["Delete"].Index && e.RowIndex >= 0)

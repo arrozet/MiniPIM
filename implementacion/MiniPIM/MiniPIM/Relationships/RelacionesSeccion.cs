@@ -179,39 +179,66 @@ namespace MiniPIM.Relationships
         private void listRelations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //Meter el update y delete
-            if (e.ColumnIndex == listRelations.Columns["pencil"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == listRelations.Columns["Pencil"].Index && e.RowIndex >= 0)
             {
 
                 // Obtener la relacion seleccionada
                 var selectedRow = listRelations.Rows[e.RowIndex];
-                string RelationName = selectedRow.Cells["label"].Value.ToString();
+                string relationName = selectedRow.Cells["Label"].Value.ToString();
 
                 // Crear un formulario que contendrá el UserControl
-                /*Form attributeForm = new Form
+                Form relationshipForm = new Form
                 {
                     Text = "Edit Relation",
                     Size = new System.Drawing.Size(450, 300),
                     StartPosition = FormStartPosition.CenterParent
                 };
 
-                // Crear la instancia del UserControl
-                UserControl1 attributeControl = new UserControl1(attributeId, this)
-                {
-                    Dock = DockStyle.Fill,
-                };
+                
 
                 // Establecer los valores en el UserControl usando los setters
-                attributeControl.AttributeName = attributeName; // Establecer el nombre del atributo
-                attributeControl.Attributetype = attributeType;  // Establecer el tipo del atributo
+                //updateRelation.nombre = relationName; // Establecer el nombre del atributo
 
-                // Agregar el UserControl al formulario
-                attributeForm.Controls.Add(attributeControl);
-
-                // Mostrar el formulario como modal
-                attributeForm.ShowDialog(); // Mostrar el formulario de manera modal
                 
-                attributeForm.FormClosed += (s, args) => RelacionesSeccion_Load(this, EventArgs.Empty);
-                */
+                using(var context = new grupo07DBEntities())
+                {
+                    // Añado el producto principal
+                    string skuPrincipal = context.RelacionProducto.Where(rp => rp.nombre_relacion == relationName).FirstOrDefault().producto_sku_principal;
+                    MessageBox.Show(skuPrincipal);
+                    //updateRelation.SKU_Principal = skuPrincipal;
+
+                    // Crear la instancia del UserControl
+                    UpdateRelation updateRelation = new UpdateRelation(relationName, this, skuPrincipal)
+                    {
+                        Dock = DockStyle.Fill,
+                    };
+
+                    //updateRelation.productoSeleccionado = context.Producto.Where(p => p.sku == skuPrincipal).FirstOrDefault();
+                    // Ahora cojo la lista de productos relacionados
+                    /*List<Producto> productosRelacionados = new List<Producto>();
+                    var relacionProductos = context.RelacionProducto.Where(rp => rp.nombre_relacion == relationName).ToList();
+                   
+                    foreach (var relacionado  in relacionProductos)
+                    {
+                        Producto productoRelacionado = context.Producto.Where(p => p.sku == relacionado.producto_sku_relacionado).FirstOrDefault();
+                        productosRelacionados.Add(productoRelacionado);
+                    }
+
+                    updateRelation.productosRelacionados = productosRelacionados;
+                    */
+                    // Agregar el UserControl al formulario
+                    relationshipForm.Controls.Add(updateRelation);
+
+                    // Mostrar el formulario como modal
+                    relationshipForm.ShowDialog(); // Mostrar el formulario de manera modal
+
+                    relationshipForm.FormClosed += (s, args) => RelacionesSeccion_Load(this, EventArgs.Empty);
+                }
+
+
+
+               
+                
             }
 
             if (e.ColumnIndex == listRelations.Columns["Delete"].Index && e.RowIndex >= 0)
