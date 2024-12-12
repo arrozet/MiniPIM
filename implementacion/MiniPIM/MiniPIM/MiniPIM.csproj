@@ -184,6 +184,12 @@
     <Compile Include="Relationships\RelacionesSeccion.Designer.cs">
       <DependentUpon>RelacionesSeccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relationships\NewRelation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relationships\NewRelation.Designer.cs">
+      <DependentUpon>NewRelation.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,9 @@
     </EmbeddedResource>
      <EmbeddedResource Include="Relationships\RelacionesSeccion.resx">
       <DependentUpon>RelacionesSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relationships\NewRelation.resx">
+      <DependentUpon>NewRelation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>

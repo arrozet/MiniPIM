@@ -1,4 +1,5 @@
-﻿using MiniPIM.Category;
+﻿using MiniPIM.Attribute;
+using MiniPIM.Category;
 using MiniPIM.Product;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,10 @@ namespace MiniPIM.Relationships
         public RelacionesSeccion()
         {
             InitializeComponent();
-            this.Load += new System.EventHandler(this.AtributosSeccion_Load);
+            this.Load += new System.EventHandler(this.RelacionesSeccion_Load);
         }
 
-        private void AtributosSeccion_Load(object sender, EventArgs e)
+        private void RelacionesSeccion_Load(object sender, EventArgs e)
         {
 
             try
@@ -30,41 +31,38 @@ namespace MiniPIM.Relationships
                 using (var context = new grupo07DBEntities())
                 {
                     // Cargar los datos de la tabla Producto
-                    var atributos = context.AtributoPersonalizado
-                        .Select(a => new
+                    var relaciones = context.AtributoPersonalizado
+                        .Select(r => new
                         {
-                            a.id,
-                            a.nombre,
-                            a.tipo,
+                            r.id,
+                            r.nombre,
                             CantidadRelacionados = context.ProductoAtributo
-                            .Where(pa => pa.atributo_id == a.id)  // Relaciona con ProductoAtributo usando atributo_id
+                            .Where(pa => pa.atributo_id == r.id)  // Relaciona con ProductoAtributo usando atributo_id
                             .Count()  // Cuenta las relaciones
                         })
                         .ToList();
-                    Console.WriteLine($"Se han recuperado {atributos.Count} productos.");
+                    Console.WriteLine($"Se han recuperado {relaciones.Count} productos.");
 
 
                     // Asignar los datos al DataGridView
-                    listAttributes.AutoGenerateColumns = false;
+                    listRelations.AutoGenerateColumns = false;
 
                     // Configurar las columnas del DataGridView
-                    listAttributes.Columns["Label"].DataPropertyName = "nombre";
-                    listAttributes.Columns["ID"].DataPropertyName = "id";
-                    listAttributes.Columns["Type"].DataPropertyName = "tipo";
-                    listAttributes.Columns["NumberOfProducts"].DataPropertyName = "CantidadRelacionados";
+                    listRelations.Columns["Label"].DataPropertyName = "nombre";
+                    listRelations.Columns["NumberOfProducts"].DataPropertyName = "CantidadRelacionados";
 
-                    listAttributes.DataSource = atributos;
+                    listRelations.DataSource = relaciones;
 
                     // Verificar si hay datos y mostrar/ocultar la etiqueta
-                    if (atributos.Count > 0)
+                    if (relaciones.Count > 0)
                     {
-                        listAttributes.Visible = true;  // Mostrar el DataGridView
-                        NoAttributes.Visible = false;  // Ocultar el Label
+                        listRelations.Visible = true;  // Mostrar el DataGridView
+                        NoRelationships.Visible = false;  // Ocultar el Label
                     }
                     else
                     {
-                        listAttributes.Visible = false; // Ocultar el DataGridView
-                        NoAttributes.Visible = true;   // Mostrar el Label
+                        listRelations.Visible = false; // Ocultar el DataGridView
+                        NoRelationships.Visible = true;   // Mostrar el Label
                     }
 
 
@@ -77,39 +75,38 @@ namespace MiniPIM.Relationships
             }
         }
 
-        public void RecargarAtributos()
+        public void RecargarRelaciones()
         {
             try
             {
                 using (var context = new grupo07DBEntities())
                 {
                     // Consulta los datos actualizados
-                    var atributos = context.AtributoPersonalizado
-                        .Select(a => new
+                    var relaciones = context.AtributoPersonalizado
+                        .Select(r => new
                         {
-                            a.id,
-                            a.nombre,
-                            a.tipo,
+                            r.id,
+                            r.nombre,
                             CantidadRelacionados = context.ProductoAtributo
-                            .Where(pa => pa.atributo_id == a.id)  // Relaciona con ProductoAtributo usando atributo_id
+                            .Where(pa => pa.atributo_id == r.id)  // Relaciona con ProductoAtributo usando atributo_id
                             .Count()  // Cuenta las relaciones
                         })
                         .ToList();
 
                     // Asignar los datos actualizados al DataGridView
-                    listAttributes.DataSource = null; // Limpia los datos anteriores
-                    listAttributes.DataSource = atributos;
+                    listRelations.DataSource = null; // Limpia los datos anteriores
+                    listRelations.DataSource = relaciones;
 
                     // Verificar si hay datos y mostrar/ocultar la etiqueta
-                    if (atributos.Count > 0)
+                    if (relaciones.Count > 0)
                     {
-                        listAttributes.Visible = true;  // Mostrar el DataGridView
-                        NoAttributes.Visible = false;  // Ocultar el Label
+                        listRelations.Visible = true;  // Mostrar el DataGridView
+                        NoRelationships.Visible = false;  // Ocultar el Label
                     }
                     else
                     {
-                        listAttributes.Visible = false; // Ocultar el DataGridView
-                        NoAttributes.Visible = true;   // Mostrar el Label
+                        listRelations.Visible = false; // Ocultar el DataGridView
+                        NoRelationships.Visible = true;   // Mostrar el Label
                     }
                 }
             }
@@ -133,8 +130,18 @@ namespace MiniPIM.Relationships
 
         private void Attributes_Click(object sender, EventArgs e)
         {
-            //No hace nada
-            menuStrip1.Enabled = false;
+            AtributosSeccion atributosForm = new AtributosSeccion();
+            // Asignar la posición y el tamaño del formulario actual
+            atributosForm.StartPosition = FormStartPosition.Manual; // Para permitir personalizar la posición
+            atributosForm.Location = this.Location; // Misma posición que el formulario actual
+            atributosForm.Size = this.Size; // Mismo tamaño que el formulario actual
+            atributosForm.Show();
+            this.Close(); // Ocultar este formulario
+        }
+
+        private void Relationships_Click(object sender, EventArgs e)
+        {
+            Relationships.Enabled = false;
         }
 
 
@@ -149,9 +156,9 @@ namespace MiniPIM.Relationships
         }
 
 
-        private void NewAttribute_Click_1(object sender, EventArgs e)
+        private void NewRelation_Click(object sender, EventArgs e)
         {
-            if (listAttributes.Rows.Count >= 5)
+            if (listRelations.Rows.Count >= 5)
             {
                 // Mostrar un mensaje indicando que no se pueden añadir más productos
                 MessageBox.Show("You cannot add more attributes. The limit is 5.",
@@ -175,28 +182,27 @@ namespace MiniPIM.Relationships
         }
 
 
-        private void listAttributes_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void listRelations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //Meter el update y delete
-            if (e.ColumnIndex == listAttributes.Columns["pencil"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == listRelations.Columns["pencil"].Index && e.RowIndex >= 0)
             {
                 // Validar que no sea un clic en el encabezado de columna
                 // Obtener el atributo seleccionado
-                var selectedRow = listAttributes.Rows[e.RowIndex];
-                int attributeId = (int)selectedRow.Cells["id"].Value;
-                string attributeName = selectedRow.Cells["label"].Value.ToString();
-                string attributeType = selectedRow.Cells["type"].Value.ToString();
+                var selectedRow = listRelations.Rows[e.RowIndex];
+                int relationId = (int)selectedRow.Cells["id"].Value;
+                string RelationName = selectedRow.Cells["label"].Value.ToString();
 
                 // Crear un formulario que contendrá el UserControl
-                Form attributeForm = new Form
+                /*Form attributeForm = new Form
                 {
-                    Text = "Edit Attribute",
+                    Text = "Edit Relation",
                     Size = new System.Drawing.Size(450, 300),
                     StartPosition = FormStartPosition.CenterParent
                 };
 
                 // Crear la instancia del UserControl
-                /*UserControl1 attributeControl = new UserControl1(attributeId, this)
+                UserControl1 attributeControl = new UserControl1(attributeId, this)
                 {
                     Dock = DockStyle.Fill,
                 };
@@ -210,22 +216,21 @@ namespace MiniPIM.Relationships
 
                 // Mostrar el formulario como modal
                 attributeForm.ShowDialog(); // Mostrar el formulario de manera modal
+                
+                attributeForm.FormClosed += (s, args) => RelacionesSeccion_Load(this, EventArgs.Empty);
                 */
-                attributeForm.FormClosed += (s, args) => AtributosSeccion_Load(this, EventArgs.Empty);
-
             }
 
-            if (e.ColumnIndex == listAttributes.Columns["Delete"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == listRelations.Columns["Delete"].Index && e.RowIndex >= 0)
             {
                 // Validar que no sea un clic en el encabezado de columna
                 // Obtener el atributo seleccionado
-                var selectedRow = listAttributes.Rows[e.RowIndex];
-                int attributeId = (int)selectedRow.Cells["id"].Value;
-                string attributeName = selectedRow.Cells["label"].Value.ToString();
-                string attributeType = selectedRow.Cells["type"].Value.ToString();
+                var selectedRow = listRelations.Rows[e.RowIndex];
+                int relationId = (int)selectedRow.Cells["id"].Value;
+                string relationName = selectedRow.Cells["label"].Value.ToString();
 
                 // Borrar: confirmar antes de eliminar
-                var confirmDelete = MessageBox.Show($"Are you sure you want to delete '{attributeName}'?",
+                var confirmDelete = MessageBox.Show($"Are you sure you want to delete '{relationName}'?",
                                                     "Confirm Delete",
                                                     MessageBoxButtons.YesNo,
                                                     MessageBoxIcon.Warning);
@@ -235,20 +240,21 @@ namespace MiniPIM.Relationships
                     // Eliminar de la base de datos
                     using (var context = new grupo07DBEntities())
                     {
-                        var attributeToDelete = context.AtributoPersonalizado.Find(attributeId);
-                        if (attributeToDelete != null)
+                        var relationToDelete = context.AtributoPersonalizado.Find(relationId);
+                        if (relationToDelete != null)
                         {
-                            context.AtributoPersonalizado.Remove(attributeToDelete);
+                            context.AtributoPersonalizado.Remove(relationToDelete);
                             context.SaveChanges();
                         }
                     }
 
                     // Refrescar el DataGridView
-                    AtributosSeccion_Load(sender, e);
+                    RelacionesSeccion_Load(sender, e);
                 }
 
 
             }
         }
+
     }
 }
