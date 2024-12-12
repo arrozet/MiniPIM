@@ -126,7 +126,7 @@ namespace MiniPIM.Relationships
             this.Close(); // Ocultar este formulario
         }
 
-        private void Attributes_Click(object sender, EventArgs e)
+        private void Attributes_Click_1(object sender, EventArgs e)
         {
             AtributosSeccion atributosForm = new AtributosSeccion();
             // Asignar la posición y el tamaño del formulario actual
@@ -251,6 +251,5 @@ namespace MiniPIM.Relationships
 
             }
         }
-
     }
 }
