@@ -85,7 +85,7 @@ namespace MiniPIM.Category
 
         private void Attributes_Click(object sender, EventArgs e)
         {
-            AtributosSeccion atributosForm = new AtributosSeccion();
+            RelacionesSeccion atributosForm = new AtributosSeccion();
             // Asignar la posición y el tamaño del formulario actual
             atributosForm.StartPosition = FormStartPosition.Manual; // Para permitir personalizar la posición
             atributosForm.Location = this.Location; // Misma posición que el formulario actual

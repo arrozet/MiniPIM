@@ -1,6 +1,6 @@
-﻿namespace MiniPIM.Attribute
+﻿namespace MiniPIM.Relationships
 {
-    partial class AtributosSeccion
+    partial class RelacionesSeccion
     {
         /// <summary>
         /// Required designer variable.

@@ -11,11 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MiniPIM.Attribute
+namespace MiniPIM.Relationships
 {
-    public partial class AtributosSeccion : Form
+    public partial class RelacionesSeccion : Form
     {
-        public AtributosSeccion()
+        public RelacionesSeccion()
         {
             InitializeComponent();
             this.Load += new System.EventHandler(this.AtributosSeccion_Load);
@@ -161,17 +161,17 @@ namespace MiniPIM.Attribute
                 return;
             }
 
-            NewAttributeForm crearAtributosForm = new NewAttributeForm();
+            //NewAttributeForm crearAtributosForm = new NewAttributeForm();
 
             //Esto recarga el datagrid cuando se cierre el nuevo form
 
-            crearAtributosForm.FormClosed += (s, args) =>
+            /*crearAtributosForm.FormClosed += (s, args) =>
             {
                 // Recargar el DataGridView
                 AtributosSeccion_Load(this, EventArgs.Empty);
             };
 
-            crearAtributosForm.Show();
+            crearAtributosForm.Show();*/
         }
 
 
@@ -196,7 +196,7 @@ namespace MiniPIM.Attribute
                 };
 
                 // Crear la instancia del UserControl
-               /* UserControl1 attributeControl = new UserControl1(attributeId, this)
+                /*UserControl1 attributeControl = new UserControl1(attributeId, this)
                 {
                     Dock = DockStyle.Fill,
                 };
@@ -210,9 +210,9 @@ namespace MiniPIM.Attribute
 
                 // Mostrar el formulario como modal
                 attributeForm.ShowDialog(); // Mostrar el formulario de manera modal
-
+                */
                 attributeForm.FormClosed += (s, args) => AtributosSeccion_Load(this, EventArgs.Empty);
-               */
+
             }
 
             if (e.ColumnIndex == listAttributes.Columns["Delete"].Index && e.RowIndex >= 0)

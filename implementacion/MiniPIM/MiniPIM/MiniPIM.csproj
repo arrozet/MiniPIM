@@ -162,6 +162,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Relationships\RelacionesSeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relationships\RelacionesSeccion.Designer.cs">
+      <DependentUpon>RelacionesSeccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +233,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relationships\RelacionesSeccion.resx">
+      <DependentUpon>RelacionesSeccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>

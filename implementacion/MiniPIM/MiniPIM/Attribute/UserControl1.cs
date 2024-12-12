@@ -15,7 +15,7 @@ namespace MiniPIM.Attribute
     public partial class UserControl1 : UserControl
     {
         private int id;
-        private AtributosSeccion seccionAtributos;
+        private RelacionesSeccion seccionAtributos;
         public enum AttributeType
         {
             text,
@@ -47,7 +47,7 @@ namespace MiniPIM.Attribute
             set => typeText.Text = value; // Establecer el valor seleccionado en el ComboBox
         }
 
-        public UserControl1(int attributeId, AtributosSeccion seccionAtributos)
+        public UserControl1(int attributeId, RelacionesSeccion seccionAtributos)
         {
             id = attributeId;
             InitializeComponent();
