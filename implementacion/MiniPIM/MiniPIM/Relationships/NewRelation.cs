@@ -24,7 +24,11 @@ namespace MiniPIM.Relationships
                 // Crear una instancia del contexto de Entity Framework
                 using (var context = new grupo07DBEntities())
                 {
-                    //lProduct.DataSource = context.Producto.Select(p => new )
+                    var productos = context.Producto.ToList(); // se ha modificado el toString de producto
+
+                    // Configurar el DataSource para los ListBox
+                    lProduct.DataSource = productos;
+                    lRelated.DataSource = productos;
                 }
             }
             catch (Exception ex)

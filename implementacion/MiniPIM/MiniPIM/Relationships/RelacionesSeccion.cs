@@ -34,7 +34,6 @@ namespace MiniPIM.Relationships
                     var relaciones = context.AtributoPersonalizado
                         .Select(r => new
                         {
-                            r.id,
                             r.nombre,
                             CantidadRelacionados = context.ProductoAtributo
                             .Where(pa => pa.atributo_id == r.id)  // Relaciona con ProductoAtributo usando atributo_id
@@ -85,7 +84,6 @@ namespace MiniPIM.Relationships
                     var relaciones = context.AtributoPersonalizado
                         .Select(r => new
                         {
-                            r.id,
                             r.nombre,
                             CantidadRelacionados = context.ProductoAtributo
                             .Where(pa => pa.atributo_id == r.id)  // Relaciona con ProductoAtributo usando atributo_id
@@ -190,7 +188,6 @@ namespace MiniPIM.Relationships
                 // Validar que no sea un clic en el encabezado de columna
                 // Obtener el atributo seleccionado
                 var selectedRow = listRelations.Rows[e.RowIndex];
-                int relationId = (int)selectedRow.Cells["id"].Value;
                 string RelationName = selectedRow.Cells["label"].Value.ToString();
 
                 // Crear un formulario que contendrá el UserControl
@@ -226,7 +223,6 @@ namespace MiniPIM.Relationships
                 // Validar que no sea un clic en el encabezado de columna
                 // Obtener el atributo seleccionado
                 var selectedRow = listRelations.Rows[e.RowIndex];
-                int relationId = (int)selectedRow.Cells["id"].Value;
                 string relationName = selectedRow.Cells["label"].Value.ToString();
 
                 // Borrar: confirmar antes de eliminar
@@ -240,7 +236,7 @@ namespace MiniPIM.Relationships
                     // Eliminar de la base de datos
                     using (var context = new grupo07DBEntities())
                     {
-                        var relationToDelete = context.AtributoPersonalizado.Find(relationId);
+                        var relationToDelete = context.AtributoPersonalizado.Find(relationName); // antes era relationId
                         if (relationToDelete != null)
                         {
                             context.AtributoPersonalizado.Remove(relationToDelete);

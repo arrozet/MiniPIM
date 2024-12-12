@@ -38,5 +38,10 @@ namespace MiniPIM
         public virtual ICollection<RelacionProducto> RelacionProducto { get; set; }
         public virtual ICollection<RelacionProducto> RelacionProducto1 { get; set; }
         public virtual ICollection<Categoria> Categoria { get; set; }
+
+        public override string ToString()
+        {
+            return label;
+        }
     }
 }
