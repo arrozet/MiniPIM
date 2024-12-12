@@ -215,5 +215,16 @@ namespace MiniPIM.Category
             relacionesForm.Show();
             this.Hide();
         }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductosResumen export = new ProductosResumen(true);
+            export.StartPosition = FormStartPosition.Manual;
+            export.Location = this.Location;
+            export.Size = Size;
+
+            export.Show();
+            this.Hide();
+        }
     }
 }

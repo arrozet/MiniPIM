@@ -55,7 +55,7 @@ namespace MiniPIM.Product
             this.lblHeader.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblHeader.Location = new System.Drawing.Point(10, 10);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(148, 25);
+            this.lblHeader.Size = new System.Drawing.Size(190, 32);
             this.lblHeader.TabIndex = 0;
             this.lblHeader.Text = "Product Details";
             // 
@@ -123,7 +123,7 @@ namespace MiniPIM.Product
             this.txtSKU.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSKU.Location = new System.Drawing.Point(159, 3);
             this.txtSKU.Name = "txtSKU";
-            this.txtSKU.Size = new System.Drawing.Size(462, 20);
+            this.txtSKU.Size = new System.Drawing.Size(462, 22);
             this.txtSKU.TabIndex = 1;
             this.txtSKU.TextChanged += new System.EventHandler(this.txtSKU_TextChanged);
             // 
@@ -142,7 +142,7 @@ namespace MiniPIM.Product
             this.txtGTIN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGTIN.Location = new System.Drawing.Point(159, 33);
             this.txtGTIN.Name = "txtGTIN";
-            this.txtGTIN.Size = new System.Drawing.Size(462, 20);
+            this.txtGTIN.Size = new System.Drawing.Size(462, 22);
             this.txtGTIN.TabIndex = 3;
             this.txtGTIN.TextChanged += new System.EventHandler(this.txtGTIN_TextChanged);
             // 
@@ -161,7 +161,7 @@ namespace MiniPIM.Product
             this.txtProductName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtProductName.Location = new System.Drawing.Point(159, 63);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(462, 20);
+            this.txtProductName.Size = new System.Drawing.Size(462, 22);
             this.txtProductName.TabIndex = 5;
             this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             // 
@@ -253,7 +253,7 @@ namespace MiniPIM.Product
             this.checkedListBoxCategories.MultiColumn = true;
             this.checkedListBoxCategories.Name = "checkedListBoxCategories";
             this.checkedListBoxCategories.ScrollAlwaysVisible = true;
-            this.checkedListBoxCategories.Size = new System.Drawing.Size(462, 49);
+            this.checkedListBoxCategories.Size = new System.Drawing.Size(462, 38);
             this.checkedListBoxCategories.TabIndex = 3;
             // 
             // textBoxA1
@@ -262,7 +262,7 @@ namespace MiniPIM.Product
             this.textBoxA1.Enabled = false;
             this.textBoxA1.Location = new System.Drawing.Point(159, 345);
             this.textBoxA1.Name = "textBoxA1";
-            this.textBoxA1.Size = new System.Drawing.Size(462, 20);
+            this.textBoxA1.Size = new System.Drawing.Size(462, 22);
             this.textBoxA1.TabIndex = 16;
             this.textBoxA1.Visible = false;
             // 
@@ -272,7 +272,7 @@ namespace MiniPIM.Product
             this.textBoxA2.Enabled = false;
             this.textBoxA2.Location = new System.Drawing.Point(159, 374);
             this.textBoxA2.Name = "textBoxA2";
-            this.textBoxA2.Size = new System.Drawing.Size(462, 20);
+            this.textBoxA2.Size = new System.Drawing.Size(462, 22);
             this.textBoxA2.TabIndex = 17;
             this.textBoxA2.Visible = false;
             // 
@@ -282,7 +282,7 @@ namespace MiniPIM.Product
             this.textBoxA3.Enabled = false;
             this.textBoxA3.Location = new System.Drawing.Point(159, 403);
             this.textBoxA3.Name = "textBoxA3";
-            this.textBoxA3.Size = new System.Drawing.Size(462, 20);
+            this.textBoxA3.Size = new System.Drawing.Size(462, 22);
             this.textBoxA3.TabIndex = 18;
             this.textBoxA3.Visible = false;
             // 
@@ -292,7 +292,7 @@ namespace MiniPIM.Product
             this.textBoxA4.Enabled = false;
             this.textBoxA4.Location = new System.Drawing.Point(159, 432);
             this.textBoxA4.Name = "textBoxA4";
-            this.textBoxA4.Size = new System.Drawing.Size(462, 20);
+            this.textBoxA4.Size = new System.Drawing.Size(462, 22);
             this.textBoxA4.TabIndex = 19;
             this.textBoxA4.Visible = false;
             // 
@@ -302,7 +302,7 @@ namespace MiniPIM.Product
             this.textBoxA5.Enabled = false;
             this.textBoxA5.Location = new System.Drawing.Point(159, 461);
             this.textBoxA5.Name = "textBoxA5";
-            this.textBoxA5.Size = new System.Drawing.Size(462, 20);
+            this.textBoxA5.Size = new System.Drawing.Size(462, 22);
             this.textBoxA5.TabIndex = 20;
             this.textBoxA5.Visible = false;
             // 

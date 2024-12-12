@@ -357,9 +357,6 @@ namespace MiniPIM.Product
             var categorias = contextGlobalFeo.Categoria.ToList();
             categoriesListBox.DataSource = categorias;
             categoriesListBox.ClearSelected();
-            
-
-            
         }
 
         private void btnExportCSV_Click(object sender, EventArgs e)
@@ -375,7 +372,18 @@ namespace MiniPIM.Product
         private void ExportarA_CSV(List<Producto> productos)
         {
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MiniPIM");
-            string filePath = Path.Combine(folderPath, "amazonExport.csv");
+
+            string categoria = String.Empty;
+            if(categoriesListBox.SelectedItem == null)
+            {
+                categoria = "no_filter";
+            }
+            else
+            {
+                categoria = categoriesListBox.SelectedItem.ToString();
+            }
+
+            string filePath = Path.Combine(folderPath, categoria + "-amazonExport.csv");
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
@@ -383,7 +391,8 @@ namespace MiniPIM.Product
             using (StreamWriter sw = new StreamWriter(filePath))
             {
                 // Escribir la cabecera del archivo CSV
-                sw.WriteLine("SKU,Title,FulfilledBy,Amazon_SKU,Price,OfferPrimer");
+                string delimiter = ";";
+                sw.WriteLine($"SKU{delimiter}Title{delimiter}FulfilledBy{delimiter}Amazon_SKU{delimiter}Price{delimiter}OfferPrimer");
 
                 // Escribir los productos al archivo
                 foreach (Producto producto in productos)
@@ -395,12 +404,12 @@ namespace MiniPIM.Product
                     if (price == -1)
                     {
                         MessageBox.Show($"No se pudo exportar el producto {producto.label} ya que no contiene un atributo numérico");
-                        continue;
+                        return;
                     }
                     Cuenta cuenta = contextGlobalFeo.Cuenta.Where(c => c.id == producto.cuenta_id).FirstOrDefault();
 
                     // Escribir la línea del producto en el CSV
-                    sw.WriteLine($"{producto.sku},{producto.label},{cuenta.nombre},{producto.gtin},{price},false");
+                    sw.WriteLine($"{producto.sku}{delimiter}{producto.label}{delimiter}{cuenta.nombre}{delimiter}{producto.gtin}{delimiter}{price}{delimiter}false");
                 }
             }
             MessageBox.Show($"Exportación a CSV completa en {filePath}");

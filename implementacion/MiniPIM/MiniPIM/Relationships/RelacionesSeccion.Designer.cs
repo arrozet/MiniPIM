@@ -47,6 +47,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.NoRelationships = new System.Windows.Forms.Label();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             NewRelation = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listRelations)).BeginInit();
@@ -57,10 +58,10 @@
             // 
             NewRelation.Dock = System.Windows.Forms.DockStyle.Fill;
             NewRelation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            NewRelation.Location = new System.Drawing.Point(516, 5);
-            NewRelation.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            NewRelation.Location = new System.Drawing.Point(459, 4);
+            NewRelation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             NewRelation.Name = "NewRelation";
-            NewRelation.Size = new System.Drawing.Size(508, 95);
+            NewRelation.Size = new System.Drawing.Size(451, 76);
             NewRelation.TabIndex = 6;
             NewRelation.Text = "+ New relationship";
             NewRelation.UseVisualStyleBackColor = true;
@@ -69,18 +70,18 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Indigo;
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Products,
             this.Attributes,
             this.Categories,
             this.Relationships,
-            this.accountToolStripMenuItem});
+            this.accountToolStripMenuItem,
+            this.exportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1027, 40);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(913, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -90,7 +91,7 @@
             this.Products.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Products.ForeColor = System.Drawing.Color.White;
             this.Products.Name = "Products";
-            this.Products.Size = new System.Drawing.Size(122, 36);
+            this.Products.Size = new System.Drawing.Size(103, 32);
             this.Products.Text = "Products";
             this.Products.Click += new System.EventHandler(this.Products_Click);
             // 
@@ -99,7 +100,7 @@
             this.Attributes.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Attributes.ForeColor = System.Drawing.Color.White;
             this.Attributes.Name = "Attributes";
-            this.Attributes.Size = new System.Drawing.Size(134, 36);
+            this.Attributes.Size = new System.Drawing.Size(113, 32);
             this.Attributes.Text = "Attributes";
             this.Attributes.Click += new System.EventHandler(this.Attributes_Click_1);
             // 
@@ -109,7 +110,7 @@
             this.Categories.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Categories.ForeColor = System.Drawing.Color.White;
             this.Categories.Name = "Categories";
-            this.Categories.Size = new System.Drawing.Size(143, 36);
+            this.Categories.Size = new System.Drawing.Size(119, 32);
             this.Categories.Text = "Categories";
             this.Categories.Click += new System.EventHandler(this.Categories_Click);
             // 
@@ -118,7 +119,7 @@
             this.Relationships.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Relationships.ForeColor = System.Drawing.Color.Gray;
             this.Relationships.Name = "Relationships";
-            this.Relationships.Size = new System.Drawing.Size(170, 36);
+            this.Relationships.Size = new System.Drawing.Size(141, 32);
             this.Relationships.Text = "Relationships";
             this.Relationships.Click += new System.EventHandler(this.Relationships_Click);
             // 
@@ -128,7 +129,7 @@
             this.accountToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.accountToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(117, 36);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(98, 32);
             this.accountToolStripMenuItem.Text = "Account";
             this.accountToolStripMenuItem.Click += new System.EventHandler(this.accountToolStripMenuItem_Click);
             // 
@@ -168,12 +169,12 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listRelations.DefaultCellStyle = dataGridViewCellStyle2;
-            this.listRelations.Location = new System.Drawing.Point(10, 155);
-            this.listRelations.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.listRelations.Location = new System.Drawing.Point(9, 124);
+            this.listRelations.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listRelations.Name = "listRelations";
             this.listRelations.RowHeadersWidth = 51;
             this.listRelations.RowTemplate.Height = 24;
-            this.listRelations.Size = new System.Drawing.Size(1002, 408);
+            this.listRelations.Size = new System.Drawing.Size(891, 326);
             this.listRelations.TabIndex = 3;
             this.listRelations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listRelations_CellClick);
             // 
@@ -220,12 +221,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(NewRelation, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 49);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 39);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1027, 105);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(913, 84);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // label1
@@ -235,7 +236,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.75F);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(507, 105);
+            this.label1.Size = new System.Drawing.Size(450, 84);
             this.label1.TabIndex = 7;
             this.label1.Text = "All Relationships";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -245,24 +246,33 @@
             this.NoRelationships.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.NoRelationships.AutoSize = true;
             this.NoRelationships.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.NoRelationships.Location = new System.Drawing.Point(153, 358);
+            this.NoRelationships.Location = new System.Drawing.Point(136, 286);
             this.NoRelationships.Name = "NoRelationships";
-            this.NoRelationships.Size = new System.Drawing.Size(749, 69);
+            this.NoRelationships.Size = new System.Drawing.Size(622, 58);
             this.NoRelationships.TabIndex = 5;
             this.NoRelationships.Text = "NO RELATIONSHIPS YET";
             this.NoRelationships.Visible = false;
             // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.exportToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(83, 32);
+            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            // 
             // RelacionesSeccion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 562);
+            this.ClientSize = new System.Drawing.Size(913, 450);
             this.Controls.Add(this.NoRelationships);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.listRelations);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RelacionesSeccion";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
@@ -292,5 +302,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfProducts;
         private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
     }
 }
