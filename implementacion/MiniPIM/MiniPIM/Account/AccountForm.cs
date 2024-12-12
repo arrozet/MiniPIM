@@ -12,9 +12,9 @@ using MiniPIM.Product;
 
 namespace MiniPIM.Account
 {
-    public partial class Account : Form
+    public partial class AccountForm : Form
     {
-        public Account()
+        public AccountForm()
         {
             InitializeComponent();
             this.Load += new EventHandler(Account_Load);
@@ -28,8 +28,8 @@ namespace MiniPIM.Account
                 {
                     Cuenta cuenta = context.Cuenta.FirstOrDefault();
                     lblUsernameValue.Text = cuenta.nombre;
-                    lblEmail.Text = cuenta.email;
-                    lblCreationDateValue.Text = cuenta.fecha_creacion.ToString();
+                    lblEmailValue.Text = cuenta.email;
+                    lblCreationDateValue.Text = cuenta.fecha_creacion.ToString("yyyy-MM-dd");
                     lblProductsValue.Text = context.Producto.Where(p => p.cuenta_id == cuenta.id).Count().ToString();
                     lblAttributesValue.Text = context.AtributoPersonalizado.Where(a => a.cuenta_id == cuenta.id).Count().ToString();
                     lblCategoriesValue.Text = context.Categoria.Where(c => c.cuenta_id == cuenta.id).Count().ToString();
@@ -50,7 +50,12 @@ namespace MiniPIM.Account
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-
+            using(var context = new grupo07DBEntities())
+            {
+                Cuenta cuenta = context.Cuenta.FirstOrDefault();
+                FileManager fm = new FileManager(cuenta);
+                fm.ExportToJson();
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)

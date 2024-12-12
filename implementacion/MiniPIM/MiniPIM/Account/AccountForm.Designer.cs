@@ -1,6 +1,6 @@
 ﻿namespace MiniPIM.Account
 {
-    partial class Account
+    partial class AccountForm
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -30,8 +30,8 @@
             this.lblAttributesValue = new System.Windows.Forms.Label();
             this.lblCategoriesValue = new System.Windows.Forms.Label();
             this.lblRelationshipsValue = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -207,17 +207,6 @@
             this.lblRelationshipsValue.TabIndex = 14;
             this.lblRelationshipsValue.Text = "[Relationships]";
             // 
-            // btnBack
-            // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnBack.Location = new System.Drawing.Point(886, 15);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(61, 24);
-            this.btnBack.TabIndex = 16;
-            this.btnBack.Text = "Back";
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
             // btnExport
             // 
             this.btnExport.Location = new System.Drawing.Point(788, 15);
@@ -228,11 +217,22 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // Account
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(887, 16);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 18;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // AccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 595);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblUsername);
@@ -249,9 +249,8 @@
             this.Controls.Add(this.lblAttributesValue);
             this.Controls.Add(this.lblCategoriesValue);
             this.Controls.Add(this.lblRelationshipsValue);
-            this.Controls.Add(this.btnBack);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Account";
+            this.Name = "AccountForm";
             this.Text = "My Profile";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -276,7 +275,7 @@
         private System.Windows.Forms.Label lblRelationshipsValue;
 
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button btnBack;
     }
 }
