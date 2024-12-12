@@ -1,6 +1,7 @@
 ﻿using MiniPIM.Account;
 using MiniPIM.Category;
 using MiniPIM.Product;
+using MiniPIM.Relationships;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -260,6 +261,21 @@ namespace MiniPIM.Attribute
             acForm.Size = Size;
 
             acForm.Show();
+            this.Hide();
+        }
+
+        private void relationshipsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Crear instancia del formulario de categorías
+            RelacionesSeccion relacionesForm = new RelacionesSeccion();
+
+            // Asignar la posición y el tamaño del formulario actual
+            relacionesForm.StartPosition = FormStartPosition.Manual;
+            relacionesForm.Location = this.Location;
+            relacionesForm.Size = this.Size;
+
+            // Mostrar el nuevo formulario y ocultar el actual
+            relacionesForm.Show();
             this.Hide();
         }
     }
