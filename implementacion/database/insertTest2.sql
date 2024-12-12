@@ -2,9 +2,12 @@ SELECT * FROM Producto;
 SELECT * FROM Cuenta;
 SELECT * FROM Categoria;
 SELECT * FROM Relacion;
+SELECT * FROM RelacionProducto;
 SELECT * FROM AtributoPersonalizado;
 INSERT INTO Cuenta (nombre, fecha_creacion) 
 VALUES ('Juanma Ganador', CURDATE());
+
+INSERT INTO RelacionProducto VALUES ('G0001','Más productos épicos','G0003');
 
 UPDATE Producto
 SET cuenta_id = 1
@@ -37,7 +40,9 @@ ALTER TABLE RelacionProducto DROP COLUMN id;
 ALTER TABLE RelacionProducto 
 ADD PRIMARY KEY (producto_sku_principal, nombre_relacion, producto_sku_relacionado);
 
-UPDATE Cuenta SET email = "juanma@ganador.es" WHERE id = 1;
+ALTER TABLE Relacion DROP COLUMN id;
+ALTER TABLE Relacion ADD PRIMARY KEY (nombre);
+
 
 
 
