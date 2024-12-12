@@ -25,24 +25,22 @@ namespace MiniPIM.Relationships
 
         private void RelacionesSeccion_Load(object sender, EventArgs e)
         {
-
             try
             {
                 // Crear una instancia del contexto de Entity Framework
                 using (var context = new grupo07DBEntities())
                 {
-                    // Cargar los datos de la tabla Producto
-                    var relaciones = context.AtributoPersonalizado
+                    // Cargar los datos de la tabla Relacion
+                    var relaciones = context.Relacion
                         .Select(r => new
                         {
                             r.nombre,
-                            CantidadRelacionados = context.ProductoAtributo
-                            .Where(pa => pa.atributo_id == r.id)  // Relaciona con ProductoAtributo usando atributo_id
+                            CantidadRelacionados = context.RelacionProducto
+                            .Where(rp => rp.nombre_relacion == r.nombre)  // Relaciona con RelacionProducto usando nombre_relacion
                             .Count()  // Cuenta las relaciones
                         })
                         .ToList();
-                    Console.WriteLine($"Se han recuperado {relaciones.Count} productos.");
-
+                    Console.WriteLine($"Se han recuperado {relaciones.Count} relaciones.");
 
                     // Asignar los datos al DataGridView
                     listRelations.AutoGenerateColumns = false;
@@ -64,8 +62,6 @@ namespace MiniPIM.Relationships
                         listRelations.Visible = false; // Ocultar el DataGridView
                         NoRelationships.Visible = true;   // Mostrar el Label
                     }
-
-
                 }
             }
             catch (Exception ex)
@@ -79,21 +75,21 @@ namespace MiniPIM.Relationships
         {
             try
             {
+                // Crear una instancia del contexto de Entity Framework
                 using (var context = new grupo07DBEntities())
                 {
-                    // Consulta los datos actualizados
-                    var relaciones = context.AtributoPersonalizado
+                    // Cargar los datos de la tabla Relacion
+                    var relaciones = context.Relacion
                         .Select(r => new
                         {
                             r.nombre,
-                            CantidadRelacionados = context.ProductoAtributo
-                            .Where(pa => pa.atributo_id == r.id)  // Relaciona con ProductoAtributo usando atributo_id
+                            CantidadRelacionados = context.RelacionProducto
+                            .Where(rp => rp.nombre_relacion == r.nombre)  // Relaciona con RelacionProducto usando nombre_relacion
                             .Count()  // Cuenta las relaciones
                         })
                         .ToList();
+                    Console.WriteLine($"Se han recuperado {relaciones.Count} relaciones.");
 
-                    // Asignar los datos actualizados al DataGridView
-                    listRelations.DataSource = null; // Limpia los datos anteriores
                     listRelations.DataSource = relaciones;
 
                     // Verificar si hay datos y mostrar/ocultar la etiqueta
@@ -111,7 +107,8 @@ namespace MiniPIM.Relationships
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al recargar los datos: {ex.Message}");
+                // Mostrar cualquier error que ocurra
+                MessageBox.Show($"Error al cargar los datos: {ex.Message}");
             }
         }
 
@@ -157,27 +154,25 @@ namespace MiniPIM.Relationships
 
         private void NewRelation_Click(object sender, EventArgs e)
         {
-            if (listRelations.Rows.Count >= 5)
+            if (listRelations.Rows.Count >= 3)
             {
                 // Mostrar un mensaje indicando que no se pueden añadir más productos
-                MessageBox.Show("You cannot add more attributes. The limit is 5.",
+                MessageBox.Show("You cannot add more relationships. The limit is 3.",
                                 "Limit reached",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
                 return;
             }
 
-            //NewAttributeForm crearAtributosForm = new NewAttributeForm();
+            NewRelation createRelationForm = new NewRelation();
 
-            //Esto recarga el datagrid cuando se cierre el nuevo form
-
-            /*crearAtributosForm.FormClosed += (s, args) =>
+            createRelationForm.FormClosed += (s, args) =>
             {
-                // Recargar el DataGridView
-                AtributosSeccion_Load(this, EventArgs.Empty);
+               // Recargar el DataGridView
+               RelacionesSeccion_Load(this, EventArgs.Empty);
             };
 
-            crearAtributosForm.Show();*/
+            createRelationForm.Show();
         }
 
 
@@ -186,8 +181,8 @@ namespace MiniPIM.Relationships
             //Meter el update y delete
             if (e.ColumnIndex == listRelations.Columns["pencil"].Index && e.RowIndex >= 0)
             {
-                // Validar que no sea un clic en el encabezado de columna
-                // Obtener el atributo seleccionado
+
+                // Obtener la relacion seleccionada
                 var selectedRow = listRelations.Rows[e.RowIndex];
                 string RelationName = selectedRow.Cells["label"].Value.ToString();
 
