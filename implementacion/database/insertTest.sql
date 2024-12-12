@@ -21,12 +21,13 @@ INSERT INTO AtributoPersonalizado (nombre, tipo) VALUES ('precio', 'number');
 -- Meto valor para precio a primer producto
 INSERT INTO ProductoAtributo (producto_sku, atributo_id, valor)
 VALUES ('G001', (SELECT id FROM AtributoPersonalizado WHERE nombre = 'precio'), '777');
-
+INSERT INTO ProductoCategoria (producto_sku, categoria_id) VALUES ('chocho', 1);
 INSERT INTO Categoria (nombre) VALUES ('Figuras');
 INSERT INTO Categoria (nombre) VALUES ('Decoración');
 
 -- Meto valor para precio a primer producto
-INSERT INTO ProductoCategoria (producto_sku, categoria_id)
+
+
 VALUES ('G001', (SELECT id FROM Categoria WHERE nombre = 'Figuras'));
  
  INSERT INTO ProductoCategoria (producto_sku, categoria_id)
