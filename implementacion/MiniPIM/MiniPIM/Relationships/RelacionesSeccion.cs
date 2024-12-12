@@ -232,10 +232,10 @@ namespace MiniPIM.Relationships
                     // Eliminar de la base de datos
                     using (var context = new grupo07DBEntities())
                     {
-                        var relationToDelete = context.AtributoPersonalizado.Find(relationName); // antes era relationId
+                        var relationToDelete = context.Relacion.Find(relationName); // antes era relationId
                         if (relationToDelete != null)
                         {
-                            context.AtributoPersonalizado.Remove(relationToDelete);
+                            context.Relacion.Remove(relationToDelete);
                             context.SaveChanges();
                         }
                     }

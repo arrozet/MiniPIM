@@ -35,6 +35,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lProduct = new System.Windows.Forms.ListBox();
             this.lRelated = new System.Windows.Forms.ListBox();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.CreateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -95,14 +97,37 @@
             this.lRelated.ItemHeight = 16;
             this.lRelated.Location = new System.Drawing.Point(485, 265);
             this.lRelated.Name = "lRelated";
+            this.lRelated.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lRelated.Size = new System.Drawing.Size(176, 164);
             this.lRelated.TabIndex = 6;
             // 
-            // Form1
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(451, 478);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 7;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // CreateButton
+            // 
+            this.CreateButton.Location = new System.Drawing.Point(586, 478);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(75, 23);
+            this.CreateButton.TabIndex = 8;
+            this.CreateButton.Text = "Create";
+            this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
+            // 
+            // NewRelation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 532);
+            this.ClientSize = new System.Drawing.Size(759, 532);
+            this.Controls.Add(this.CreateButton);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.lRelated);
             this.Controls.Add(this.lProduct);
             this.Controls.Add(this.label4);
@@ -110,7 +135,7 @@
             this.Controls.Add(this.tName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "NewRelation";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -127,5 +152,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lProduct;
         private System.Windows.Forms.ListBox lRelated;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CreateButton;
     }
 }
