@@ -83,7 +83,8 @@ namespace MiniPIM.Attribute
                         AtributoPersonalizado nuevoAtributo = new AtributoPersonalizado
                         {
                             nombre = AttributeNameText.Text,
-                            tipo = attributeType.ToString()
+                            tipo = attributeType.ToString(),
+                            cuenta_id = context.Cuenta.FirstOrDefault().id
                         };
 
                         //Lo insertamos en la base de datos

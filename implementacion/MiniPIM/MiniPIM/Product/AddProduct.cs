@@ -153,6 +153,7 @@ namespace MiniPIM.Product
                             fechaCreacion = DateTime.Now,
                             descripcionLarga = longDescription,
                             thumbnail = ConvertirImagenABytes(pictureBoxThumbnail.Image),
+                            cuenta_id = context.Cuenta.FirstOrDefault().id
                         };
 
                         context.Producto.Add(producto);

@@ -60,6 +60,7 @@ namespace MiniPIM.Category
                     Categoria newCategory = new Categoria
                     {
                         nombre = CategoryNameText.Text,
+                        cuenta_id = context.Cuenta.FirstOrDefault().id
                     };
 
                     context.Categoria.Add(newCategory);

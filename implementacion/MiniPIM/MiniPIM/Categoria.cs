@@ -25,5 +25,9 @@ namespace MiniPIM
     
         public virtual Cuenta Cuenta { get; set; }
         public virtual ICollection<Producto> Producto { get; set; }
+        public override string ToString()
+        {
+            return nombre;
+        }
     }
 }

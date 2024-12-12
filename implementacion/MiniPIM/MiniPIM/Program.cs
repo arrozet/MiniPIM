@@ -16,6 +16,7 @@ namespace MiniPIM
             //Application.Run(new TestForm());
 
             Application.Run(new Product.ProductosResumen());
+            Application.Exit();
 
         }
     }
