@@ -350,7 +350,7 @@ namespace MiniPIM.Product
         private void ExportarA_CSV(List<Producto> productos)
         {
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MiniPIM");
-            string filePath = Path.Combine(folderPath, "amazonCSV.json");
+            string filePath = Path.Combine(folderPath, "amazonExport.csv");
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
