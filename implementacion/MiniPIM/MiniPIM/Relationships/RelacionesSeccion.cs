@@ -255,6 +255,8 @@ namespace MiniPIM.Relationships
 
                     // Refrescar el DataGridView
                     RelacionesSeccion_Load(sender, e);
+
+                    MessageBox.Show("Relationship deleted succesfully!");
                 }
 
 

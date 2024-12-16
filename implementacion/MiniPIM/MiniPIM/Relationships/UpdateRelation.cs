@@ -135,6 +135,7 @@ namespace MiniPIM.Relationships
 
                     context.SaveChanges();
                     seccionRelaciones.RecargarRelaciones();
+                    MessageBox.Show("Relationship updated succesfully!");
                     this.ParentForm.Close();
                 }
             }

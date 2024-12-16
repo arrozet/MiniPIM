@@ -50,11 +50,19 @@ namespace MiniPIM.Account
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            using(var context = new grupo07DBEntities())
+            var confirmDelete = MessageBox.Show($"Are you sure you want to export your account details?",
+                                                    "Confirm Export",
+                                                    MessageBoxButtons.YesNo,
+                                                    MessageBoxIcon.Warning);
+
+            if (confirmDelete == DialogResult.Yes)
             {
-                Cuenta cuenta = context.Cuenta.FirstOrDefault();
-                FileManager fm = new FileManager(cuenta);
-                fm.ExportToJson();
+                using (var context = new grupo07DBEntities())
+                {
+                    Cuenta cuenta = context.Cuenta.FirstOrDefault();
+                    FileManager fm = new FileManager(cuenta);
+                    fm.ExportToJson();
+                }
             }
         }
 

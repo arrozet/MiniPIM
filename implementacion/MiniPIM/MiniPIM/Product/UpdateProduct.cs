@@ -319,13 +319,6 @@ namespace MiniPIM.Product
         }
 
 
-
-
-
-
-
-
-
        
 
         private byte[] ConvertirImagenABytes(Image imagen)
