@@ -220,15 +220,17 @@
             // 
             // btnExportCSV
             // 
+            this.btnExportCSV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportCSV.AutoSize = true;
-            this.btnExportCSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExportCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.btnExportCSV.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnExportCSV.Location = new System.Drawing.Point(499, 3);
             this.btnExportCSV.Name = "btnExportCSV";
             this.btnExportCSV.Size = new System.Drawing.Size(242, 57);
             this.btnExportCSV.TabIndex = 1;
-            this.btnExportCSV.Text = "📋";
+            this.btnExportCSV.Text = "➥";
             this.btnExportCSV.UseVisualStyleBackColor = true;
             this.btnExportCSV.Click += new System.EventHandler(this.btnExportCSV_Click);
             // 

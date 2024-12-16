@@ -255,7 +255,7 @@ namespace MiniPIM.Product
                                                                     a.espacioOcupado
                                                                 })
                                     .ToList();
-
+                    
                     List<Label> labels = new List<Label>();
                     labels.Add(lblA1); labels.Add(lblA2); labels.Add(lblA3); labels.Add(lblA4); labels.Add(lblA5);
                     List<System.Windows.Forms.TextBox> textBoxes = new List<System.Windows.Forms.TextBox>();

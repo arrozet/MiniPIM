@@ -32,7 +32,6 @@
             this.tName = new System.Windows.Forms.TextBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.lProduct = new System.Windows.Forms.ListBox();
             this.lRelated = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -84,21 +83,11 @@
             this.UpdateButton.UseVisualStyleBackColor = true;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(80, 36);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Relationship details";
-            // 
             // lProduct
             // 
             this.lProduct.FormattingEnabled = true;
             this.lProduct.Location = new System.Drawing.Point(95, 150);
-            this.lProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lProduct.Margin = new System.Windows.Forms.Padding(2);
             this.lProduct.Name = "lProduct";
             this.lProduct.Size = new System.Drawing.Size(97, 82);
             this.lProduct.TabIndex = 7;
@@ -107,7 +96,7 @@
             // 
             this.lRelated.FormattingEnabled = true;
             this.lRelated.Location = new System.Drawing.Point(262, 150);
-            this.lRelated.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lRelated.Margin = new System.Windows.Forms.Padding(2);
             this.lRelated.Name = "lRelated";
             this.lRelated.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lRelated.Size = new System.Drawing.Size(97, 82);
@@ -141,7 +130,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lRelated);
             this.Controls.Add(this.lProduct);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.tName);
@@ -162,7 +150,6 @@
         private System.Windows.Forms.ComboBox typeText;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button UpdateButton;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox lProduct;
         private System.Windows.Forms.ListBox lRelated;
         private System.Windows.Forms.Label label4;

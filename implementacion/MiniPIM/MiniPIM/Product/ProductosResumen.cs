@@ -371,6 +371,7 @@ namespace MiniPIM.Product
         }
         private void ExportarA_CSV(List<Producto> productos)
         {
+            List<Producto> noValidos = new List<Producto>();
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MiniPIM");
 
             string categoria = String.Empty;
@@ -392,7 +393,7 @@ namespace MiniPIM.Product
             {
                 // Escribir la cabecera del archivo CSV
                 string delimiter = ";";
-                sw.WriteLine($"SKU{delimiter}Title{delimiter}FulfilledBy{delimiter}Amazon_SKU{delimiter}Price{delimiter}OfferPrimer");
+                sw.WriteLine($"SKU{delimiter}Title{delimiter}FulfilledBy{delimiter}Amazon_SKU{delimiter}Price{delimiter}OfferPrime");
 
                 // Escribir los productos al archivo
                 foreach (Producto producto in productos)
@@ -403,8 +404,8 @@ namespace MiniPIM.Product
                     // Si no tiene un precio válido, lo omitimos
                     if (price == -1)
                     {
-                        MessageBox.Show($"No se pudo exportar el producto {producto.label} ya que no contiene un atributo numérico");
-                        return;
+                        noValidos.Add(producto);
+                        continue;
                     }
                     Cuenta cuenta = contextGlobalFeo.Cuenta.Where(c => c.id == producto.cuenta_id).FirstOrDefault();
 
@@ -412,6 +413,20 @@ namespace MiniPIM.Product
                     sw.WriteLine($"{producto.sku}{delimiter}{producto.label}{delimiter}{cuenta.nombre}{delimiter}{producto.gtin}{delimiter}{price}{delimiter}false");
                 }
             }
+
+            // Notificar al usuario de que los productos que no han podido ser exportados
+            if (noValidos.Count > 0)
+            {
+                // Crear un mensaje inicial
+                string invalido = "No se pudieron exportar los siguientes productos ya que no tienen atributos numéricos:\n";
+
+                // Unir los nombres de los productos con comas
+                invalido += string.Join(", ", noValidos.Select(inv => inv.ToString()));
+
+                // Mostrar el mensaje en un cuadro de diálogo
+                MessageBox.Show(invalido);
+            }
+
             MessageBox.Show($"Exportación a CSV completa en {filePath}");
         }
         private decimal ObtenerPrecioValido(ICollection<ProductoAtributo> productoAtributos)
